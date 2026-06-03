@@ -2,13 +2,39 @@ import { getPostsByCategory, getAllCategories } from "@/lib/posts";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-const categoryNames: Record<string, string> = {
-  "ai-writing-tools": "AI Writing Tools",
-  "ai-image-tools": "AI Image Tools",
-  "ai-video-tools": "AI Video Tools",
-  "ai-coding-tools": "AI Coding Tools",
-  comparisons: "Comparisons",
-  "best-of": "Best Of",
+const SITE_URL = "https://dailycravehive.com";
+
+const categoryMeta: Record<string, { name: string; description: string; keywords: string[] }> = {
+  "ai-writing-tools": {
+    name: "AI Writing Tools",
+    description: "Expert reviews and comparisons of the best AI writing tools in 2026. Jasper, ChatGPT, Claude, Copy.ai and more — tested and ranked.",
+    keywords: ["AI writing tools", "best AI writer", "AI content generator", "AI copywriting"],
+  },
+  "ai-image-tools": {
+    name: "AI Image Tools",
+    description: "In-depth reviews of the best AI image generators in 2026. Midjourney, DALL-E, FLUX, Firefly — real tests, honest scores.",
+    keywords: ["AI image generators", "AI art generator", "best AI image tools", "AI image creation"],
+  },
+  "ai-video-tools": {
+    name: "AI Video Tools",
+    description: "Reviews and rankings of the best AI video generation tools in 2026. Sora, Runway, Kling and more — tested with real projects.",
+    keywords: ["AI video tools", "AI video generator", "best AI video maker"],
+  },
+  "ai-coding-tools": {
+    name: "AI Coding Tools",
+    description: "Reviews and comparisons of the best AI coding assistants in 2026. Cursor, GitHub Copilot, Claude Code and more — developer tested.",
+    keywords: ["AI coding tools", "AI code assistant", "best AI for coding"],
+  },
+  comparisons: {
+    name: "Comparisons",
+    description: "Head-to-head AI tool comparisons with real testing. ChatGPT vs Claude, Grammarly vs ChatGPT, Frase vs Surfer SEO and more.",
+    keywords: ["AI tool comparisons", "ChatGPT vs Claude", "AI tools compared", "which AI tool is best"],
+  },
+  "best-of": {
+    name: "Best Of",
+    description: "Curated rankings of the best AI tools in 2026. Writing tools, image generators, and more — tested, scored, and ranked by category.",
+    keywords: ["best AI tools 2026", "top AI tools", "AI tools ranked", "best AI software"],
+  },
 };
 
 export async function generateStaticParams() {
@@ -18,25 +44,107 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const name = categoryNames[slug] || slug;
+  const meta = categoryMeta[slug] || { name: slug, description: "Browse articles on Daily Crave Hive.", keywords: [] };
+  const categoryUrl = `${SITE_URL}/category/${slug}`;
+
   return {
-    title: name + " - Daily Crave Hive",
-    description: "Browse all " + name + " articles on Daily Crave Hive.",
+    title: `${meta.name} — AI Tools Reviews & Rankings 2026`,
+    description: meta.description,
+    keywords: meta.keywords,
+    alternates: {
+      canonical: categoryUrl,
+    },
+    openGraph: {
+      type: "website",
+      title: `${meta.name} — DailyCraveHive`,
+      description: meta.description,
+      url: categoryUrl,
+      siteName: "DailyCraveHive",
+      images: [
+        {
+          url: `${SITE_URL}/images/og-default.png`,
+          width: 1200,
+          height: 630,
+          alt: `${meta.name} — DailyCraveHive`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${meta.name} — DailyCraveHive`,
+      description: meta.description,
+      images: [`${SITE_URL}/images/og-default.png`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const posts = getPostsByCategory(slug);
-  const categoryName = categoryNames[slug] || slug;
+  const meta = categoryMeta[slug] || { name: slug, description: "", keywords: [] };
+
+  // BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: meta.name,
+        item: `${SITE_URL}/category/${slug}`,
+      },
+    ],
+  };
+
+  // CollectionPage Schema
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: meta.name,
+    description: meta.description,
+    url: `${SITE_URL}/category/${slug}`,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "DailyCraveHive",
+      url: SITE_URL,
+    },
+  };
 
   return (
     <div className="bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+
       {/* Hero */}
       <section className="bg-gradient-to-b from-pink-200 via-pink-300 to-pink-100 py-12">
+        <nav className="mx-auto max-w-6xl px-4 pb-4 text-sm text-[#1a1a2e]/60">
+          <Link href="/" className="hover:text-[#E8505B]">Home</Link>
+          <span className="mx-2">»</span>
+          <span>{meta.name}</span>
+        </nav>
         <h1 className="text-center text-3xl font-bold text-[#1a1a2e]">
-          {categoryName}
+          {meta.name}
         </h1>
+        <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-[#1a1a2e]/70">
+          {meta.description}
+        </p>
       </section>
 
       {/* Posts Grid */}
