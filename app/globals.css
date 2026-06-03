@@ -1,0 +1,372 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a2e;
+  --body: #555555;
+  --accent: #e8505b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+@layer base {
+
+  article hr {
+    border: none !important;
+    border-top: 2px solid #E8505B !important;
+    margin: 40px 0 !important;
+    opacity: 0.5;
+  }
+  
+  article table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 14px;
+    margin: 32px 0;
+    border: 2px solid #3a3a4a !important;
+    border-radius: 10px;
+    overflow: hidden;
+    display: table !important;
+    background-color: #12121c !important;
+    box-shadow: 0 0 0 1px #3a3a4a;
+  }
+
+  article thead {
+    background-color: #141422 !important;
+    display: table-header-group !important;
+  }
+
+  article thead th {
+    padding: 14px 20px !important;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #cccccc !important;
+    border-bottom: 3px solid #E8505B !important;
+    border-right: 1px solid #3a3a4a !important;
+  }
+
+  article thead th:last-child {
+    border-right: none !important;
+  }
+
+  article tbody {
+    display: table-row-group !important;
+  }
+
+  article tbody tr {
+    border-bottom: 1px solid #2a2a3a !important;
+    display: table-row !important;
+  }
+  
+  article tbody td {
+    padding: 16px 20px !important;
+    color: #b0b0b0 !important;
+    font-size: 14px;
+    vertical-align: top;
+    display: table-cell !important;
+    border-bottom: 1px solid #2a2a3a !important;
+    border-right: 1px solid #2a2a3a !important;
+  }
+
+  article tbody td:last-child {
+    border-right: none !important;
+  }
+
+  article tbody td strong {
+    color: #ffffff !important;
+  }
+
+  article tbody tr:hover {
+    background-color: #1a1a2e;
+  }
+
+  article blockquote {
+    border-left: 4px solid #E8505B !important;
+    background-color: #1a1a2e !important;
+    padding: 20px 24px !important;
+    margin: 24px 0 !important;
+    border-radius: 0 8px 8px 0;
+    color: #d0d0d0;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  article blockquote p {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #d0d0d0 !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+  }
+
+  article blockquote strong {
+    color: #E8505B !important;
+  }
+}
+
+/* Custom boxes - outside @layer for Tailwind v4 compatibility */
+.pros-cons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+@media (max-width: 768px) {
+  .pros-cons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.worth-it-box {
+  border: 1px solid #2a3a2a;
+  border-left: 4px solid #22c55e;
+  background-color: #0f1a0f;
+  padding: 20px 24px;
+  border-radius: 0 12px 12px 0;
+}
+
+.not-worth-box {
+  border: 1px solid #3a2a2a;
+  border-left: 4px solid #E8505B;
+  background-color: #1a0f0f;
+  padding: 20px 24px;
+  border-radius: 0 12px 12px 0;
+}
+.verdict-box {
+  border: 1px solid #2a2a3a;
+  border-left: 4px solid #E8505B;
+  background-color: #12121c;
+  padding: 28px 32px;
+  border-radius: 0 12px 12px 0;
+  margin: 24px 0;
+  color: #d0d0d0;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.verdict-box p {
+  color: #d0d0d0 !important;
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+}
+
+.verdict-box strong {
+  color: #ffffff !important;
+}
+
+.faq-item {
+  border: 1px solid #2a2a3a;
+  border-left: 3px solid #E8505B;
+  border-radius: 8px;
+  background-color: #12121c;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.faq-item summary {
+  padding: 16px 20px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  list-style: none !important;
+  list-style-type: none !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+.faq-item summary::-webkit-details-marker,
+.faq-item summary::marker {
+  display: none !important;
+  content: "" !important;
+}
+
+.faq-item summary::after {
+  content: "+";
+  color: #E8505B;
+  font-size: 20px;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item[open] summary {
+  border-bottom: 1px solid #2a2a3a;
+}
+
+.faq-item p {
+  padding: 16px 20px !important;
+  color: #b0b0b0 !important;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0 !important;
+}
+.top-picks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+@media (max-width: 768px) {
+  .top-picks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.top-pick-card {
+  border: 1px solid #2a2a3a;
+  background-color: #12121c;
+  padding: 20px 24px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.top-pick-card .pick-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.pick-best .pick-label {
+  background-color: #E8505B;
+  color: white;
+}
+
+.pick-free .pick-label {
+  background-color: #22c55e;
+  color: white;
+}
+
+.pick-natural .pick-label {
+  background-color: #3b82f6;
+  color: white;
+}
+@media (max-width: 768px) {
+  article > div[style*="grid-template-columns: 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+.tool-card {
+  border: 1px solid #2a2a3a;
+  border-radius: 12px;
+  background-color: #12121c;
+  padding: 24px 28px;
+  margin: 24px 0;
+  position: relative;
+}
+
+.tool-badge {
+  display: inline-block;
+  background-color: #E8505B;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+.tool-score {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #E8505B;
+}
+
+.tool-score span {
+  font-size: 16px;
+  color: #888;
+}
+
+.tool-meta {
+  font-size: 13px;
+  color: #888;
+  margin: 8px 0 16px;
+}
+
+/* Tool Pros - green text */
+.tool-pros {
+  margin: 16px 0 !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+}
+
+.tool-pros .prose-inherit {
+  color: #22c55e !important;
+  margin-bottom: 0 !important;
+}
+
+.tool-pros .prose-inherit .font-bold {
+  color: #ffffff !important;
+}
+
+/* Tool Cons - red text */
+.tool-cons {
+  margin: 16px 0 !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+}
+
+.tool-cons .prose-inherit {
+  color: #E8505B !important;
+  margin-bottom: 0 !important;
+}
+
+.tool-cons .prose-inherit .font-bold {
+  color: #ffffff !important;
+}
+
+/* Tool Best For - blockquote style box */
+.tool-best-for {
+  border-left: 4px solid #E8505B !important;
+  background-color: #1a1a2e !important;
+  padding: 12px 16px !important;
+  margin: 16px 0 !important;
+  border-radius: 0 6px 6px 0;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+}
+
+.tool-best-for .prose-inherit {
+  color: #b0b0b0 !important;
+  margin-bottom: 0 !important;
+}
+
+.tool-best-for .prose-inherit .font-bold {
+  color: #E8505B !important;
+}
+
+/* Label inside pros/cons/best-for - white bold */
+.tool-pros .tool-label,
+.tool-cons .tool-label,
+.tool-best-for .tool-label {
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
