@@ -269,7 +269,7 @@ Short on time? Here are the three tools that consistently outperformed the rest 
 
 </div>
 
-<!-- ☝️ Har naye tool ke liye upar wala tool-card block copy karke --- separator ke saath repeat karo -->
+<!-- ☝️ Copy the tool-card block above (with the --- separator) for each additional tool -->
 
 ## Full Comparison: Features, Pricing and Scores
 
@@ -533,15 +533,15 @@ Before diving into details, here's a snapshot of how these two tools stack up.
 <p>[Answer.]</p>
 </details>`;
 
-export const BLOG_TEMPLATE = `[Hook — reader ka problem ya curiosity. Is post me kya milega, ek-do line me promise.]
+export const BLOG_TEMPLATE = `[Hook — the reader's problem or curiosity. Promise what this post delivers in 1–2 lines.]
 
 ## [Section 1 — Main Topic Setup]
 
-[Context aur background. Reader ko kyun care karna chahiye.]
+[Context and background. Why the reader should care.]
 
 ## [Section 2 — Core Point / Step 1]
 
-[Main content. Zaroorat ho to **bold** key phrases, examples, ya list:]
+[Main content. Use **bold** key phrases, examples, or a list where needed:]
 
 - [Point 1]
 - [Point 2]
@@ -549,7 +549,7 @@ export const BLOG_TEMPLATE = `[Hook — reader ka problem ya curiosity. Is post 
 
 ## [Section 3 — Core Point / Step 2]
 
-[Content. Data compare karna ho to table use karo:]
+[Content. Use a table if you need to compare data:]
 
 <table>
 <thead>
@@ -570,9 +570,9 @@ export const BLOG_TEMPLATE = `[Hook — reader ka problem ya curiosity. Is post 
 
 ## [Section 4 — Core Point / Step 3]
 
-[Content. Koi important tip highlight karni ho to blockquote:]
+[Content. Highlight an important tip with a blockquote:]
 
-> **Pro Tip:** [Tip yahan.]
+> **Pro Tip:** [Your tip here.]
 
 ## Key Takeaways
 
@@ -580,7 +580,7 @@ export const BLOG_TEMPLATE = `[Hook — reader ka problem ya curiosity. Is post 
 
 🏆 **[Summary Heading]**
 
-[2-3 line me post ka nichod — reader ko kya karna chahiye.]
+[The gist of the post in 2–3 lines — what the reader should do next.]
 
 </div>
 

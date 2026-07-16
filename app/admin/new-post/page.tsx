@@ -21,7 +21,7 @@ const POST_TYPES: { id: PostType; label: string; hint: string }[] = [
   { id: "review", label: "🔍 Single Review", hint: "e.g. Jasper AI Review" },
   { id: "best-of", label: "🏆 Best Of List", hint: "e.g. Best AI Writing Tools" },
   { id: "comparison", label: "⚔️ Comparison", hint: "e.g. ChatGPT vs Claude" },
-  { id: "blog", label: "📝 General Blog", hint: "guides, news, koi bhi topic" },
+  { id: "blog", label: "📝 General Blog", hint: "guides, news, any topic" },
 ];
 
 function slugify(text: string) {
@@ -63,7 +63,7 @@ export default function NewPostPage() {
     const f = e.target.files?.[0] || null;
     if (!f) return;
     if (f.size > 3 * 1024 * 1024) {
-      setStatus({ type: "error", message: "Image 3MB se chhoti rakho — tinypng.com se compress kar lo." });
+      setStatus({ type: "error", message: "Keep the image under 3MB — compress it at tinypng.com." });
       e.target.value = "";
       return;
     }
@@ -95,7 +95,7 @@ export default function NewPostPage() {
   }
 
   function loadTemplate() {
-    if (body.trim() && !confirm("Body me pehle se content hai — template se replace karein?")) return;
+    if (body.trim() && !confirm("The body already has content — replace it with the template?")) return;
     let t = "";
     if (postType === "review") {
       t = REVIEW_TEMPLATE.replace(/\{\{TOOL\}\}/g, toolName || "[Tool Name]");
@@ -111,7 +111,7 @@ export default function NewPostPage() {
 
   async function handleSubmit() {
     if (!title || !slug || !excerpt || !body || !password) {
-      setStatus({ type: "error", message: "Title, slug, excerpt, body aur password required hain." });
+      setStatus({ type: "error", message: "Title, slug, excerpt, body and password are required." });
       return;
     }
     setStatus({ type: "loading" });
@@ -123,7 +123,7 @@ export default function NewPostPage() {
         imageData = await new Promise<string>((resolve, reject) => {
           const r = new FileReader();
           r.onload = () => resolve((r.result as string).split(",")[1]);
-          r.onerror = () => reject(new Error("Image read nahi ho payi"));
+          r.onerror = () => reject(new Error("Could not read the image file"));
           r.readAsDataURL(imageFile);
         });
         imageName = `${slug}.${imageExt}`;
@@ -168,7 +168,7 @@ export default function NewPostPage() {
     <main className="mx-auto max-w-3xl px-4 py-10">
       <h1 className="mb-1 text-2xl font-bold text-neutral-900">🐝 Add New Post</h1>
       <p className="mb-8 text-sm text-neutral-500">
-        Publish hone par post repo me commit hogi aur Vercel auto-redeploy karega (~1–2 min).
+        Publishing commits the post to your repo and Vercel auto-redeploys it (~1–2 min).
       </p>
 
       <div className="space-y-5">
@@ -270,7 +270,7 @@ export default function NewPostPage() {
                   /images/{slug || "slug"}.{imageExt} (auto)
                 </span>
                 <button type="button" onClick={clearImage} className="text-xs text-red-600 underline">
-                  delete
+                  Delete
                 </button>
               </div>
             ) : (
@@ -278,7 +278,7 @@ export default function NewPostPage() {
                 className={`${input} mt-2`}
                 value={thumbnail}
                 onChange={(e) => setThumbnail(e.target.value)}
-                placeholder={`ya manual path: /images/${slug || "post-slug"}.png`}
+                placeholder={`or manual path: /images/${slug || "post-slug"}.png`}
               />
             )}
           </div>
@@ -291,7 +291,7 @@ export default function NewPostPage() {
             rows={2}
             value={excerpt}
             onChange={(e) => setExcerpt(e.target.value)}
-            placeholder="150–160 characters, SEO ke liye"
+            placeholder="150–160 characters, for SEO"
           />
           <p className="mt-1 text-xs text-neutral-400">{excerpt.length} characters</p>
         </div>
@@ -320,7 +320,7 @@ export default function NewPostPage() {
         {/* Template helper */}
         <div className="rounded-lg border border-dashed border-amber-300 bg-amber-50/50 p-4">
           <p className="mb-3 text-sm font-medium text-neutral-700">
-            📋 Template loader — {POST_TYPES.find((t) => t.id === postType)?.label} ka full skeleton body me daal do
+            📋 Template loader — loads the full {POST_TYPES.find((t) => t.id === postType)?.label} skeleton into the body
           </p>
           <div className="flex flex-wrap items-end gap-3">
             {postType === "review" && (
@@ -363,7 +363,7 @@ export default function NewPostPage() {
             rows={24}
             value={body}
             onChange={(e) => setBody(e.target.value)}
-            placeholder="Template load karo ya seedha markdown likho…"
+            placeholder="Load a template or write markdown directly…"
           />
           <p className="mt-1 text-xs text-neutral-400">
             {body.trim() ? `${body.trim().split(/\s+/).length} words` : "0 words"}
@@ -391,7 +391,7 @@ export default function NewPostPage() {
 
         {status.type === "success" && (
           <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-            Post committed! Deploy hone ke baad live hogi:{" "}
+            Post committed! It will be live after the deploy finishes:{" "}
             <a className="font-medium underline" href={status.url} target="_blank" rel="noreferrer">
               {status.url}
             </a>

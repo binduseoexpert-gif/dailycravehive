@@ -9,8 +9,8 @@ export const runtime = "nodejs";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN!; // fine-grained PAT with "Contents: Read & write"
 const GITHUB_REPO = process.env.GITHUB_REPO!; // e.g. "yourusername/dailycravehive"
 const GITHUB_BRANCH = process.env.GITHUB_BRANCH || "main";
-const POSTS_DIR = process.env.POSTS_DIR || "content/posts"; // apne repo ke posts folder ka path
-const POSTS_EXT = process.env.POSTS_EXT || "mdx"; // "mdx" ya "md" — jo aapki files me hai
+const POSTS_DIR = process.env.POSTS_DIR || "content/posts"; // path to your posts folder in the repo
+const POSTS_EXT = process.env.POSTS_EXT || "mdx"; // "mdx" or "md" — whichever your files use
 const SITE_URL = process.env.SITE_URL || "https://www.dailycravehive.com";
 const ADMIN_SECRET = process.env.ADMIN_SECRET!;
 
@@ -32,16 +32,16 @@ export async function POST(req: Request) {
 
     // --- auth ---
     if (!ADMIN_SECRET || password !== ADMIN_SECRET) {
-      return NextResponse.json({ error: "Galat password." }, { status: 401 });
+      return NextResponse.json({ error: "Incorrect password." }, { status: 401 });
     }
 
     // --- validation ---
     if (!title || !slug || !excerpt || !body) {
-      return NextResponse.json({ error: "Title, slug, excerpt aur body required hain." }, { status: 400 });
+      return NextResponse.json({ error: "Title, slug, excerpt and body are required." }, { status: 400 });
     }
     if (!/^[a-z0-9-]+$/.test(slug)) {
       return NextResponse.json(
-        { error: "Slug me sirf lowercase letters, numbers aur hyphens allowed hain." },
+        { error: "Slug can only contain lowercase letters, numbers and hyphens." },
         { status: 400 }
       );
     }
@@ -68,14 +68,14 @@ export async function POST(req: Request) {
     const fileContent = `${lines.join("\n")}\n\n${body}\n`;
     const filePath = `${POSTS_DIR}/${slug}.${POSTS_EXT}`;
 
-    // --- pehle image commit karo (agar upload hui hai) ---
+    // --- commit the image first (if one was uploaded) ---
     if (imageData && imageName) {
       if (!/^[a-z0-9.-]+\.(png|jpg|jpeg|webp)$/.test(imageName)) {
-        return NextResponse.json({ error: "Image ka naam/format galat hai." }, { status: 400 });
+        return NextResponse.json({ error: "Invalid image name or format." }, { status: 400 });
       }
       const imgPath = `public/images/${imageName}`;
 
-      // agar same naam ki image pehle se hai to uska sha lo (overwrite ke liye)
+      // if an image with the same name exists, grab its sha (to overwrite)
       let existingSha: string | undefined;
       const imgCheck = await fetch(
         `https://api.github.com/repos/${GITHUB_REPO}/contents/${imgPath}?ref=${GITHUB_BRANCH}`,
@@ -106,7 +106,7 @@ export async function POST(req: Request) {
       if (!imgCommit.ok) {
         const err = await imgCommit.json().catch(() => ({}));
         return NextResponse.json(
-          { error: `Image upload fail hui: ${err.message || imgCommit.statusText}` },
+          { error: `Image upload failed: ${err.message || imgCommit.statusText}` },
           { status: 500 }
         );
       }
@@ -125,7 +125,7 @@ export async function POST(req: Request) {
     );
     if (checkRes.ok) {
       return NextResponse.json(
-        { error: `"${slug}" slug ki post already exist karti hai. Alag slug use karo.` },
+        { error: `A post with the slug "${slug}" already exists. Use a different slug.` },
         { status: 409 }
       );
     }
@@ -148,13 +148,13 @@ export async function POST(req: Request) {
     if (!commitRes.ok) {
       const err = await commitRes.json().catch(() => ({}));
       return NextResponse.json(
-        { error: `GitHub commit fail hua: ${err.message || commitRes.statusText}` },
+        { error: `GitHub commit failed: ${err.message || commitRes.statusText}` },
         { status: 500 }
       );
     }
 
     return NextResponse.json({ ok: true, url: `${SITE_URL}/${slug}` });
   } catch {
-    return NextResponse.json({ error: "Server error. Env variables check karo." }, { status: 500 });
+    return NextResponse.json({ error: "Server error. Check your environment variables." }, { status: 500 });
   }
 }
