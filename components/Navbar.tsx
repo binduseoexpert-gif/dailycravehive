@@ -36,7 +36,7 @@ const navItems: NavGroup[] = [
       
     ],
   },
-  { label: "AI Lifestyle", href: "/category/ai-lifestyle" },
+  { label: "Lifestyle", href: "/category/lifestyle" },
 ];
 
 export default function Navbar() {
