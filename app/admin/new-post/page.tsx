@@ -4,7 +4,7 @@
 // Admin page: choose post type (Review / Best Of / Comparison), fill fields,
 // load the matching body template, publish → commits .mdx to GitHub.
 
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import { REVIEW_TEMPLATE, BEST_OF_TEMPLATE, COMPARISON_TEMPLATE, BLOG_TEMPLATE } from "./templates";
 
 type PostType = "review" | "best-of" | "comparison" | "blog";
@@ -54,6 +54,30 @@ export default function NewPostPage() {
   >({ type: "idle" });
 
   const [blogCategory, setBlogCategory] = useState("Blog");
+  // Featured image upload
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>("");
+  const imageExt = imageFile ? imageFile.name.split(".").pop()?.toLowerCase() || "png" : "png";
+
+  function handleImageSelect(e: ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0] || null;
+    if (!f) return;
+    if (f.size > 3 * 1024 * 1024) {
+      setStatus({ type: "error", message: "Image 3MB se chhoti rakho — tinypng.com se compress kar lo." });
+      e.target.value = "";
+      return;
+    }
+    setImageFile(f);
+    const reader = new FileReader();
+    reader.onload = () => setImagePreview(reader.result as string);
+    reader.readAsDataURL(f);
+    setStatus({ type: "idle" });
+  }
+
+  function clearImage() {
+    setImageFile(null);
+    setImagePreview("");
+  }
 
   // Best Of → "Best Of"; Comparison → "Comparisons"; Blog → editable; Review → dropdown
   const effectiveCategory =
@@ -92,6 +116,19 @@ export default function NewPostPage() {
     }
     setStatus({ type: "loading" });
     try {
+      // Image file → base64 (agar select ki hai)
+      let imageData: string | null = null;
+      let imageName: string | null = null;
+      if (imageFile) {
+        imageData = await new Promise<string>((resolve, reject) => {
+          const r = new FileReader();
+          r.onload = () => resolve((r.result as string).split(",")[1]);
+          r.onerror = () => reject(new Error("Image read nahi ho payi"));
+          r.readAsDataURL(imageFile);
+        });
+        imageName = `${slug}.${imageExt}`;
+      }
+
       const res = await fetch("/api/admin/create-post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -100,7 +137,9 @@ export default function NewPostPage() {
           slug,
           category: effectiveCategory,
           excerpt,
-          thumbnail,
+          thumbnail: imageName ? `/images/${imageName}` : thumbnail,
+          imageData,
+          imageName,
           keywords: keywords
             .split("\n")
             .map((k) => k.trim())
@@ -212,13 +251,36 @@ export default function NewPostPage() {
             )}
           </div>
           <div>
-            <label className={label}>Thumbnail path</label>
+            <label className={label}>Featured image</label>
             <input
-              className={input}
-              value={thumbnail}
-              onChange={(e) => setThumbnail(e.target.value)}
-              placeholder={`/images/${slug || "post-slug"}.png`}
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              onChange={handleImageSelect}
+              className="block w-full text-sm text-neutral-600 file:mr-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-amber-100 file:px-3 file:py-2 file:text-sm file:font-medium file:text-amber-800 hover:file:bg-amber-200"
             />
+            {imagePreview ? (
+              <div className="mt-2 flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={imagePreview}
+                  alt="preview"
+                  className="h-12 w-20 rounded border border-neutral-200 object-cover"
+                />
+                <span className="text-xs text-neutral-500">
+                  /images/{slug || "slug"}.{imageExt} (auto)
+                </span>
+                <button type="button" onClick={clearImage} className="text-xs text-red-600 underline">
+                  hatao
+                </button>
+              </div>
+            ) : (
+              <input
+                className={`${input} mt-2`}
+                value={thumbnail}
+                onChange={(e) => setThumbnail(e.target.value)}
+                placeholder={`ya manual path: /images/${slug || "post-slug"}.png`}
+              />
+            )}
           </div>
         </div>
 

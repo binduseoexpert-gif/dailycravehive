@@ -27,7 +27,8 @@ const yamlStr = (s: string) => `"${s.replace(/\\/g, "\\\\").replace(/"/g, '\\"')
 
 export async function POST(req: Request) {
   try {
-    const { title, slug, category, excerpt, thumbnail, keywords, featured, body, password } = await req.json();
+    const { title, slug, category, excerpt, thumbnail, keywords, featured, body, password, imageData, imageName } =
+      await req.json();
 
     // --- auth ---
     if (!ADMIN_SECRET || password !== ADMIN_SECRET) {
@@ -66,6 +67,50 @@ export async function POST(req: Request) {
 
     const fileContent = `${lines.join("\n")}\n\n${body}\n`;
     const filePath = `${POSTS_DIR}/${slug}.${POSTS_EXT}`;
+
+    // --- pehle image commit karo (agar upload hui hai) ---
+    if (imageData && imageName) {
+      if (!/^[a-z0-9.-]+\.(png|jpg|jpeg|webp)$/.test(imageName)) {
+        return NextResponse.json({ error: "Image ka naam/format galat hai." }, { status: 400 });
+      }
+      const imgPath = `public/images/${imageName}`;
+
+      // agar same naam ki image pehle se hai to uska sha lo (overwrite ke liye)
+      let existingSha: string | undefined;
+      const imgCheck = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/${imgPath}?ref=${GITHUB_BRANCH}`,
+        {
+          headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" },
+          cache: "no-store",
+        }
+      );
+      if (imgCheck.ok) {
+        const j = await imgCheck.json();
+        existingSha = j.sha;
+      }
+
+      const imgCommit = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${imgPath}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
+          Accept: "application/vnd.github+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `image: add ${imageName}`,
+          content: imageData, // already base64
+          branch: GITHUB_BRANCH,
+          ...(existingSha ? { sha: existingSha } : {}),
+        }),
+      });
+      if (!imgCommit.ok) {
+        const err = await imgCommit.json().catch(() => ({}));
+        return NextResponse.json(
+          { error: `Image upload fail hui: ${err.message || imgCommit.statusText}` },
+          { status: 500 }
+        );
+      }
+    }
 
     // --- duplicate slug check ---
     const checkRes = await fetch(
