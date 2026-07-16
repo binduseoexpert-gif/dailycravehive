@@ -21,7 +21,7 @@ const POST_TYPES: { id: PostType; label: string; hint: string }[] = [
   { id: "review", label: "🔍 Single Review", hint: "e.g. Jasper AI Review" },
   { id: "best-of", label: "🏆 Best Of List", hint: "e.g. Best AI Writing Tools" },
   { id: "comparison", label: "⚔️ Comparison", hint: "e.g. ChatGPT vs Claude" },
-  { id: "blog", label: "📝 General Blog", hint: "guides, news, any topic" },
+  { id: "blog", label: "📝 AI Lifestyle", hint: "dating, lifestyle, general topics" },
 ];
 
 function slugify(text: string) {
@@ -53,7 +53,7 @@ export default function NewPostPage() {
     { type: "idle" } | { type: "loading" } | { type: "success"; url: string } | { type: "error"; message: string }
   >({ type: "idle" });
 
-  const [blogCategory, setBlogCategory] = useState("Blog");
+  const [blogCategory, setBlogCategory] = useState("AI Lifestyle");
   // Featured image upload
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
@@ -244,7 +244,7 @@ export default function NewPostPage() {
                 className={input}
                 value={blogCategory}
                 onChange={(e) => setBlogCategory(e.target.value)}
-                placeholder='e.g. "Blog", "AI News", "Guides"'
+                placeholder='e.g. "AI Lifestyle", "AI News", "Guides"'
               />
             ) : (
               <input className={`${input} bg-neutral-100`} value={effectiveCategory} disabled />

@@ -33,8 +33,10 @@ const navItems: NavGroup[] = [
       { label: "Rytr vs Writesonic", href: "/rytr-vs-writesonic" },
       { label: "Grammarly vs ChatGPT", href: "/grammarly-vs-chatgpt" },
       { label: "Frase vs Surfer SEO", href: "/frase-vs-surfer-seo" },
+      
     ],
   },
+  { label: "AI Lifestyle", href: "/category/ai-lifestyle" },
 ];
 
 export default function Navbar() {
