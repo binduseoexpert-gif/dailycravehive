@@ -15,14 +15,13 @@ const REVIEW_CATEGORIES = [
   "AI Coding Tools",
   "AI Video Tools",
   "AI Marketing Tools",
-  "Lifestyle",
 ];
 
 const POST_TYPES: { id: PostType; label: string; hint: string }[] = [
   { id: "review", label: "🔍 Single Review", hint: "e.g. Jasper AI Review" },
   { id: "best-of", label: "🏆 Best Of List", hint: "e.g. Best AI Writing Tools" },
   { id: "comparison", label: "⚔️ Comparison", hint: "e.g. ChatGPT vs Claude" },
-  { id: "blog", label: "📝 Lifestyle", hint: "dating, lifestyle, general topics" },
+  { id: "blog", label: "📝 AI Lifestyle", hint: "dating, lifestyle, general topics" },
 ];
 
 function slugify(text: string) {
@@ -54,7 +53,7 @@ export default function NewPostPage() {
     { type: "idle" } | { type: "loading" } | { type: "success"; url: string } | { type: "error"; message: string }
   >({ type: "idle" });
 
-  const [blogCategory, setBlogCategory] = useState("Lifestyle");
+  const [blogCategory, setBlogCategory] = useState("AI Lifestyle");
   // Featured image upload
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
@@ -167,10 +166,20 @@ export default function NewPostPage() {
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="mb-1 text-2xl font-bold text-neutral-900">🐝 Add New Post</h1>
-      <p className="mb-8 text-sm text-neutral-500">
-        Publishing commits the post to your repo and Vercel auto-redeploys it (~1–2 min).
-      </p>
+      <div className="mb-8 flex items-start justify-between gap-4">
+        <div>
+          <h1 className="mb-1 text-2xl font-bold text-neutral-900">🐝 Add New Post</h1>
+          <p className="text-sm text-neutral-500">
+            Publishing commits the post to your repo and Vercel auto-redeploys it (~1–2 min).
+          </p>
+        </div>
+        <a
+          href="/admin/posts"
+          className="shrink-0 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:bg-neutral-50"
+        >
+          Manage posts →
+        </a>
+      </div>
 
       <div className="space-y-5">
         {/* Post type selector */}
@@ -245,7 +254,7 @@ export default function NewPostPage() {
                 className={input}
                 value={blogCategory}
                 onChange={(e) => setBlogCategory(e.target.value)}
-                placeholder='e.g. "Lifestyle", "News", "Guides"'
+                placeholder='e.g. "AI Lifestyle", "AI News", "Guides"'
               />
             ) : (
               <input className={`${input} bg-neutral-100`} value={effectiveCategory} disabled />
