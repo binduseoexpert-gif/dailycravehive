@@ -270,7 +270,7 @@ export default function NewPostPage() {
                   /images/{slug || "slug"}.{imageExt} (auto)
                 </span>
                 <button type="button" onClick={clearImage} className="text-xs text-red-600 underline">
-                  hatao
+                  delete
                 </button>
               </div>
             ) : (
