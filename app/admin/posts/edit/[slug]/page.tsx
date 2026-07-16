@@ -4,7 +4,7 @@
 // Edit an existing post: loads it from GitHub, lets you change fields + body, saves back.
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import { useParams } from "next/navigation";
 
 export default function EditPostPage() {
@@ -21,6 +21,30 @@ export default function EditPostPage() {
   const [date, setDate] = useState("");
   const [body, setBody] = useState("");
   const [password, setPassword] = useState("");
+  // Featured image replace
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>("");
+  const imageExt = imageFile ? imageFile.name.split(".").pop()?.toLowerCase() || "png" : "png";
+
+  function handleImageSelect(e: ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0] || null;
+    if (!f) return;
+    if (f.size > 3 * 1024 * 1024) {
+      setStatus({ type: "error", message: "Keep the image under 3MB \u2014 compress it at tinypng.com." });
+      e.target.value = "";
+      return;
+    }
+    setImageFile(f);
+    const reader = new FileReader();
+    reader.onload = () => setImagePreview(reader.result as string);
+    reader.readAsDataURL(f);
+    setStatus({ type: "idle" });
+  }
+
+  function clearImage() {
+    setImageFile(null);
+    setImagePreview("");
+  }
   const [status, setStatus] = useState<
     { type: "idle" } | { type: "loading" } | { type: "success" } | { type: "error"; message: string }
   >({ type: "idle" });
@@ -55,6 +79,18 @@ export default function EditPostPage() {
     }
     setStatus({ type: "loading" });
     try {
+      let imageData: string | null = null;
+      let imageName: string | null = null;
+      if (imageFile) {
+        imageData = await new Promise<string>((resolve, reject) => {
+          const r = new FileReader();
+          r.onload = () => resolve((r.result as string).split(",")[1]);
+          r.onerror = () => reject(new Error("Could not read the image file"));
+          r.readAsDataURL(imageFile);
+        });
+        imageName = `${slug}.${imageExt}`;
+      }
+
       const res = await fetch(`/api/admin/posts/${slug}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -62,7 +98,9 @@ export default function EditPostPage() {
           title,
           category,
           excerpt,
-          thumbnail,
+          thumbnail: imageName ? `/images/${imageName}` : thumbnail,
+          imageData,
+          imageName,
           keywords: keywords
             .split("\n")
             .map((k) => k.trim())
@@ -115,13 +153,34 @@ export default function EditPostPage() {
               <input className={input} value={category} onChange={(e) => setCategory(e.target.value)} />
             </div>
             <div>
-              <label className={label}>Thumbnail path</label>
+              <label className={label}>Featured image</label>
               <input
-                className={input}
-                value={thumbnail}
-                onChange={(e) => setThumbnail(e.target.value)}
-                placeholder={`/images/${slug}.png`}
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                onChange={handleImageSelect}
+                className="block w-full text-sm text-neutral-600 file:mr-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-amber-100 file:px-3 file:py-2 file:text-sm file:font-medium file:text-amber-800 hover:file:bg-amber-200"
               />
+              {imagePreview ? (
+                <div className="mt-2 flex items-center gap-3">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={imagePreview}
+                    alt="preview"
+                    className="h-12 w-20 rounded border border-neutral-200 object-cover"
+                  />
+                  <span className="text-xs text-neutral-500">/images/{slug}.{imageExt} (auto)</span>
+                  <button type="button" onClick={clearImage} className="text-xs text-red-600 underline">
+                    Delete
+                  </button>
+                </div>
+              ) : (
+                <input
+                  className={`${input} mt-2`}
+                  value={thumbnail}
+                  onChange={(e) => setThumbnail(e.target.value)}
+                  placeholder={`current path: /images/${slug}.png`}
+                />
+              )}
             </div>
           </div>
 

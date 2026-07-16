@@ -56,7 +56,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
 export async function PUT(req: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
     const { slug } = await params;
-    const { title, category, excerpt, thumbnail, keywords, featured, date, body, password } = await req.json();
+    const { title, category, excerpt, thumbnail, keywords, featured, date, body, password, imageData, imageName } =
+      await req.json();
 
     if (!ADMIN_SECRET || password !== ADMIN_SECRET) {
       return NextResponse.json({ error: "Incorrect password." }, { status: 401 });
@@ -70,6 +71,40 @@ export async function PUT(req: Request, { params }: { params: Promise<{ slug: st
 
     const file = await getFile(slug);
     if (!file) return NextResponse.json({ error: "Post not found." }, { status: 404 });
+
+    // --- commit replacement image first (if one was uploaded) ---
+    if (imageData && imageName) {
+      if (!/^[a-z0-9.-]+\.(png|jpg|jpeg|webp)$/.test(imageName)) {
+        return NextResponse.json({ error: "Invalid image name or format." }, { status: 400 });
+      }
+      const imgPath = `public/images/${imageName}`;
+      let existingSha: string | undefined;
+      const imgCheck = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/${imgPath}?ref=${GITHUB_BRANCH}`,
+        { headers: gh, cache: "no-store" }
+      );
+      if (imgCheck.ok) {
+        const j = await imgCheck.json();
+        existingSha = j.sha;
+      }
+      const imgCommit = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${imgPath}`, {
+        method: "PUT",
+        headers: { ...gh, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: `image: update ${imageName}`,
+          content: imageData,
+          branch: GITHUB_BRANCH,
+          ...(existingSha ? { sha: existingSha } : {}),
+        }),
+      });
+      if (!imgCommit.ok) {
+        const err = await imgCommit.json().catch(() => ({}));
+        return NextResponse.json(
+          { error: `Image upload failed: ${err.message || imgCommit.statusText}` },
+          { status: 500 }
+        );
+      }
+    }
 
     const slugify = (t: string) =>
       t.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-");
