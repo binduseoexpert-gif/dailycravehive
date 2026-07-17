@@ -8,10 +8,10 @@ const tools = [
 
 export default function TrendingTools() {
   return (
-    <section className="bg-[#eef2f7] py-16">
+    <section className="bg-[#eef2f7] py-10">
       <div className="mx-auto w-full max-w-6xl px-4">
         <h2 className="mb-6 text-2xl font-bold text-[#1a1a2e]">
-          This Week&apos;s Most Craved
+        🔥 Most Craved Right Now
         </h2>
 
         <div className="flex gap-4 overflow-x-auto md:grid md:grid-cols-5 md:overflow-visible">
