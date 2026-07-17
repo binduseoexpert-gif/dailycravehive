@@ -1,9 +1,15 @@
+import Link from "next/link";
+
 export default function AboutUsPage() {
   return (
     <div className="bg-white">
       <section className="bg-gradient-to-b from-pink-200 via-pink-300 to-pink-100 py-12">
         <div className="mx-auto w-full max-w-6xl px-4 text-center">
-        <h1 className="text-3xl font-bold text-[#1a1a2e]">About Daily Crave Hive</h1>
+          <h1 className="text-3xl font-bold text-[#1a1a2e]">About Daily Crave Hive</h1>
+          <p className="mx-auto mt-3 max-w-xl text-[15px] text-[#555]">
+            Honest, hands-on AI tool reviews — tested by real humans, never
+            ranked by payment.
+          </p>
         </div>
       </section>
 
@@ -27,9 +33,8 @@ export default function AboutUsPage() {
               Daily Crave Hive is an independent AI tools review platform run by
               a small team of writers, marketers, and tech enthusiasts who
               genuinely use these tools every day. We test AI writing assistants,
-              image generators, coding helpers, video tools, and marketing
-              platforms — then tell you exactly what we found, without
-              sugarcoating it.
+              image generators, and trending platforms — then tell you exactly
+              what we found, without sugarcoating it.
             </p>
             <p>
               We&apos;re not backed by any AI company. We don&apos;t accept paid
@@ -56,8 +61,8 @@ export default function AboutUsPage() {
               For AI writing tools, that means generating blog posts, ad copy,
               emails, and product descriptions using identical prompts across
               every platform. For image tools, we compare output quality, style
-              control, and speed. For coding assistants, we test actual
-              development tasks — not toy examples.
+              control, and speed. For niche platforms, we dig into real pricing,
+              fees, safety, and whether they deliver what they promise.
             </p>
             <p>
               Once testing is done, we score each tool across five areas: output
@@ -68,7 +73,7 @@ export default function AboutUsPage() {
             <p>
               We also produce head-to-head comparison guides for tools that get
               frequently confused with each other — like Rytr vs Writesonic,
-              ChatGPT vs Claude, Jasper vs Copy.ai — because sometimes the best
+              ChatGPT vs Claude, Frase vs Surfer SEO — because sometimes the best
               way to choose is to see two options side by side.
             </p>
           </div>
@@ -85,9 +90,9 @@ export default function AboutUsPage() {
             </p>
             <p>
               ✅ <strong>We actually use what we review.</strong> Every tool gets
-              a minimum of one full week of hands-on testing before we write a
-              single word about it. We don&apos;t copy feature lists from pricing
-              pages and call it a review.
+              real hands-on testing before we write a single word about it. We
+              don&apos;t copy feature lists from pricing pages and call it a
+              review.
             </p>
             <p>
               ✅ <strong>No paid rankings.</strong> Our reviews are never
@@ -114,7 +119,7 @@ export default function AboutUsPage() {
             What We Cover
           </h2>
           <div className="space-y-4 text-justify text-base leading-relaxed text-gray-700">
-            <p>Daily Crave Hive focuses on six main categories of AI tools:</p>
+            <p>Daily Crave Hive currently focuses on five main areas:</p>
             <p>
               <strong>AI Writing Tools</strong> — Content generators, copywriting
               assistants, and editing tools like Jasper, ChatGPT, Claude,
@@ -122,24 +127,26 @@ export default function AboutUsPage() {
             </p>
             <p>
               <strong>AI Image Tools</strong> — Image generators, editors, and
-              enhancement tools including Midjourney, DALL-E, Ideogram, and
-              others.
+              enhancement tools including Midjourney, DALL-E, FLUX, and others.
             </p>
             <p>
-              <strong>AI Video Tools</strong> — Video creation, editing, and
-              avatar tools for creators and marketers.
+              <strong>Head-to-Head Comparisons</strong> — Detailed side-by-side
+              breakdowns of tools people frequently confuse, tested with
+              identical prompts.
             </p>
             <p>
-              <strong>AI Coding Tools</strong> — Code assistants, debugging
-              tools, and development platforms.
+              <strong>Best Of Guides</strong> — Ranked roundups of the top tools
+            in each category, scored and updated as the market changes.
             </p>
             <p>
-              <strong>AI Marketing Tools</strong> — SEO assistants, email
-              marketing AI, social media automation, and ad copy generators.
+              <strong>Lifestyle</strong> — Honest reviews of trending platforms,
+              apps, and online marketplaces beyond the usual AI toolbox — with
+              the same focus on real fees, safety, and whether they&apos;re
+              actually worth your time.
             </p>
             <p>
-              <strong>Trending &amp; New</strong> — The newest AI tools gaining
-              traction online, covered before they go mainstream.
+              More categories — including AI video and AI coding tools — are on
+              the way as we expand our testing.
             </p>
           </div>
         </div>
@@ -171,12 +178,20 @@ export default function AboutUsPage() {
           </h2>
           <div className="space-y-4 text-justify text-base leading-relaxed text-gray-700">
             <p>
-              Have a question? Want to suggest a tool for review? Found something
-              we got wrong?
+              Have a question? Want to suggest a tool for review? Interested in
+              pitching a guest post? Found something we got wrong?
             </p>
             <p>
-              We&apos;d love to hear from you. Reach out through our Contact page
-              and we&apos;ll get back to you as quickly as we can.
+              We&apos;d love to hear from you — we typically reply within 24–48
+              hours.
+            </p>
+            <p className="text-center md:text-left">
+              <Link
+                href="/contact-us"
+                className="inline-block rounded-lg bg-[#E8505B] px-8 py-3 font-semibold text-white transition hover:bg-[#d4454e]"
+              >
+                Contact Us →
+              </Link>
             </p>
           </div>
         </div>
