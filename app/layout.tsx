@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import SiteNav from "@/components/SiteNav";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -125,7 +125,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-white font-sans text-[#1a1a2e]">
-        <Navbar />
+      <SiteNav />
         <main>{children}</main>
         <Footer />
       </body>

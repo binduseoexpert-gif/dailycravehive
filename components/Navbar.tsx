@@ -1,51 +1,18 @@
 "use client";
 
+// components/Navbar.tsx
+// Nav items now come from SiteNav (server) as props — dropdowns are automatic.
+
 import Link from "next/link";
 import { useState } from "react";
 
-type NavGroup = {
+export type NavGroup = {
   label: string;
   href: string;
   children?: { label: string; href: string }[];
 };
 
-const navItems: NavGroup[] = [
-  { label: "Home", href: "/" },
-  {
-    label: "AI Writing Tools",
-    href: "/category/ai-writing-tools",
-    children: [{ label: "Jasper AI Review", href: "/jasper-ai-review" }],
-  },
-  { label: "AI Image Tools", href: "/category/ai-image-tools" },
-  {
-    label: "Best Of",
-    href: "/category/best-of",
-    children: [
-      { label: "Best AI Writing Tools", href: "/best-ai-writing-tools" },
-      { label: "Best AI Image Generators", href: "/best-ai-image-generators" },
-    ],
-  },
-  {
-    label: "Comparisons",
-    href: "/category/comparisons",
-    children: [
-      { label: "ChatGPT vs Claude", href: "/chatgpt-vs-claude" },
-      { label: "Rytr vs Writesonic", href: "/rytr-vs-writesonic" },
-      { label: "Grammarly vs ChatGPT", href: "/grammarly-vs-chatgpt" },
-      { label: "Frase vs Surfer SEO", href: "/frase-vs-surfer-seo" },
-      
-    ],
-  },
-  {
-    label: "Lifestyle",
-    href: "/category/lifestyle",
-    children: [
-      { label: "FeetFinder Review", href: "/feetfinder-review" },
-    ],
-  },
-];
-
-export default function Navbar() {
+export default function Navbar({ items }: { items: NavGroup[] }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   return (
@@ -65,7 +32,7 @@ export default function Navbar() {
         </button>
 
         <ul className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
+          {items.map((item) => (
             <li key={item.label} className="group relative">
               <Link
                 href={item.href}
@@ -78,13 +45,19 @@ export default function Navbar() {
                 <div className="invisible absolute right-0 top-full pt-2 min-w-56 rounded-lg border border-[#444444] bg-[#2d2d3a] p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100">
                   {item.children.map((child) => (
                     <Link
-                      key={child.label}
+                      key={child.href}
                       href={child.href}
                       className="block rounded-md px-3 py-2 text-sm text-white transition hover:bg-[#3d3d4a] hover:text-[#E8505B]"
                     >
                       {child.label}
                     </Link>
                   ))}
+                  <Link
+                    href={item.href}
+                    className="mt-1 block rounded-md border-t border-[#444444] px-3 py-2 text-sm font-semibold text-[#E8505B] transition hover:bg-[#3d3d4a]"
+                  >
+                    View all {item.label} →
+                  </Link>
                 </div>
               ) : null}
             </li>
@@ -97,7 +70,7 @@ export default function Navbar() {
           isMobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="mx-auto flex h-full w-full max-w-6xl flex-col px-4 py-6">
+        <div className="mx-auto flex h-full w-full max-w-6xl flex-col overflow-y-auto px-4 py-6">
           <div className="mb-6 flex items-center justify-between">
             <Link href="/" onClick={() => setIsMobileOpen(false)}>
               <img src="/images/logo.png" alt="DailyCraveHive" className="h-14 w-auto" />
@@ -112,7 +85,7 @@ export default function Navbar() {
             </button>
           </div>
           <ul className="space-y-2">
-            {navItems.map((item) => (
+            {items.map((item) => (
               <li
                 key={item.label}
                 className="rounded-lg border border-[#444444] bg-[#2d2d3a] p-3 shadow-sm"
@@ -127,7 +100,7 @@ export default function Navbar() {
                 {item.children ? (
                   <ul className="mt-2 space-y-1 border-t border-[#444444] pt-2">
                     {item.children.map((child) => (
-                      <li key={child.label}>
+                      <li key={child.href}>
                         <Link
                           href={child.href}
                           className="block text-sm text-gray-400 hover:text-[#E8505B]"
@@ -137,6 +110,15 @@ export default function Navbar() {
                         </Link>
                       </li>
                     ))}
+                    <li>
+                      <Link
+                        href={item.href}
+                        className="block pt-1 text-sm font-semibold text-[#E8505B]"
+                        onClick={() => setIsMobileOpen(false)}
+                      >
+                        View all →
+                      </Link>
+                    </li>
                   </ul>
                 ) : null}
               </li>
