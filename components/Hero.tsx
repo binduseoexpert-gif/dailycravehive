@@ -1,10 +1,12 @@
+import Link from "next/link";
+
+// Pills now link to real category pages (only categories that have content).
 const categories = [
-  "✍️ AI Writing",
-  "🖌️ AI Image",
-  "🎬 AI Video",
-  "💻 AI Coding",
-  "📈 AI Marketing",
-  "🔥 Trending",
+  { label: "✍️ AI Writing", href: "/category/ai-writing-tools" },
+  { label: "🖌️ AI Image", href: "/category/ai-image-tools" },
+  { label: "🏆 Best Of", href: "/category/best-of" },
+  { label: "⚔️ Comparisons", href: "/category/comparisons" },
+  { label: "🌟 Lifestyle", href: "/category/lifestyle" },
 ];
 
 export default function Hero() {
@@ -28,30 +30,36 @@ export default function Hero() {
           everyone else. No fluff, just the tools that actually matter.
         </p>
 
-        <div className="mx-auto mt-8 flex w-full max-w-4xl items-center rounded-full bg-white p-2 shadow-lg">
+        {/* Working search — submits to /search?q=... */}
+        <form
+          action="/search"
+          method="get"
+          className="mx-auto mt-8 flex w-full max-w-4xl items-center rounded-full bg-white p-2 shadow-lg"
+        >
           <span className="px-3 text-gray-500">🔍</span>
           <input
             type="text"
-            placeholder='Search 500+ AI tools... (e.g. "writing", "video", "free")'
+            name="q"
+            placeholder='Search AI tools & reviews... (e.g. "Jasper", "ChatGPT", "writing")'
             className="flex-1 bg-transparent px-1 py-2 text-sm text-[#1a1a2e] outline-none placeholder:text-gray-400"
           />
           <button
-            type="button"
+            type="submit"
             className="rounded-full bg-[#E8505B] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#d9434d]"
           >
             Search Tools
           </button>
-        </div>
+        </form>
 
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           {categories.map((category) => (
-            <button
-              key={category}
-              type="button"
+            <Link
+              key={category.href}
+              href={category.href}
               className="rounded-full bg-[#1a1a2e] px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:opacity-90 hover:shadow-md"
             >
-              {category}
-            </button>
+              {category.label}
+            </Link>
           ))}
         </div>
       </div>
