@@ -36,7 +36,13 @@ const navItems: NavGroup[] = [
       
     ],
   },
-  { label: "Lifestyle", href: "/category/lifestyle" },
+  {
+    label: "Lifestyle",
+    href: "/category/lifestyle",
+    children: [
+      { label: "FeetFinder Review", href: "/feetfinder-review" },
+    ],
+  },
 ];
 
 export default function Navbar() {
