@@ -2,12 +2,12 @@ import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
 
 export default function LatestReviews() {
-  const posts = getAllPosts().slice(0, 3);
+  const posts = getAllPosts().slice(0, 6);
 
   return (
     <section className="bg-white py-16">
       <div className="mx-auto w-full max-w-6xl px-4">
-        <h2 className="mb-6 text-2xl font-bold text-[#1a1a2e]">Latest AI Tool Reviews</h2>
+        <h2 className="mb-6 text-2xl font-bold text-[#1a1a2e]">Latest Reviews & Guides</h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {posts.map((post) => (
