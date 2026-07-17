@@ -53,9 +53,7 @@ export default function AboutUsPage() {
             <p>
               Every week, we pick up AI tools that people are actually
               talking about — the ones trending on Reddit, blowing up on Twitter,
-              or quietly gaining traction in niche communities. We sign up, pay
-              for the plans ourselves, and run each tool through a consistent set
-              of real-world tests.
+              or quietly gaining traction in niche communities. We sign up and run each tool through a consistent set of real-world tests.
             </p>
             <p>
               For AI writing tools, that means generating blog posts, ad copy,
@@ -164,10 +162,7 @@ export default function AboutUsPage() {
             </p>
             <p>
               Important: affiliate partnerships never influence our ratings or
-              recommendations. We&apos;ve given low scores to tools with generous
-              affiliate programs, and high scores to tools with no affiliate
-              program at all. Our editorial decisions are based entirely on
-              testing and performance.
+              recommendations. Our scores and rankings are decided before we ever look at whether a tool has an affiliate program. Editorial decisions are based entirely on testing and performance.
             </p>
           </div>
         </div>
