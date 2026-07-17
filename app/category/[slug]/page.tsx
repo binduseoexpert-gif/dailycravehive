@@ -2,7 +2,7 @@ import { getPostsByCategory, getAllCategories, formatDate } from "@/lib/posts";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-const SITE_URL = "https://dailycravehive.com";
+const SITE_URL = "https://www.dailycravehive.com";
 
 const categoryMeta: Record<string, { name: string; description: string; keywords: string[] }> = {
   "ai-writing-tools": {

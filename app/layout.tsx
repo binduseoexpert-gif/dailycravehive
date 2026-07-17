@@ -9,7 +9,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://dailycravehive.com";
+const SITE_URL = "https://www.dailycravehive.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -67,10 +67,11 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+    verification: {
+      google: "1fBqWYfANVLA1jehxbRdpnXA6hFZdz88v2RhXqA_xXQ",
+    },
   },
-  alternates: {
-    canonical: SITE_URL,
-  },
+  
 };
 
 export default function RootLayout({
@@ -103,7 +104,7 @@ export default function RootLayout({
     url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE_URL}/?s={search_term_string}`,
+      target: `${SITE_URL}/search?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };

@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/", "/admin/"],
       },
     ],
-    sitemap: "https://dailycravehive.com/sitemap.xml",
-    host: "https://dailycravehive.com",
+    sitemap: "https://www.dailycravehive.com/sitemap.xml",
+    host: "https://www.dailycravehive.com",
   };
 }
