@@ -9,7 +9,7 @@ export default function Newsletter() {
     <section className="bg-gradient-to-b from-pink-100 to-pink-200">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-16 md:flex-row md:justify-between">
         <div className="text-center md:text-left">
-          <h2 className="text-[26px] font-bold text-[#1a1a2e] md:text-[30px]">
+          <h2 className="text-[24px] font-bold text-[#1a1a2e] md:text-[26px]">
             🐝 New Here? Start With Our Best Guides
           </h2>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#555]">
