@@ -13,12 +13,15 @@ const SITE_URL = "https://www.dailycravehive.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+
   title: {
     default: "DailyCraveHive — AI Tools Tested, Ranked & Reviewed (2026)",
     template: "%s | DailyCraveHive",
   },
+
   description:
     "Honest AI tool reviews, rankings, and head-to-head comparisons. We test AI writing tools, image generators, coding assistants & more — so you don't have to.",
+
   keywords: [
     "AI tools",
     "AI writing tools",
@@ -29,10 +32,15 @@ export const metadata: Metadata = {
     "Midjourney",
     "AI comparisons",
   ],
+
   authors: [{ name: "DailyCraveHive", url: SITE_URL }],
   creator: "DailyCraveHive",
   publisher: "DailyCraveHive",
-  formatDetection: { telephone: false },
+
+  formatDetection: {
+    telephone: false,
+  },
+
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -50,6 +58,7 @@ export const metadata: Metadata = {
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: "DailyCraveHive — AI Tools Tested, Ranked & Reviewed",
@@ -57,6 +66,7 @@ export const metadata: Metadata = {
       "Honest AI tool reviews, rankings, and head-to-head comparisons.",
     images: [`${SITE_URL}/images/og-default.png`],
   },
+
   robots: {
     index: true,
     follow: true,
@@ -67,11 +77,11 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-    verification: {
-      google: "1fBqWYfANVLA1jehxbRdpnXA6hFZdz88v2RhXqA_xXQ",
-    },
   },
-  
+
+  verification: {
+    google: "674pgShOTNhFo8L1-yOLtptM6e-pIUJOka8QrIcujoA",
+  },
 };
 
 export default function RootLayout({
