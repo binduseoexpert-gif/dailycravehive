@@ -26,24 +26,24 @@ body {
     border: none !important;
     border-top: 2px solid #E8505B !important;
     margin: 40px 0 !important;
-    opacity: 0.5;
+    opacity: 0.4;
   }
-  
+
   article table {
     width: 100% !important;
     border-collapse: collapse !important;
     font-size: 14px;
     margin: 32px 0;
-    border: 2px solid #3a3a4a !important;
+    border: 1px solid #e5e5ee !important;
     border-radius: 10px;
     overflow: hidden;
     display: table !important;
-    background-color: #12121c !important;
-    box-shadow: 0 0 0 1px #3a3a4a;
+    background-color: #ffffff !important;
+    box-shadow: 0 1px 3px rgba(26, 26, 46, 0.06);
   }
 
   article thead {
-    background-color: #141422 !important;
+    background-color: #2d2d3a !important;
     display: table-header-group !important;
   }
 
@@ -52,7 +52,7 @@ body {
     text-align: left;
     font-size: 13px;
     font-weight: 600;
-    color: #cccccc !important;
+    color: #ffffff !important;
     border-bottom: 3px solid #E8505B !important;
     border-right: 1px solid #3a3a4a !important;
   }
@@ -66,18 +66,18 @@ body {
   }
 
   article tbody tr {
-    border-bottom: 1px solid #2a2a3a !important;
+    border-bottom: 1px solid #eeeef4 !important;
     display: table-row !important;
   }
-  
+
   article tbody td {
     padding: 16px 20px !important;
-    color: #b0b0b0 !important;
+    color: #48484f !important;
     font-size: 14px;
     vertical-align: top;
     display: table-cell !important;
-    border-bottom: 1px solid #2a2a3a !important;
-    border-right: 1px solid #2a2a3a !important;
+    border-bottom: 1px solid #eeeef4 !important;
+    border-right: 1px solid #eeeef4 !important;
   }
 
   article tbody td:last-child {
@@ -85,20 +85,20 @@ body {
   }
 
   article tbody td strong {
-    color: #ffffff !important;
+    color: #1a1a2e !important;
   }
 
   article tbody tr:hover {
-    background-color: #1a1a2e;
+    background-color: #faf7f8;
   }
 
   article blockquote {
     border-left: 4px solid #E8505B !important;
-    background-color: #1a1a2e !important;
+    background-color: #FDF0F1 !important;
     padding: 20px 24px !important;
     margin: 24px 0 !important;
     border-radius: 0 8px 8px 0;
-    color: #d0d0d0;
+    color: #444450;
     font-size: 15px;
     line-height: 1.8;
   }
@@ -106,7 +106,7 @@ body {
   article blockquote p {
     margin: 0 !important;
     padding: 0 !important;
-    color: #d0d0d0 !important;
+    color: #444450 !important;
     font-size: 15px !important;
     line-height: 1.8 !important;
   }
@@ -131,55 +131,56 @@ body {
 }
 
 .worth-it-box {
-  border: 1px solid #2a3a2a;
+  border: 1px solid #d8ecd8;
   border-left: 4px solid #22c55e;
-  background-color: #0f1a0f;
+  background-color: #f2faf2;
   padding: 20px 24px;
   border-radius: 0 12px 12px 0;
 }
 
 .not-worth-box {
-  border: 1px solid #3a2a2a;
+  border: 1px solid #f3dcde;
   border-left: 4px solid #E8505B;
-  background-color: #1a0f0f;
+  background-color: #fdf2f3;
   padding: 20px 24px;
   border-radius: 0 12px 12px 0;
 }
 .verdict-box {
-  border: 1px solid #2a2a3a;
+  border: 1px solid #f0e2ca;
   border-left: 4px solid #E8505B;
-  background-color: #12121c;
+  background-color: #fff8ee;
   padding: 28px 32px;
   border-radius: 0 12px 12px 0;
   margin: 24px 0;
-  color: #d0d0d0;
+  color: #444450;
   font-size: 15px;
   line-height: 1.8;
 }
 
 .verdict-box p {
-  color: #d0d0d0 !important;
+  color: #444450 !important;
   font-size: 15px !important;
   line-height: 1.8 !important;
 }
 
 .verdict-box strong {
-  color: #ffffff !important;
+  color: #1a1a2e !important;
 }
 
 .faq-item {
-  border: 1px solid #2a2a3a;
+  border: 1px solid #e8e8f0;
   border-left: 3px solid #E8505B;
   border-radius: 8px;
-  background-color: #12121c;
+  background-color: #ffffff;
   overflow: hidden;
   margin-bottom: 8px;
+  box-shadow: 0 1px 2px rgba(26, 26, 46, 0.04);
 }
 
 .faq-item summary {
   padding: 16px 20px;
   font-weight: 700;
-  color: #ffffff;
+  color: #1a1a2e;
   cursor: pointer;
   list-style: none !important;
   list-style-type: none !important;
@@ -209,12 +210,12 @@ body {
 }
 
 .faq-item[open] summary {
-  border-bottom: 1px solid #2a2a3a;
+  border-bottom: 1px solid #eeeef4;
 }
 
 .faq-item p {
   padding: 16px 20px !important;
-  color: #b0b0b0 !important;
+  color: #555560 !important;
   font-size: 15px;
   line-height: 1.8;
   margin: 0 !important;
@@ -233,11 +234,12 @@ body {
 }
 
 .top-pick-card {
-  border: 1px solid #2a2a3a;
-  background-color: #12121c;
+  border: 1px solid #e8e8f0;
+  background-color: #ffffff;
   padding: 20px 24px;
   border-radius: 12px;
   text-align: center;
+  box-shadow: 0 1px 3px rgba(26, 26, 46, 0.06);
 }
 
 .top-pick-card .pick-label {
@@ -271,12 +273,13 @@ body {
   }
 }
 .tool-card {
-  border: 1px solid #2a2a3a;
+  border: 1px solid #e8e8f0;
   border-radius: 12px;
-  background-color: #12121c;
+  background-color: #ffffff;
   padding: 24px 28px;
   margin: 24px 0;
   position: relative;
+  box-shadow: 0 1px 3px rgba(26, 26, 46, 0.06);
 }
 
 .tool-badge {
@@ -302,12 +305,12 @@ body {
 
 .tool-score span {
   font-size: 16px;
-  color: #888;
+  color: #999;
 }
 
 .tool-meta {
   font-size: 13px;
-  color: #888;
+  color: #777;
   margin: 8px 0 16px;
 }
 
@@ -319,12 +322,12 @@ body {
 }
 
 .tool-pros .prose-inherit {
-  color: #22c55e !important;
+  color: #15803d !important;
   margin-bottom: 0 !important;
 }
 
 .tool-pros .prose-inherit .font-bold {
-  color: #ffffff !important;
+  color: #1a1a2e !important;
 }
 
 /* Tool Cons - red text */
@@ -335,18 +338,18 @@ body {
 }
 
 .tool-cons .prose-inherit {
-  color: #E8505B !important;
+  color: #d13d48 !important;
   margin-bottom: 0 !important;
 }
 
 .tool-cons .prose-inherit .font-bold {
-  color: #ffffff !important;
+  color: #1a1a2e !important;
 }
 
 /* Tool Best For - blockquote style box */
 .tool-best-for {
   border-left: 4px solid #E8505B !important;
-  background-color: #1a1a2e !important;
+  background-color: #FDF0F1 !important;
   padding: 12px 16px !important;
   margin: 16px 0 !important;
   border-radius: 0 6px 6px 0;
@@ -355,7 +358,7 @@ body {
 }
 
 .tool-best-for .prose-inherit {
-  color: #b0b0b0 !important;
+  color: #555560 !important;
   margin-bottom: 0 !important;
 }
 
@@ -363,10 +366,10 @@ body {
   color: #E8505B !important;
 }
 
-/* Label inside pros/cons/best-for - white bold */
+/* Label inside pros/cons/best-for - dark bold */
 .tool-pros .tool-label,
 .tool-cons .tool-label,
 .tool-best-for .tool-label {
   font-weight: 700 !important;
-  color: #ffffff !important;
+  color: #1a1a2e !important;
 }

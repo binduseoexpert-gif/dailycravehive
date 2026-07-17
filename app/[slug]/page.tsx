@@ -88,42 +88,42 @@ const components = {
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="mb-3 mt-8 text-[18px] font-bold text-white"
+      className="mb-3 mt-8 text-[18px] font-bold text-[#1a1a2e]"
       {...props}
     />
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
-      className="mb-2 mt-6 text-[16px] font-bold text-white"
+      className="mb-2 mt-6 text-[16px] font-bold text-[#1a1a2e]"
       {...props}
     />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mb-5 text-[15px] leading-[1.85] text-[#c0c0c0] prose-inherit" {...props} />
+    <p className="mb-5 text-[15px] leading-[1.85] text-[#3a3a45] prose-inherit" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="mb-5 list-disc space-y-2 pl-6 text-[15px] leading-[1.85] text-[#b0b0b0]" {...props} />
+    <ul className="mb-5 list-disc space-y-2 pl-6 text-[15px] leading-[1.85] text-[#3a3a45]" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[15px] leading-[1.85] text-[#b0b0b0]" {...props} />
+    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[15px] leading-[1.85] text-[#3a3a45]" {...props} />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li className="leading-[1.85]" {...props} />
   ),
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
-    <strong className="font-bold text-white" {...props} />
+    <strong className="font-bold text-[#1a1a2e]" {...props} />
   ),
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a className="text-[#E8505B] underline hover:text-[#ff6b73]" {...props} />
+    <a className="text-[#E8505B] underline hover:text-[#c93842]" {...props} />
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
-      className="my-6 border-l-4 border-[#E8505B] bg-[#1a1a2e] py-5 pl-6 pr-5 text-[15px] leading-[1.8] text-[#d0d0d0] rounded-r-lg"
+      className="my-6 border-l-4 border-[#E8505B] bg-[#FDF0F1] py-5 pl-6 pr-5 text-[15px] leading-[1.8] text-[#444450] rounded-r-lg"
       {...props}
     />
   ),
   hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
-    <hr className="my-8 border-t border-[#2a2a3a]" {...props} />
+    <hr className="my-8 border-t border-[#e8e8f0]" {...props} />
   ),
 };
 
@@ -251,7 +251,7 @@ export default async function BlogPostPage({
         </div>
       </div>
 
-      {/* Article Header - OUTSIDE dark box, white background */}
+      {/* Article Header - white background */}
       <div className="bg-white">
         <div className="mx-auto max-w-4xl px-4 pt-8">
           <h1 className="text-[28px] font-bold leading-tight text-[#1a1a2e] md:text-[36px]">
@@ -279,10 +279,10 @@ export default async function BlogPostPage({
         </div>
       </div>
 
-      {/* Dark Content Area - only article body */}
-      <div className="bg-white">
-        <div className="mx-auto max-w-4xl px-4 pb-10">
-          <div className="rounded-2xl bg-[#0f0f17] p-6 md:p-10 shadow-xl">
+      {/* Light Content Area - article body card */}
+      <div className="bg-[#F7F4F2]">
+        <div className="mx-auto max-w-4xl px-4 py-10">
+          <div className="rounded-2xl bg-white p-6 md:p-10 shadow-sm ring-1 ring-gray-200">
 
             {/* Article Body */}
             <article className="mx-auto max-w-3xl px-4 py-10">
@@ -295,11 +295,11 @@ export default async function BlogPostPage({
                       { label: "BEST FREE OPTION", name: "ChatGPT", score: "9.2/10", desc: "Most versatile. Free tier handles everyday writing well.", link: "https://chat.openai.com", cta: "Try ChatGPT →" },
                       { label: "MOST NATURAL WRITING", name: "Claude", score: "9.3/10", desc: "Writes like a human. Best tone control of any AI tool.", link: "https://claude.ai", cta: "Try Claude →" },
                     ].map((tool) => (
-                      <div key={tool.name} style={{ border: "1px solid #2a2a3a", borderRadius: "12px", backgroundColor: "#12121c", padding: "24px", textAlign: "center" }}>
+                      <div key={tool.name} style={{ border: "1px solid #e8e8f0", borderRadius: "12px", backgroundColor: "#ffffff", padding: "24px", textAlign: "center", boxShadow: "0 1px 3px rgba(26, 26, 46, 0.06)" }}>
                         <p style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: "#E8505B", marginBottom: "12px" }}>{tool.label}</p>
-                        <h4 style={{ fontSize: "22px", fontWeight: 700, color: "#fff", margin: "8px 0" }}>{tool.name}</h4>
+                        <h4 style={{ fontSize: "22px", fontWeight: 700, color: "#1a1a2e", margin: "8px 0" }}>{tool.name}</h4>
                         <p style={{ fontSize: "15px", fontWeight: 600, color: "#E8505B", margin: "8px 0" }}>Score: {tool.score}</p>
-                        <p style={{ fontSize: "14px", color: "#b0b0b0", lineHeight: 1.6, margin: "12px 0 20px" }}>{tool.desc}</p>
+                        <p style={{ fontSize: "14px", color: "#555560", lineHeight: 1.6, margin: "12px 0 20px" }}>{tool.desc}</p>
                         <a href={tool.link} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#E8505B", color: "#fff", padding: "10px 24px", borderRadius: "8px", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}>{tool.cta}</a>
                       </div>
                     ))}
@@ -315,11 +315,11 @@ export default async function BlogPostPage({
                       { label: "SMARTEST GENERATOR", name: "GPT Image 1.5", score: "9.0/10", desc: "Best text rendering & prompt understanding. Free tier available.", link: "https://chatgpt.com", cta: "Try ChatGPT →" },
                       { label: "PHOTOREALISM KING", name: "FLUX.2", score: "8.8/10", desc: "Best photorealistic output. Open-source & pay-per-use.", link: "https://blackforestlabs.ai/", cta: "Try FLUX.2 →" },
                     ].map((tool) => (
-                      <div key={tool.name} style={{ border: "1px solid #2a2a3a", borderRadius: "12px", backgroundColor: "#12121c", padding: "24px", textAlign: "center" }}>
+                      <div key={tool.name} style={{ border: "1px solid #e8e8f0", borderRadius: "12px", backgroundColor: "#ffffff", padding: "24px", textAlign: "center", boxShadow: "0 1px 3px rgba(26, 26, 46, 0.06)" }}>
                         <p style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: "#E8505B", marginBottom: "12px" }}>{tool.label}</p>
-                        <h4 style={{ fontSize: "22px", fontWeight: 700, color: "#fff", margin: "8px 0" }}>{tool.name}</h4>
+                        <h4 style={{ fontSize: "22px", fontWeight: 700, color: "#1a1a2e", margin: "8px 0" }}>{tool.name}</h4>
                         <p style={{ fontSize: "15px", fontWeight: 600, color: "#E8505B", margin: "8px 0" }}>Score: {tool.score}</p>
-                        <p style={{ fontSize: "14px", color: "#b0b0b0", lineHeight: 1.6, margin: "12px 0 20px" }}>{tool.desc}</p>
+                        <p style={{ fontSize: "14px", color: "#555560", lineHeight: 1.6, margin: "12px 0 20px" }}>{tool.desc}</p>
                         <a href={tool.link} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#E8505B", color: "#fff", padding: "10px 24px", borderRadius: "8px", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}>{tool.cta}</a>
                       </div>
                     ))}
@@ -330,8 +330,8 @@ export default async function BlogPostPage({
                 <MDXRemote source={post.content} components={components} />
               )}
 
-              <div className="mt-10 rounded-lg border border-[#1a1a2e] bg-[#1a1a2e] p-5 text-[13px] leading-relaxed text-[#888]">
-                <strong className="text-white">Disclosure:</strong> This article
+              <div className="mt-10 rounded-lg border border-gray-200 bg-gray-50 p-5 text-[13px] leading-relaxed text-[#666]">
+                <strong className="text-[#1a1a2e]">Disclosure:</strong> This article
                 may contain affiliate links. We only recommend products we&apos;ve
                 personally tested. Pricing and features were verified from the
                 official website as of {post.date} and may change. Always check the
@@ -340,7 +340,7 @@ export default async function BlogPostPage({
             </article>
 
           </div>
-          {/* Related posts OUTSIDE the dark box */}
+          {/* Related posts OUTSIDE the card */}
           {(() => {
             const relatedPosts = getAllPosts()
               .filter((p) => p.categorySlug === post.categorySlug && p.slug !== slug)
