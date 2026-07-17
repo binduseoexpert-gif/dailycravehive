@@ -18,7 +18,7 @@ export default function CategoryCards() {
   const posts = getAllPosts();
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-14">
+    <section className="mx-auto max-w-6xl px-4 py-10">
       <h2 className="mb-8 text-[26px] font-bold text-[#1a1a2e]">Browse by Category</h2>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {FEATURED_CATEGORIES.map((cat) => {
@@ -27,9 +27,9 @@ export default function CategoryCards() {
           <Link
             key={cat.slug}
             href={`/category/${cat.slug}`}
-            className="group rounded-2xl bg-[#1a1a2e] p-8 text-center transition hover:-translate-y-1 hover:shadow-xl"
+            className="group rounded-2xl bg-[#1a1a2e] p-5 text-center transition hover:-translate-y-1 hover:shadow-xl"
           >
-            <span className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-xl border-2 border-[#E8505B] text-4xl transition group-hover:bg-[#E8505B]/10">
+            <span className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-xl border-2 border-[#E8505B] text-2xl transition group-hover:bg-[#E8505B]/10">
               {cat.emoji}
             </span>
             <h3 className="text-[17px] font-bold text-white transition group-hover:text-[#E8505B]">
