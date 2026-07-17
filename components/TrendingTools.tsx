@@ -42,8 +42,23 @@ const PICKS = [
 
 export default function TrendingTools() {
   return (
-    <section className="bg-[#f4f5f8]">
-      <div className="mx-auto max-w-6xl px-4 py-10">
+    <section className="relative overflow-hidden bg-[#f4f5f8]">
+      {/* ambient glow behind the cards */}
+      <div className="pointer-events-none absolute -left-24 top-8 h-72 w-72 rounded-full bg-[#E8505B]/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-pink-400/10 blur-3xl" />
+
+      {/* entrance animation keyframes */}
+      <style>{`
+        @keyframes pickFadeUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .pick-card { animation: none !important; }
+        }
+      `}</style>
+
+      <div className="relative mx-auto max-w-6xl px-4 py-10">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-2">
           <h2 className="text-[24px] font-bold text-[#1a1a2e]">
             🏆 Editor&apos;s Top Picks
@@ -56,8 +71,18 @@ export default function TrendingTools() {
             <Link
               key={pick.rank}
               href={pick.href}
-              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e1e30] to-[#14141f] p-6 ring-1 ring-white/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(232,80,91,0.45)] hover:ring-[#E8505B]/60"
+              style={{ animation: `pickFadeUp 0.6s ease-out ${pick.rank * 0.12}s both` }}
+              className={`pick-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e1e30] to-[#14141f] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(232,80,91,0.45)] hover:ring-[#E8505B]/60 ${
+                pick.rank === 1
+                  ? "ring-2 ring-[#E8505B]/50 shadow-[0_8px_30px_-12px_rgba(232,80,91,0.35)]"
+                  : "ring-1 ring-white/5"
+              }`}
             >
+              {pick.rank === 1 && (
+                <span className="absolute right-4 top-4 z-10 rounded-full bg-gradient-to-r from-[#E8505B] to-[#ff8a93] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-white shadow-md">
+                  👑 Top Rated
+                </span>
+              )}
               {/* top accent line — expands on hover */}
               <span className="absolute left-0 top-0 h-[3px] w-0 bg-gradient-to-r from-[#E8505B] to-[#ff8a93] transition-all duration-500 group-hover:w-full" />
 
