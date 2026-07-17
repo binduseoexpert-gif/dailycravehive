@@ -16,6 +16,12 @@ export default function Newsletter() {
             Honest, hands-on reviews — no hype, no sponsored rankings. These two
             guides are the fastest way to find the right AI tool for you.
           </p>
+          <p className="mt-3 text-sm text-[#777]">
+  Want a tool reviewed or have a question?{" "}
+  <Link href="/contact-us" className="font-semibold text-[#E8505B] underline">
+    Contact us →
+  </Link>
+</p>
         </div>
 
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row md:flex-col lg:flex-row">
