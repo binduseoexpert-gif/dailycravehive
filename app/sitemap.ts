@@ -1,7 +1,7 @@
 import { getAllPosts } from "@/lib/posts";
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://dailycravehive.com";
+const SITE_URL = "https://www.dailycravehive.com";
 
 const categories = [
   "ai-writing-tools",
