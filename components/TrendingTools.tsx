@@ -56,14 +56,20 @@ export default function TrendingTools() {
             <Link
               key={pick.rank}
               href={pick.href}
-              className="group relative overflow-hidden rounded-2xl bg-[#1a1a2e] p-6 transition hover:-translate-y-1 hover:shadow-xl"
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e1e30] to-[#14141f] p-6 ring-1 ring-white/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(232,80,91,0.45)] hover:ring-[#E8505B]/60"
             >
-              {/* big faint rank number in the background */}
-              <span className="pointer-events-none absolute -right-2 -top-6 text-[90px] font-black leading-none text-white/5">
+              {/* top accent line — expands on hover */}
+              <span className="absolute left-0 top-0 h-[3px] w-0 bg-gradient-to-r from-[#E8505B] to-[#ff8a93] transition-all duration-500 group-hover:w-full" />
+
+              {/* shine sweep on hover */}
+              <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+
+              {/* big faint rank number — lights up coral on hover */}
+              <span className="pointer-events-none absolute -right-2 -top-6 text-[90px] font-black leading-none text-white/5 transition-all duration-300 group-hover:text-[#E8505B]/15 group-hover:scale-110">
                 {pick.rank}
               </span>
 
-              <span className="inline-block rounded-full bg-[#E8505B]/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#E8505B]">
+              <span className="relative inline-block rounded-full bg-[#E8505B]/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#E8505B] transition-colors duration-300 group-hover:bg-[#E8505B] group-hover:text-white">
                 {pick.tag}
               </span>
 
@@ -71,7 +77,7 @@ export default function TrendingTools() {
                 <h3 className="text-[19px] font-bold text-white transition group-hover:text-[#E8505B]">
                   {pick.name}
                 </h3>
-                <span className="shrink-0 text-[20px] font-black text-[#E8505B]">
+                <span className="shrink-0 text-[20px] font-black text-[#E8505B] transition-transform duration-300 group-hover:scale-110">
                   {pick.score}
                   <span className="text-[12px] font-semibold text-gray-500">/10</span>
                 </span>
