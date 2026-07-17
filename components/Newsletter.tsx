@@ -16,13 +16,9 @@ export default function Newsletter() {
             Honest, hands-on reviews — no hype, no sponsored rankings. These two
             guides are the fastest way to find the right AI tool for you.
           </p>
-          <p className="mt-3 text-sm text-[#777]">
-  Want a tool reviewed or have a question?{" "}
-  <Link href="/contact-us" className="font-semibold text-[#E8505B] underline">
-    Contact us →
-  </Link>
-</p>
+        
         </div>
+
 
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row md:flex-col lg:flex-row">
           <Link
@@ -37,6 +33,19 @@ export default function Newsletter() {
           >
             ⚔️ ChatGPT vs Claude
           </Link>
+        </div>
+        <div className="w-full">
+          <div className="mx-auto mt-4 flex max-w-2xl flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-[#E8505B]/50 bg-white/70 px-6 py-5 text-center backdrop-blur-sm sm:flex-row sm:justify-between sm:text-left">
+            <p className="text-[15px] font-medium text-[#1a1a2e]">
+              💡 Want a tool reviewed or have a question?
+            </p>
+            <Link
+              href="/contact-us"
+              className="shrink-0 rounded-full bg-[#1a1a2e] px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-[#E8505B] hover:shadow-lg"
+            >
+              Contact Us →
+            </Link>
+          </div>
         </div>
       </div>
     </section>
