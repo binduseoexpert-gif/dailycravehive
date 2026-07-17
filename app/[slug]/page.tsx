@@ -331,11 +331,7 @@ export default async function BlogPostPage({
               )}
 
               <div className="mt-10 rounded-lg border border-gray-200 bg-gray-50 p-5 text-[13px] leading-relaxed text-[#666]">
-                <strong className="text-[#1a1a2e]">Disclosure:</strong> This article
-                may contain affiliate links. We only recommend products we&apos;ve
-                personally tested. Pricing and features were verified from the
-                official website as of {post.date} and may change. Always check the
-                official site for the most current information.
+                <strong className="text-[#1a1a2e]">Disclosure:</strong> This article may contain affiliate links, which means we may earn a commission if you make a purchase — at no extra cost to you. This never influences our research or opinions. Pricing and details may change over time; always verify on the official website before making a decision.
               </div>
             </article>
 
