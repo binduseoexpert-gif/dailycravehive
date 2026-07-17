@@ -2,8 +2,6 @@ import Link from "next/link";
 
 const categoryLinks = [
   { name: "AI Writing Tools", slug: "ai-writing-tools" },
-  { name: "AI Image Tools", slug: "ai-image-tools" },
-  { name: "AI Coding Tools", slug: "ai-coding-tools" },
   { name: "Comparisons", slug: "comparisons" },
   { name: "Best Of", slug: "best-of" },
   { name: "Lifestyle", slug: "lifestyle" },
@@ -12,8 +10,8 @@ const categoryLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#2d2d3a] py-10">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-12 px-6 md:grid-cols-[2fr_0.7fr_0.7fr]">
+    <footer className="bg-[#2d2d3a] py-8">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 px-6 md:grid-cols-[2fr_0.7fr_0.7fr]">
         <div>
           <Link href="/">
             <img src="/images/logo.png" alt="DailyCraveHive" className="h-16 w-auto" />
@@ -70,7 +68,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto mt-10 w-full max-w-6xl border-t border-white/10 pt-8 text-center text-sm text-white/50">
+      <div className="mx-auto mt-10 w-full max-w-6xl border-t border-white/10 pt-6 text-center text-sm text-white/50">
         © 2026 DailyCraveHive.com — All Rights Reserved
       </div>
     </footer>
