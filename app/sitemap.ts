@@ -1,16 +1,7 @@
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, getAllCategories } from "@/lib/posts";
 import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://www.dailycravehive.com";
-
-const categories = [
-  "ai-writing-tools",
-  "ai-image-tools",
-  "ai-coding-tools",
-  "comparisons",
-  "ai-video-tools",
-  "best-of",
-];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
@@ -22,10 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: post.featured ? 0.9 : 0.7,
   }));
 
-  const categoryEntries: MetadataRoute.Sitemap = categories.map((cat) => ({
-    url: `${SITE_URL}/category/${cat}`,
+  const categoryEntries: MetadataRoute.Sitemap = getAllCategories().map((cat) => ({
+    url: `${SITE_URL}/category/${cat.slug}`,
     lastModified: new Date(),
-    changeFrequency: "weekly",
+    changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
