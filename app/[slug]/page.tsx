@@ -3,8 +3,10 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllPosts, getPostBySlug, formatDate } from "@/lib/posts";
+import { AUTHOR } from "@/lib/author";
+import AuthorBox from "@/components/AuthorBox";
 
-const SITE_URL = "https://dailycravehive.com";
+const SITE_URL = "https://www.dailycravehive.com";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -49,7 +51,7 @@ export async function generateMetadata({
       publishedTime: post.date,
       modifiedTime: post.date,
       section: post.category,
-      authors: ["DailyCraveHive"],
+      authors: [AUTHOR.name],
     },
     twitter: {
       card: "summary_large_image",
@@ -77,6 +79,23 @@ function extractFAQs(content: string) {
     });
   }
   return faqs;
+}
+
+// Helper: Extract "Final Score: X.X / 10" from review content
+function extractScore(content: string): string | null {
+  const match = content.match(/Final Score:\s*\**\s*([\d.]+)\s*\/\s*10/i);
+  return match ? match[1] : null;
+}
+
+// Helper: Extract ranked tools from best-of content ("### 1. Tool Name — ...")
+function extractRankedItems(content: string): { position: number; name: string }[] {
+  const items: { position: number; name: string }[] = [];
+  const regex = /^###\s+(\d+)\.\s+(.+?)(?:\s+[—–-]{1,2}\s+.*)?$/gm;
+  let match;
+  while ((match = regex.exec(content)) !== null) {
+    items.push({ position: parseInt(match[1], 10), name: match[2].trim() });
+  }
+  return items;
 }
 
 const components = {
@@ -144,6 +163,14 @@ export default async function BlogPostPage({
 
   // --- Structured Data Schemas ---
 
+  const personSchema = {
+    "@type": "Person",
+    name: AUTHOR.name,
+    description: AUTHOR.bio,
+    url: AUTHOR.url,
+    jobTitle: AUTHOR.role,
+  };
+
   // 1. Article Schema
   const articleSchema = {
     "@context": "https://schema.org",
@@ -153,11 +180,7 @@ export default async function BlogPostPage({
     image: ogImage,
     datePublished: post.date,
     dateModified: post.date,
-    author: {
-      "@type": "Organization",
-      name: "DailyCraveHive",
-      url: SITE_URL,
-    },
+    author: personSchema,
     publisher: {
       "@type": "Organization",
       name: "DailyCraveHive",
@@ -220,6 +243,57 @@ export default async function BlogPostPage({
         }
       : null;
 
+  // 4. Review Schema (only for review posts that have a "Final Score: X/10")
+  const score = extractScore(post.content);
+  const isReviewPost = /\breview\b/i.test(post.title);
+  const toolName = isReviewPost ? post.title.split(/\s+Review/i)[0].trim() : null;
+  const reviewSchema =
+    isReviewPost && score && toolName
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Review",
+          itemReviewed: {
+            "@type": "SoftwareApplication",
+            name: toolName,
+            applicationCategory: "UtilitiesApplication",
+            operatingSystem: "Web",
+          },
+          author: personSchema,
+          reviewRating: {
+            "@type": "Rating",
+            ratingValue: score,
+            bestRating: "10",
+            worstRating: "1",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "DailyCraveHive",
+            url: SITE_URL,
+          },
+          datePublished: post.date,
+          url: postUrl,
+        }
+      : null;
+
+  // 5. ItemList Schema (only for best-of / ranked list posts)
+  const rankedItems =
+    post.categorySlug === "best-of" ? extractRankedItems(post.content) : [];
+  const itemListSchema =
+    rankedItems.length > 1
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: post.title,
+          url: postUrl,
+          numberOfItems: rankedItems.length,
+          itemListElement: rankedItems.map((item) => ({
+            "@type": "ListItem",
+            position: item.position,
+            name: item.name,
+          })),
+        }
+      : null;
+
   return (
     <div className="bg-white">
       {/* Structured Data */}
@@ -235,6 +309,18 @@ export default async function BlogPostPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {reviewSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+        />
+      )}
+      {itemListSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
         />
       )}
 
@@ -260,8 +346,10 @@ export default async function BlogPostPage({
 
           <div className="mt-4 flex flex-wrap items-center gap-4 pb-5 text-[13px] text-[#888]">
             <span className="flex items-center gap-2">
-              <span className="inline-block h-6 w-6 rounded-full bg-[#E8505B] text-center text-xs leading-6 text-white">D</span>
-              <span className="font-medium text-[#555]">DailyCraveHive</span>
+              <span className="inline-block h-6 w-6 rounded-full bg-[#E8505B] text-center text-xs leading-6 text-white">
+                {AUTHOR.name.charAt(0)}
+              </span>
+              <span className="font-medium text-[#555]">{AUTHOR.name}</span>
             </span>
             <span>Last Updated: {formatDate(post.date)}</span>
             <span>⏳ No Comments</span>
@@ -333,6 +421,8 @@ export default async function BlogPostPage({
               <div className="mt-10 rounded-lg border border-gray-200 bg-gray-50 p-5 text-[13px] leading-relaxed text-[#666]">
                 <strong className="text-[#1a1a2e]">Disclosure:</strong> This article may contain affiliate links, which means we may earn a commission if you make a purchase — at no extra cost to you. This never influences our research or opinions. Pricing and details may change over time; always verify on the official website before making a decision.
               </div>
+
+              <AuthorBox />
             </article>
 
           </div>
