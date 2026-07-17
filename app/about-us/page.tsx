@@ -31,10 +31,10 @@ export default function AboutUsPage() {
             <p>So we built the site we wished existed.</p>
             <p>
               Daily Crave Hive is an independent AI tools review platform run by
-              a small team of writers, marketers, and tech enthusiasts who
-              genuinely use these tools every day. We test AI writing assistants,
-              image generators, and trending platforms — then tell you exactly
-              what we found, without sugarcoating it.
+              editor <strong>Alma Martin</strong>, who genuinely uses these tools
+              every day. We test AI writing assistants, image generators, and
+              trending platforms — then tell you exactly what we found, without
+              sugarcoating it.
             </p>
             <p>
               We&apos;re not backed by any AI company. We don&apos;t accept paid
@@ -51,7 +51,7 @@ export default function AboutUsPage() {
           </h2>
           <div className="space-y-4 text-justify text-base leading-relaxed text-gray-700">
             <p>
-              Every week, our team picks up AI tools that people are actually
+              Every week, we pick up AI tools that people are actually
               talking about — the ones trending on Reddit, blowing up on Twitter,
               or quietly gaining traction in niche communities. We sign up, pay
               for the plans ourselves, and run each tool through a consistent set
