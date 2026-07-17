@@ -5,13 +5,14 @@ const categoryLinks = [
   { name: "AI Image Tools", slug: "ai-image-tools" },
   { name: "AI Coding Tools", slug: "ai-coding-tools" },
   { name: "Comparisons", slug: "comparisons" },
-  { name: "AI Video Tools", slug: "ai-video-tools" },
   { name: "Best Of", slug: "best-of" },
+  { name: "Lifestyle", slug: "lifestyle" },
+
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#2d2d3a] py-14">
+    <footer className="bg-[#2d2d3a] py-10">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-12 px-6 md:grid-cols-[2fr_0.7fr_0.7fr]">
         <div>
           <Link href="/">

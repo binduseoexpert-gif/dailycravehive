@@ -19,7 +19,7 @@ export default function CategoryCards() {
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-10">
-      <h2 className="mb-8 text-[26px] font-bold text-[#1a1a2e]">Browse by Category</h2>
+      <h2 className="mb-6 text-[26px] font-bold text-[#1a1a2e]">Browse by Category</h2>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {FEATURED_CATEGORIES.map((cat) => {
         const count = posts.filter((p) => p.categorySlug === cat.slug).length;

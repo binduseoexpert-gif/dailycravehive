@@ -5,7 +5,7 @@ export default function LatestReviews() {
   const posts = getAllPosts().slice(0, 6);
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white py-10">
       <div className="mx-auto w-full max-w-6xl px-4">
         <h2 className="mb-6 text-2xl font-bold text-[#1a1a2e]">Latest Reviews & Guides</h2>
 
