@@ -1,4 +1,4 @@
-import { getPostsByCategory, getAllCategories } from "@/lib/posts";
+import { getPostsByCategory, getAllCategories, formatDate } from "@/lib/posts";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -183,7 +183,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                       <span className="font-medium text-[#E8505B]">
                         {"Read Review →"}
                       </span>
-                      <span className="text-gray-400">{post.date}</span>
+                      <span className="text-gray-400">{formatDate(post.date)}</span>
                     </div>
                   </div>
                 </div>

@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, formatDate } from "@/lib/posts";
 import Link from "next/link";
 
 export default function LatestReviews() {
@@ -42,7 +42,7 @@ export default function LatestReviews() {
                   <Link href={`/${post.slug}`} className="text-sm text-[#E8505B] hover:text-[#d9434d]">
                     Read Review →
                   </Link>
-                  <time className="text-sm text-gray-400">{post.date}</time>
+                  <time className="text-sm text-gray-400">{formatDate(post.date)}</time>
                 </div>
               </div>
             </article>

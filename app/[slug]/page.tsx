@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { getAllPosts, getPostBySlug, formatDate } from "@/lib/posts";
 
 const SITE_URL = "https://dailycravehive.com";
 
@@ -263,7 +264,7 @@ export default async function BlogPostPage({
               <span className="inline-block h-6 w-6 rounded-full bg-[#E8505B] text-center text-xs leading-6 text-white">D</span>
               <span className="font-medium text-[#555]">DailyCraveHive</span>
             </span>
-            <span>Last Updated: {post.date}</span>
+            <span>Last Updated: {formatDate(post.date)}</span>
             <span>⏳ No Comments</span>
           </div>
 
@@ -367,7 +368,7 @@ export default async function BlogPostPage({
                         </h3>
                       </Link>
                       <p style={{ fontSize: "12px", color: "#888", marginBottom: "8px" }}>
-                        {rp.date} /// No Comments
+                      {formatDate(rp.date)} /// No Comments
                       </p>
                       <Link href={`/${rp.slug}`} style={{ fontSize: "14px", color: "#E8505B", textDecoration: "none", fontWeight: 600 }}>
                         Read More »

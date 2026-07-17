@@ -56,3 +56,13 @@ export function getAllCategories(): { name: string; slug: string }[] {
   });
   return Array.from(categoryMap.entries()).map(([slug, name]) => ({ slug, name }));
 }
+export function formatDate(dateStr: string): string {
+  if (!dateStr) return "";
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return dateStr;
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
