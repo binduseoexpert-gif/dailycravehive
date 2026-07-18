@@ -1,11 +1,13 @@
 "use client";
 
 // app/admin/posts/edit/[slug]/page.tsx
-// Edit an existing post: loads it from GitHub, lets you change fields + body, saves back.
 
 import Link from "next/link";
 import { useEffect, useState, type ChangeEvent } from "react";
 import { useParams } from "next/navigation";
+import PostEditor from "@/components/admin/PostEditor";
+
+type InlineImage = { name: string; data: string; previewUrl: string };
 
 export default function EditPostPage() {
   const params = useParams<{ slug: string }>();
@@ -21,16 +23,22 @@ export default function EditPostPage() {
   const [date, setDate] = useState("");
   const [body, setBody] = useState("");
   const [password, setPassword] = useState("");
-  // Featured image replace
+  // Featured image
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
   const imageExt = imageFile ? imageFile.name.split(".").pop()?.toLowerCase() || "png" : "png";
+  // Inline images from editor
+  const [inlineImages, setInlineImages] = useState<InlineImage[]>([]);
+
+  const [status, setStatus] = useState<
+    { type: "idle" } | { type: "loading" } | { type: "success" } | { type: "error"; message: string }
+  >({ type: "idle" });
 
   function handleImageSelect(e: ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0] || null;
     if (!f) return;
     if (f.size > 3 * 1024 * 1024) {
-      setStatus({ type: "error", message: "Keep the image under 3MB \u2014 compress it at tinypng.com." });
+      setStatus({ type: "error", message: "Keep the image under 3MB — compress it at tinypng.com." });
       e.target.value = "";
       return;
     }
@@ -45,9 +53,6 @@ export default function EditPostPage() {
     setImageFile(null);
     setImagePreview("");
   }
-  const [status, setStatus] = useState<
-    { type: "idle" } | { type: "loading" } | { type: "success" } | { type: "error"; message: string }
-  >({ type: "idle" });
 
   useEffect(() => {
     async function load() {
@@ -95,20 +100,12 @@ export default function EditPostPage() {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          title,
-          category,
-          excerpt,
+          title, category, excerpt,
           thumbnail: imageName ? `/images/${imageName}` : thumbnail,
-          imageData,
-          imageName,
-          keywords: keywords
-            .split("\n")
-            .map((k) => k.trim())
-            .filter(Boolean),
-          featured,
-          date,
-          body,
-          password,
+          imageData, imageName,
+          inlineImages: inlineImages.map((img) => ({ name: img.name, data: img.data })),
+          keywords: keywords.split("\n").map((k) => k.trim()).filter(Boolean),
+          featured, date, body, password,
         }),
       });
       const data = await res.json();
@@ -130,12 +127,7 @@ export default function EditPostPage() {
           <h1 className="text-2xl font-bold text-neutral-900">✏️ Edit Post</h1>
           <p className="text-sm text-neutral-500">/{slug} — changes go live after deploy (~1–2 min).</p>
         </div>
-        <Link
-          href="/admin/posts"
-          className="rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:bg-neutral-50"
-        >
-          ← All posts
-        </Link>
+        <Link href="/admin/posts" className="rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:bg-neutral-50">← All posts</Link>
       </div>
 
       {!loaded && status.type !== "error" && <p className="text-sm text-neutral-500">Loading post…</p>}
@@ -154,32 +146,16 @@ export default function EditPostPage() {
             </div>
             <div>
               <label className={label}>Featured image</label>
-              <input
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-                onChange={handleImageSelect}
-                className="block w-full text-sm text-neutral-600 file:mr-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-amber-100 file:px-3 file:py-2 file:text-sm file:font-medium file:text-amber-800 hover:file:bg-amber-200"
-              />
+              <input type="file" accept="image/png,image/jpeg,image/webp" onChange={handleImageSelect}
+                className="block w-full text-sm text-neutral-600 file:mr-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-amber-100 file:px-3 file:py-2 file:text-sm file:font-medium file:text-amber-800 hover:file:bg-amber-200" />
               {imagePreview ? (
                 <div className="mt-2 flex items-center gap-3">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={imagePreview}
-                    alt="preview"
-                    className="h-12 w-20 rounded border border-neutral-200 object-cover"
-                  />
+                  <img src={imagePreview} alt="preview" className="h-12 w-20 rounded border border-neutral-200 object-cover" />
                   <span className="text-xs text-neutral-500">/images/{slug}.{imageExt} (auto)</span>
-                  <button type="button" onClick={clearImage} className="text-xs text-red-600 underline">
-                    Delete
-                  </button>
+                  <button type="button" onClick={clearImage} className="text-xs text-red-600 underline">Delete</button>
                 </div>
               ) : (
-                <input
-                  className={`${input} mt-2`}
-                  value={thumbnail}
-                  onChange={(e) => setThumbnail(e.target.value)}
-                  placeholder={`current path: /images/${slug}.png`}
-                />
+                <input className={`${input} mt-2`} value={thumbnail} onChange={(e) => setThumbnail(e.target.value)} placeholder={`current path: /images/${slug}.png`} />
               )}
             </div>
           </div>
@@ -197,69 +173,35 @@ export default function EditPostPage() {
 
           <div className="flex items-center gap-6">
             <label className="flex items-center gap-2 text-sm text-neutral-700">
-              <input
-                type="checkbox"
-                checked={featured}
-                onChange={(e) => setFeatured(e.target.checked)}
-                className="h-4 w-4 rounded border-neutral-300 text-amber-500 focus:ring-amber-400"
-              />
+              <input type="checkbox" checked={featured} onChange={(e) => setFeatured(e.target.checked)} className="h-4 w-4 rounded border-neutral-300 text-amber-500 focus:ring-amber-400" />
               Featured post
             </label>
             <label className="flex items-center gap-2 text-sm text-neutral-700">
               Date
-              <input
-                className={`${input} w-40`}
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                placeholder="YYYY-MM-DD"
-              />
+              <input className={`${input} w-40`} value={date} onChange={(e) => setDate(e.target.value)} placeholder="YYYY-MM-DD" />
             </label>
           </div>
 
-          <div>
-            <label className={label}>Body (Markdown / MDX)</label>
-            <textarea
-              className={`${input} font-mono text-xs leading-relaxed`}
-              rows={24}
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-            <p className="mt-1 text-xs text-neutral-400">
-              {body.trim() ? `${body.trim().split(/\s+/).length} words` : "0 words"}
-            </p>
-          </div>
+          {/* Rich Editor */}
+          <PostEditor body={body} onBodyChange={setBody} slug={slug} inlineImages={inlineImages} onInlineImagesChange={setInlineImages} />
 
           <div>
             <label className={label}>Admin password</label>
-            <input
-              className={input}
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-            />
+            <input className={input} type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
           </div>
 
-          <button
-            onClick={handleSave}
-            disabled={status.type === "loading"}
-            className="rounded-lg bg-amber-500 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600 disabled:cursor-not-allowed disabled:opacity-60"
-          >
+          <button onClick={handleSave} disabled={status.type === "loading"}
+            className="rounded-lg bg-amber-500 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600 disabled:cursor-not-allowed disabled:opacity-60">
             {status.type === "loading" ? "Saving…" : "Save changes"}
           </button>
 
           {status.type === "success" && (
             <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-              Saved! Changes will be live after the deploy finishes:{" "}
-              <a className="font-medium underline" href={`/${slug}`} target="_blank" rel="noreferrer">
-                /{slug}
-              </a>
+              Saved! Changes will be live after the deploy finishes: <a className="font-medium underline" href={`/${slug}`} target="_blank" rel="noreferrer">/{slug}</a>
             </div>
           )}
           {status.type === "error" && (
-            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
-              {status.message}
-            </div>
+            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{status.message}</div>
           )}
         </div>
       )}
