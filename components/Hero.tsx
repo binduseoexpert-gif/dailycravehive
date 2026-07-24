@@ -25,7 +25,7 @@ export default function Hero() {
         <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-bold text-[#1a1a2e] md:text-5xl">
           Your Daily Dose of the Hottest AI Tools
         </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-base text-[#555555] md:text-lg">
+        <p className="mx-auto mt-4 max-w-3xl text-base text-[#1a1a2e] md:text-lg">
           Discover trending AI tools, honest reviews, and viral picks — before
           everyone else. No fluff, just the tools that actually matter.
         </p>
