@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import SiteNav from "@/components/SiteNav";
-import { DM Sans } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = DM Sans({
+const inter = DM_Sans({
   variable: "--font-inter",
   subsets: ["latin"],
 });
