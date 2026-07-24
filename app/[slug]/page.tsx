@@ -118,13 +118,13 @@ const components = {
     />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mb-5 text-[15px] leading-[1.85] text-[#1a1a2e] text-justify prose-inherit" {...props} />
+    <p className="mb-5 text-[17px] leading-[1.85] text-[#1a1a2e] text-justify prose-inherit" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="mb-5 list-disc space-y-2 pl-6 text-[15px] leading-[1.85] text-[#1a1a2e]" {...props} />
+    <ul className="mb-5 list-disc space-y-2 pl-6 text-[17px] leading-[1.85] text-[#1a1a2e]" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[15px] leading-[1.85] text-[#1a1a2e]" {...props} />
+    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[17px] leading-[1.85] text-[#1a1a2e]" {...props} />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li className="leading-[1.85]" {...props} />
@@ -137,7 +137,7 @@ const components = {
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
-      className="my-6 border-l-4 border-[#E8505B] bg-[#FDF0F1] py-5 pl-6 pr-5 text-[15px] leading-[1.8] text-[#444450] rounded-r-lg"
+      className="my-6 border-l-4 border-[#E8505B] bg-[#FDF0F1] py-5 pl-6 pr-5 text-[17px] leading-[1.8] text-[#444450] rounded-r-lg"
       {...props}
     />
   ),
