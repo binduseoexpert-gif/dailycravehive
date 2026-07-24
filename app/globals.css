@@ -54,7 +54,7 @@ body {
     font-weight: 600;
     color: #ffffff !important;
     border-bottom: 3px solid #E8505B !important;
-    border-right: 1px solid #1a1a2e !important;
+    border-right: 1px solid #3a3a4a !important;
   }
 
   article thead th:last-child {
@@ -66,7 +66,7 @@ body {
   }
 
   article tbody tr {
-    border-bottom: 1px solid #1a1a2e !important;
+    border-bottom: 1px solid #e5e5ee !important;
     display: table-row !important;
   }
 
@@ -76,8 +76,8 @@ body {
     font-size: 14px;
     vertical-align: top;
     display: table-cell !important;
-    border-bottom: 1px solid #1a1a2e !important;
-    border-right: 1px solid #1a1a2e !important;
+    border-bottom: 1px solid #e5e5ee !important;
+border-right: 1px solid #e5e5ee !important;
   }
 
   article tbody td:last-child {
