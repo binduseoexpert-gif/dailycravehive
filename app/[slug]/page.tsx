@@ -118,13 +118,13 @@ const components = {
     />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mb-5 text-[15px] leading-[1.85] text-[#3a3a45] prose-inherit" {...props} />
+    <p className="mb-5 text-[15px] leading-[1.85] text-[#1a1a2e] prose-inherit" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="mb-5 list-disc space-y-2 pl-6 text-[15px] leading-[1.85] text-[#3a3a45]" {...props} />
+    <ul className="mb-5 list-disc space-y-2 pl-6 text-[15px] leading-[1.85] text-[#1a1a2e]" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[15px] leading-[1.85] text-[#3a3a45]" {...props} />
+    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[15px] leading-[1.85] text-[#1a1a2e]" {...props} />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li className="leading-[1.85]" {...props} />
