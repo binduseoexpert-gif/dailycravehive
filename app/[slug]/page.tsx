@@ -153,11 +153,8 @@ const components = {
     />
   ),
   table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
-    <div style={{ maxWidth: "100%", overflow: "hidden", margin: "32px 0" }}>
-      <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", borderRadius: "10px", border: "2px solid #1a1a2e" }}>
-        <table {...props} />
-      </div>
-      <p className="table-scroll-hint">← Swipe to see full table →</p>
+    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch", margin: "32px 0" }}>
+      <table {...props} />
     </div>
   ),
 };
@@ -389,7 +386,7 @@ export default async function BlogPostPage({
           <div className="rounded-2xl bg-white p-6 md:p-10 shadow-sm ring-1 ring-gray-200">
 
             {/* Article Body */}
-            <article className="mx-auto max-w-3xl px-4 py-10">
+            <article className="mx-auto max-w-3xl px-4 py-10 overflow-hidden">
               {slug === "best-ai-writing-tools" ? (
                 <>
                   <MDXRemote source={post.content.split("## How We Tested")[0]} components={components} />
