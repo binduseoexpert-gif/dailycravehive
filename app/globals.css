@@ -29,19 +29,32 @@ body {
     opacity: 0.4;
   }
 
-  /* NOTE: table styles are intentionally minimal here.
-     The table MDX component in page.tsx handles width/overflow via inline styles.
-     Do NOT add width, max-width, or overflow here — it will break mobile scroll. */
+  /* TABLE: display:block makes the table itself scrollable.
+     thead/tbody stay display:table to preserve column layout.
+     This works for BOTH raw HTML tables and MDX component tables. */
   article table {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100% !important;
     border-collapse: collapse !important;
     font-size: 14px;
+    border: 2px solid #1a1a2e !important;
+    border-radius: 10px;
     background-color: #ffffff !important;
     box-shadow: 0 1px 3px rgba(26, 26, 46, 0.06);
+    margin: 32px 0;
   }
 
   article thead {
+    display: table !important;
+    width: 100% !important;
     background-color: #2d2d3a !important;
-    display: table-header-group !important;
+  }
+
+  article tbody {
+    display: table !important;
+    width: 100% !important;
   }
 
   article thead th {
@@ -57,10 +70,6 @@ body {
 
   article thead th:last-child {
     border-right: none !important;
-  }
-
-  article tbody {
-    display: table-row-group !important;
   }
 
   article tbody tr {
@@ -264,15 +273,6 @@ body {
   font-weight: 700 !important; color: #1a1a2e !important;
 }
 
-/* ===== TABLE SCROLL HINT ===== */
-.table-scroll-hint {
-  display: none;
-  text-align: center;
-  font-size: 12px;
-  color: #999;
-  margin-top: 6px;
-}
-
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .pros-cons-grid { grid-template-columns: 1fr !important; }
@@ -287,5 +287,4 @@ body {
   .tool-score { position: static !important; font-size: 24px !important; margin-top: 8px; }
   .faq-item summary { font-size: 14px !important; padding: 14px 16px !important; }
   .faq-item p { padding: 14px 16px !important; font-size: 14px !important; }
-  .table-scroll-hint { display: block; }
 }
