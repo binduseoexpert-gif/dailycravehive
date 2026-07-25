@@ -122,6 +122,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
+      <link rel="icon" href="/icon.png" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
