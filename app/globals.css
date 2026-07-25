@@ -30,10 +30,8 @@ body {
   }
 
   article table {
-    width: 100%;
     border-collapse: collapse !important;
     font-size: 14px;
-    margin: 32px 0;
     border: 2px solid #1a1a2e !important;
     border-radius: 10px;
     display: table !important;
@@ -151,15 +149,8 @@ body {
   line-height: 1.8;
 }
 
-.verdict-box p {
-  color: #444450 !important;
-  font-size: 15px !important;
-  line-height: 1.8 !important;
-}
-
-.verdict-box strong {
-  color: #1a1a2e !important;
-}
+.verdict-box p { color: #444450 !important; font-size: 15px !important; line-height: 1.8 !important; }
+.verdict-box strong { color: #1a1a2e !important; }
 
 .faq-item {
   border: 1px solid #e8e8f0;
@@ -199,13 +190,8 @@ body {
   margin-left: 12px;
 }
 
-.faq-item[open] summary::after {
-  content: "−";
-}
-
-.faq-item[open] summary {
-  border-bottom: 1px solid #eeeef4;
-}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item[open] summary { border-bottom: 1px solid #eeeef4; }
 
 .faq-item p {
   padding: 16px 20px !important;
@@ -233,14 +219,9 @@ body {
 }
 
 .top-pick-card .pick-label {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 12px;
+  display: inline-block; font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
 }
 
 .pick-best .pick-label { background-color: #E8505B; color: white; }
@@ -248,84 +229,41 @@ body {
 .pick-natural .pick-label { background-color: #3b82f6; color: white; }
 
 .tool-card {
-  border: 1px solid #e8e8f0;
-  border-radius: 12px;
-  background-color: #ffffff;
-  padding: 24px 28px;
-  margin: 24px 0;
-  position: relative;
+  border: 1px solid #e8e8f0; border-radius: 12px;
+  background-color: #ffffff; padding: 24px 28px;
+  margin: 24px 0; position: relative;
   box-shadow: 0 1px 3px rgba(26, 26, 46, 0.06);
 }
 
 .tool-badge {
-  display: inline-block;
-  background-color: #E8505B;
-  color: white;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 12px;
-  border-radius: 6px;
+  display: inline-block; background-color: #E8505B; color: white;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 4px 12px; border-radius: 6px;
 }
 
-.tool-score {
-  position: absolute;
-  top: 24px;
-  right: 28px;
-  font-size: 32px;
-  font-weight: 700;
-  color: #E8505B;
-}
-
+.tool-score { position: absolute; top: 24px; right: 28px; font-size: 32px; font-weight: 700; color: #E8505B; }
 .tool-score span { font-size: 16px; color: #999; }
 .tool-meta { font-size: 13px; color: #777; margin: 8px 0 16px; }
 
 .tool-pros { margin: 16px 0 !important; font-size: 15px !important; line-height: 1.7 !important; }
 .tool-pros .prose-inherit { color: #15803d !important; margin-bottom: 0 !important; }
-.tool-pros .prose-inherit .font-bold { color: #1a1a2e !important; }
-
 .tool-cons { margin: 16px 0 !important; font-size: 15px !important; line-height: 1.7 !important; }
 .tool-cons .prose-inherit { color: #d13d48 !important; margin-bottom: 0 !important; }
-.tool-cons .prose-inherit .font-bold { color: #1a1a2e !important; }
 
 .tool-best-for {
-  border-left: 4px solid #E8505B !important;
-  background-color: #FDF0F1 !important;
-  padding: 12px 16px !important;
-  margin: 16px 0 !important;
-  border-radius: 0 6px 6px 0;
-  font-size: 15px !important;
-  line-height: 1.7 !important;
+  border-left: 4px solid #E8505B !important; background-color: #FDF0F1 !important;
+  padding: 12px 16px !important; margin: 16px 0 !important;
+  border-radius: 0 6px 6px 0; font-size: 15px !important; line-height: 1.7 !important;
 }
 
 .tool-best-for .prose-inherit { color: #555560 !important; margin-bottom: 0 !important; }
 .tool-best-for .prose-inherit .font-bold { color: #E8505B !important; }
 
-.tool-pros .tool-label,
-.tool-cons .tool-label,
-.tool-best-for .tool-label {
-  font-weight: 700 !important;
-  color: #1a1a2e !important;
+.tool-pros .tool-label, .tool-cons .tool-label, .tool-best-for .tool-label {
+  font-weight: 700 !important; color: #1a1a2e !important;
 }
 
-/* ===== TABLE SCROLL WRAPPER (all screens) ===== */
-.table-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 32px 0;
-  border-radius: 10px;
-  border: 2px solid #1a1a2e;
-}
-
-article .table-scroll table {
-  margin: 0 !important;
-  min-width: 700px !important;
-  width: max-content !important;
-  border: none !important;
-  display: table !important;
-}
-
+/* ===== TABLE SCROLL HINT ===== */
 .table-scroll-hint {
   display: none;
   text-align: center;
@@ -334,64 +272,19 @@ article .table-scroll table {
   margin-top: 6px;
 }
 
-/* ===== MOBILE RESPONSIVENESS ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  .pros-cons-grid {
-    grid-template-columns: 1fr !important;
-  }
+  .pros-cons-grid { grid-template-columns: 1fr !important; }
+  .top-picks-grid { grid-template-columns: 1fr !important; }
 
-  .top-picks-grid {
-    grid-template-columns: 1fr !important;
-  }
+  article thead th { padding: 10px 12px !important; font-size: 14px !important; }
+  article tbody td { padding: 10px 12px !important; font-size: 13px !important; }
 
-  article > div[style*="grid-template-columns: 1fr 1fr 1fr"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  article table {
-    font-size: 13px !important;
-  }
-
-  article thead th {
-    padding: 10px 12px !important;
-    font-size: 14px !important;
-  }
-
-  article tbody td {
-    padding: 10px 12px !important;
-    font-size: 13px !important;
-  }
-
-  .verdict-box {
-    padding: 20px !important;
-  }
-
-  .worth-it-box,
-  .not-worth-box {
-    padding: 16px 18px !important;
-  }
-
-  .tool-card {
-    padding: 18px 20px !important;
-  }
-
-  .tool-score {
-    position: static !important;
-    font-size: 24px !important;
-    margin-top: 8px;
-  }
-
-  .faq-item summary {
-    font-size: 14px !important;
-    padding: 14px 16px !important;
-  }
-
-  .faq-item p {
-    padding: 14px 16px !important;
-    font-size: 14px !important;
-  }
-
-  .table-scroll-hint {
-    display: block;
-  }
+  .verdict-box { padding: 20px !important; }
+  .worth-it-box, .not-worth-box { padding: 16px 18px !important; }
+  .tool-card { padding: 18px 20px !important; }
+  .tool-score { position: static !important; font-size: 24px !important; margin-top: 8px; }
+  .faq-item summary { font-size: 14px !important; padding: 14px 16px !important; }
+  .faq-item p { padding: 14px 16px !important; font-size: 14px !important; }
+  .table-scroll-hint { display: block; }
 }
