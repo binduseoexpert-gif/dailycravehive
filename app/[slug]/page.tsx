@@ -31,23 +31,14 @@ export async function generateMetadata({
     title: post.title,
     description: post.excerpt,
     keywords: post.keywords || [],
-    alternates: {
-      canonical: postUrl,
-    },
+    alternates: { canonical: postUrl },
     openGraph: {
       type: "article",
       title: post.title,
       description: post.excerpt,
       url: postUrl,
       siteName: "DailyCraveHive",
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
       publishedTime: post.date,
       modifiedTime: post.date,
       section: post.category,
@@ -59,35 +50,25 @@ export async function generateMetadata({
       description: post.excerpt,
       images: [ogImage],
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    robots: { index: true, follow: true },
   };
 }
 
-// Helper: Extract FAQ items from MDX content for FAQ Schema
 function extractFAQs(content: string) {
   const faqs: { question: string; answer: string }[] = [];
-  const faqRegex =
-    /<summary>(.*?)<\/summary>\s*<p>(.*?)<\/p>/gs;
+  const faqRegex = /<summary>(.*?)<\/summary>\s*<p>(.*?)<\/p>/gs;
   let match;
   while ((match = faqRegex.exec(content)) !== null) {
-    faqs.push({
-      question: match[1].trim(),
-      answer: match[2].trim(),
-    });
+    faqs.push({ question: match[1].trim(), answer: match[2].trim() });
   }
   return faqs;
 }
 
-// Helper: Extract "Final Score: X.X / 10" from review content
 function extractScore(content: string): string | null {
   const match = content.match(/Final Score:\s*\**\s*([\d.]+)\s*\/\s*10/i);
   return match ? match[1] : null;
 }
 
-// Helper: Extract ranked tools from best-of content ("### 1. Tool Name — ...")
 function extractRankedItems(content: string): { position: number; name: string }[] {
   const items: { position: number; name: string }[] = [];
   const regex = /^###\s+(\d+)\.\s+(.+?)(?:\s+[—–-]{1,2}\s+.*)?$/gm;
@@ -100,31 +81,22 @@ function extractRankedItems(content: string): { position: number; name: string }
 
 const components = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2
-      className="mb-4 mt-12 border-b border-[#E8505B] pb-3 text-[22px] font-bold text-[#E8505B]"
-      {...props}
-    />
+    <h2 className="mb-4 mt-12 border-b border-[#E8505B] pb-3 text-[22px] font-bold text-[#E8505B]" {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3
-      className="mb-3 mt-8 text-[18px] font-bold text-[#1a1a2e]"
-      {...props}
-    />
+    <h3 className="mb-3 mt-8 text-[18px] font-bold text-[#1a1a2e]" {...props} />
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h4
-      className="mb-2 mt-6 text-[16px] font-bold text-[#1a1a2e]"
-      {...props}
-    />
+    <h4 className="mb-2 mt-6 text-[16px] font-bold text-[#1a1a2e]" {...props} />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mb-5 text-[15px] leading-[1.85] text-[#3a3a45] prose-inherit" {...props} />
+    <p className="mb-5 text-[17px] leading-[1.85] text-[#1a1a2e] text-justify prose-inherit" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="mb-5 list-disc space-y-2 pl-6 text-[15px] leading-[1.85] text-[#3a3a45]" {...props} />
+    <ul className="mb-5 list-disc space-y-2 pl-6 text-[17px] leading-[1.85] text-[#1a1a2e]" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[15px] leading-[1.85] text-[#3a3a45]" {...props} />
+    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[17px] leading-[1.85] text-[#1a1a2e]" {...props} />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li className="leading-[1.85]" {...props} />
@@ -136,27 +108,44 @@ const components = {
     <a className="text-[#E8505B] underline hover:text-[#c93842]" {...props} />
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
-    <blockquote
-      className="my-6 border-l-4 border-[#E8505B] bg-[#FDF0F1] py-5 pl-6 pr-5 text-[15px] leading-[1.8] text-[#444450] rounded-r-lg"
-      {...props}
-    />
+    <blockquote className="my-6 border-l-4 border-[#E8505B] bg-[#FDF0F1] py-5 pl-6 pr-5 text-[15px] leading-[1.8] text-[#444450] rounded-r-lg" {...props} />
   ),
   hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
     <hr className="my-8 border-t border-[#e8e8f0]" {...props} />
   ),
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    <img
-      className="my-6 w-full rounded-lg border border-gray-200 shadow-sm"
-      loading="lazy"
-      {...props}
-    />
+    <img className="my-6 w-full rounded-lg border border-gray-200 shadow-sm" loading="lazy" {...props} />
   ),
-  table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
-    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch", margin: "32px 0" }}>
-      <table style={{ minWidth: "600px" }} {...props} />
-    </div>
-  ),
+  table: (props: React.TableHTMLAttributes<HTMLTableElement>) => {
+    return (
+      <div
+        style={{
+          display: "block",
+          width: "100%",
+          overflowX: "scroll",
+          WebkitOverflowScrolling: "touch",
+          marginTop: "32px",
+          marginBottom: "32px",
+          borderRadius: "10px",
+          border: "2px solid #1a1a2e",
+        }}
+      >
+        <table
+          style={{
+            width: "auto",
+            minWidth: "600px",
+            tableLayout: "auto",
+            margin: 0,
+            border: "none",
+            borderRadius: 0,
+            boxShadow: "none",
+          }}
+          {...props}
+        />
+      </div>
+    );
+  },
 };
 
 export default async function BlogPostPage({
@@ -166,15 +155,10 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-
   if (!post) notFound();
 
   const postUrl = `${SITE_URL}/${slug}`;
-  const ogImage = post.thumbnail
-    ? `${SITE_URL}${post.thumbnail}`
-    : `${SITE_URL}/images/og-default.png`;
-
-  // --- Structured Data Schemas ---
+  const ogImage = post.thumbnail ? `${SITE_URL}${post.thumbnail}` : `${SITE_URL}/images/og-default.png`;
 
   const personSchema = {
     "@type": "Person",
@@ -184,7 +168,6 @@ export default async function BlogPostPage({
     jobTitle: AUTHOR.role,
   };
 
-  // 1. Article Schema
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -198,144 +181,48 @@ export default async function BlogPostPage({
       "@type": "Organization",
       name: "DailyCraveHive",
       url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/images/logo.png`,
-      },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo.png` },
     },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": postUrl,
-    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
     url: postUrl,
     articleSection: post.category,
     wordCount: post.content.split(/\s+/).length,
   };
 
-  // 2. BreadcrumbList Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: post.category,
-        item: `${SITE_URL}/category/${post.categorySlug}`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: post.title,
-        item: postUrl,
-      },
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: post.category, item: `${SITE_URL}/category/${post.categorySlug}` },
+      { "@type": "ListItem", position: 3, name: post.title, item: postUrl },
     ],
   };
 
-  // 3. FAQ Schema (auto-extracted from content)
   const faqs = extractFAQs(post.content);
-  const faqSchema =
-    faqs.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.answer,
-            },
-          })),
-        }
-      : null;
+  const faqSchema = faqs.length > 0
+    ? { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }
+    : null;
 
-  // 4. Review Schema (only for review posts that have a "Final Score: X/10")
   const score = extractScore(post.content);
   const isReviewPost = /\breview\b/i.test(post.title);
   const toolName = isReviewPost ? post.title.split(/\s+Review/i)[0].trim() : null;
-  const reviewSchema =
-    isReviewPost && score && toolName
-      ? {
-          "@context": "https://schema.org",
-          "@type": "Review",
-          itemReviewed: {
-            "@type": "SoftwareApplication",
-            name: toolName,
-            applicationCategory: "UtilitiesApplication",
-            operatingSystem: "Web",
-          },
-          author: personSchema,
-          reviewRating: {
-            "@type": "Rating",
-            ratingValue: score,
-            bestRating: "10",
-            worstRating: "1",
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "DailyCraveHive",
-            url: SITE_URL,
-          },
-          datePublished: post.date,
-          url: postUrl,
-        }
-      : null;
+  const reviewSchema = isReviewPost && score && toolName
+    ? { "@context": "https://schema.org", "@type": "Review", itemReviewed: { "@type": "SoftwareApplication", name: toolName, applicationCategory: "UtilitiesApplication", operatingSystem: "Web" }, author: personSchema, reviewRating: { "@type": "Rating", ratingValue: score, bestRating: "10", worstRating: "1" }, publisher: { "@type": "Organization", name: "DailyCraveHive", url: SITE_URL }, datePublished: post.date, url: postUrl }
+    : null;
 
-  // 5. ItemList Schema (only for best-of / ranked list posts)
-  const rankedItems =
-    post.categorySlug === "best-of" ? extractRankedItems(post.content) : [];
-  const itemListSchema =
-    rankedItems.length > 1
-      ? {
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          name: post.title,
-          url: postUrl,
-          numberOfItems: rankedItems.length,
-          itemListElement: rankedItems.map((item) => ({
-            "@type": "ListItem",
-            position: item.position,
-            name: item.name,
-          })),
-        }
-      : null;
+  const rankedItems = post.categorySlug === "best-of" ? extractRankedItems(post.content) : [];
+  const itemListSchema = rankedItems.length > 1
+    ? { "@context": "https://schema.org", "@type": "ItemList", name: post.title, url: postUrl, numberOfItems: rankedItems.length, itemListElement: rankedItems.map((item) => ({ "@type": "ListItem", position: item.position, name: item.name })) }
+    : null;
 
   return (
     <div className="bg-white">
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
-      {reviewSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-        />
-      )}
-      {itemListSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
-        />
-      )}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+      {reviewSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />}
+      {itemListSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />}
 
       {/* Breadcrumb */}
       <div className="border-b border-gray-200 bg-gray-50">
@@ -343,49 +230,36 @@ export default async function BlogPostPage({
           <nav className="flex items-center gap-2 text-sm text-gray-500">
             <Link href="/" className="hover:text-[#E8505B]">Home</Link>
             <span>»</span>
-            <Link href={"/category/" + post.categorySlug} className="hover:text-[#E8505B]">
-              {post.category}
-            </Link>
+            <Link href={"/category/" + post.categorySlug} className="hover:text-[#E8505B]">{post.category}</Link>
           </nav>
         </div>
       </div>
 
-      {/* Article Header - white background */}
+      {/* Article Header */}
       <div className="bg-white">
         <div className="mx-auto max-w-4xl px-4 pt-8">
-          <h1 className="text-[28px] font-bold leading-tight text-[#1a1a2e] md:text-[36px]">
-            {post.title}
-          </h1>
-
+          <h1 className="text-[28px] font-bold leading-tight text-[#1a1a2e] md:text-[36px]">{post.title}</h1>
           <div className="mt-4 flex flex-wrap items-center gap-4 pb-5 text-[13px] text-[#888]">
             <span className="flex items-center gap-2">
-              <span className="inline-block h-6 w-6 rounded-full bg-[#E8505B] text-center text-xs leading-6 text-white">
-                {AUTHOR.name.charAt(0)}
-              </span>
+              <span className="inline-block h-6 w-6 rounded-full bg-[#E8505B] text-center text-xs leading-6 text-white">{AUTHOR.name.charAt(0)}</span>
               <span className="font-medium text-[#555]">{AUTHOR.name}</span>
             </span>
             <span>Last Updated: {formatDate(post.date)}</span>
             <span>⏳ No Comments</span>
           </div>
-
           {post.thumbnail && (
-            <div className="mb-8">
-              <img
-                src={post.thumbnail}
-                alt={post.title}
-                className="w-full rounded-lg"
-              />
+            <div className="mb-4">
+              <img src={post.thumbnail} alt={post.title} className="w-full rounded-lg" />
             </div>
           )}
         </div>
       </div>
 
-      {/* Light Content Area - article body card */}
+      {/* Content Area */}
       <div className="bg-[#F7F4F2]">
-      <div className="mx-auto max-w-4xl px-4 py-6 overflow-x-hidden">
-        <div className="rounded-2xl bg-white p-6 md:p-10 shadow-sm ring-1 ring-gray-200">
-            {/* Article Body */}
-            <article className="mx-auto max-w-3xl px-4 py-10">
+        <div className="mx-auto max-w-4xl px-4 py-6">
+          <div className="rounded-2xl bg-white p-4 sm:p-6 md:p-10 shadow-sm ring-1 ring-gray-200">
+            <article className="mx-auto max-w-3xl py-4">
               {slug === "best-ai-writing-tools" ? (
                 <>
                   <MDXRemote source={post.content.split("## How We Tested")[0]} components={components} />
@@ -431,49 +305,36 @@ export default async function BlogPostPage({
               )}
 
               <div className="mt-10 rounded-lg border border-gray-200 bg-gray-50 p-5 text-[13px] leading-relaxed text-[#666]">
-                <strong className="text-[#1a1a2e]">Disclosure:</strong> This article may contain affiliate links, which means we may earn a commission if you make a purchase — at no extra cost to you. This never influences our research or opinions. Pricing and details may change over time; always verify on the official website before making a decision.
+                <strong className="text-[#1a1a2e]">Disclosure: </strong>
+                This article may contain affiliate links, which means we may earn a commission if you make a purchase — at no extra cost to you. This never influences our research or opinions. Pricing and details may change over time; always verify on the official website before making a decision.
               </div>
 
               <AuthorBox />
             </article>
-
           </div>
-          {/* Related posts OUTSIDE the card */}
+
+          {/* Related posts */}
           {(() => {
             const relatedPosts = getAllPosts()
               .filter((p) => p.categorySlug === post.categorySlug && p.slug !== slug)
               .slice(0, 3);
-
             if (relatedPosts.length === 0) return null;
-
             return (
               <div className="mx-auto max-w-4xl px-4 py-10">
-                <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#E8505B", marginBottom: "24px", borderBottom: "2px solid #E8505B", paddingBottom: "12px" }}>
-                  You May Also Like:
-                </h2>
+                <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#E8505B", marginBottom: "24px", borderBottom: "2px solid #E8505B", paddingBottom: "12px" }}>You May Also Like:</h2>
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {relatedPosts.map((rp) => (
                     <div key={rp.slug}>
                       {rp.thumbnail && (
                         <Link href={`/${rp.slug}`}>
-                          <img
-                            src={rp.thumbnail}
-                            alt={rp.title}
-                            style={{ width: "100%", borderRadius: "8px", marginBottom: "12px", aspectRatio: "16/9", objectFit: "cover" }}
-                          />
+                          <img src={rp.thumbnail} alt={rp.title} style={{ width: "100%", borderRadius: "8px", marginBottom: "12px", aspectRatio: "16/9", objectFit: "cover" }} />
                         </Link>
                       )}
                       <Link href={`/${rp.slug}`} style={{ textDecoration: "none" }}>
-                        <h3 style={{ fontSize: "15px", fontWeight: 700, color: "#1a1a2e", lineHeight: 1.4, marginBottom: "8px" }}>
-                          {rp.title}
-                        </h3>
+                        <h3 style={{ fontSize: "15px", fontWeight: 700, color: "#1a1a2e", lineHeight: 1.4, marginBottom: "8px" }}>{rp.title}</h3>
                       </Link>
-                      <p style={{ fontSize: "12px", color: "#888", marginBottom: "8px" }}>
-                      {formatDate(rp.date)} /// No Comments
-                      </p>
-                      <Link href={`/${rp.slug}`} style={{ fontSize: "14px", color: "#E8505B", textDecoration: "none", fontWeight: 600 }}>
-                        Read More »
-                      </Link>
+                      <p style={{ fontSize: "12px", color: "#888", marginBottom: "8px" }}>{formatDate(rp.date)} /// No Comments</p>
+                      <Link href={`/${rp.slug}`} style={{ fontSize: "14px", color: "#E8505B", textDecoration: "none", fontWeight: 600 }}>Read More »</Link>
                     </div>
                   ))}
                 </div>

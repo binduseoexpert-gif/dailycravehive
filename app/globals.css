@@ -29,18 +29,14 @@ body {
     opacity: 0.4;
   }
 
+  /* NOTE: table styles are intentionally minimal here.
+     The table MDX component in page.tsx handles width/overflow via inline styles.
+     Do NOT add width, max-width, or overflow here — it will break mobile scroll. */
   article table {
     border-collapse: collapse !important;
     font-size: 14px;
-    border: 2px solid #1a1a2e !important;
-    border-radius: 10px;
-    display: table !important;
     background-color: #ffffff !important;
     box-shadow: 0 1px 3px rgba(26, 26, 46, 0.06);
-    max-width: none;
-    box-sizing: border-box;
-    min-width: 500px;
-    width: 100%;
   }
 
   article thead {
@@ -56,6 +52,7 @@ body {
     color: #ffffff !important;
     border-bottom: 3px solid #E8505B !important;
     border-right: 1px solid #3a3a4a !important;
+    white-space: nowrap;
   }
 
   article thead th:last-child {
