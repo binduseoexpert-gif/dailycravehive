@@ -144,14 +144,6 @@ const components = {
   hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
     <hr className="my-8 border-t border-[#e8e8f0]" {...props} />
   ),
-  table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
-    <div>
-      <div className="table-scroll">
-        <table {...props} />
-      </div>
-      <p className="table-scroll-hint">← Swipe to see full table →</p>
-    </div>
-  ),
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
     <img
@@ -159,6 +151,14 @@ const components = {
       loading="lazy"
       {...props}
     />
+  ),
+  table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
+    <div>
+      <div className="table-scroll">
+        <table {...props} />
+      </div>
+      <p className="table-scroll-hint">← Swipe to see full table →</p>
+    </div>
   ),
 };
 
