@@ -122,8 +122,8 @@ const components = {
       <div
         style={{
           display: "block",
-          width: "100%",
-          overflowX: "scroll",
+          maxWidth: "100%",
+          overflowX: "auto",
           WebkitOverflowScrolling: "touch",
           marginTop: "32px",
           marginBottom: "32px",
@@ -131,10 +131,9 @@ const components = {
           border: "2px solid #1a1a2e",
         }}
       >
-        <table
+       <table
           style={{
-            width: "auto",
-            minWidth: "600px",
+            width: "100%",
             tableLayout: "auto",
             margin: 0,
             border: "none",
