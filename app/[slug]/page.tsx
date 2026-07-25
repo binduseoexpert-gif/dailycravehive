@@ -155,7 +155,7 @@ const components = {
   table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
     <div>
       <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", margin: "32px 0", borderRadius: "10px", border: "2px solid #1a1a2e" }}>
-        <table style={{ minWidth: "700px", width: "max-content", margin: 0, border: "none" }} {...props} />
+        <table style={{ minWidth: "900px", width: "max-content", margin: 0, border: "none" }} {...props} />
       </div>
       <p className="table-scroll-hint">← Swipe to see full table →</p>
     </div>
