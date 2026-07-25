@@ -32,9 +32,12 @@ body {
   article table {
     width: 100% !important;
     border-collapse: collapse !important;
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
     font-size: 14px;
     margin: 32px 0;
-    border: 3px solid #1a1a2e !important;
+    border: 2px solid #1a1a2e !important;
     border-radius: 10px;
     overflow: hidden;
     display: table !important;
@@ -54,7 +57,7 @@ body {
     font-weight: 600;
     color: #ffffff !important;
     border-bottom: 3px solid #E8505B !important;
-    border-right: 1px solid #3a3a4a !important;
+    border-right: 1px solid #1a1a2e !important;
   }
 
   article thead th:last-child {
@@ -66,7 +69,7 @@ body {
   }
 
   article tbody tr {
-    border-bottom: 1px solid #e5e5ee !important;
+    border-bottom: 1px solid #1a1a2e !important;
     display: table-row !important;
   }
 
@@ -76,8 +79,8 @@ body {
     font-size: 14px;
     vertical-align: top;
     display: table-cell !important;
-    border-bottom: 1px solid #e5e5ee !important;
-border-right: 1px solid #e5e5ee !important;
+    border-bottom: 1px solid #1a1a2e !important;
+    border-right: 1px solid #1a1a2e !important;
   }
 
   article tbody td:last-child {
@@ -376,4 +379,55 @@ border-right: 1px solid #e5e5ee !important;
 .tool-best-for .tool-label {
   font-weight: 700 !important;
   color: #1a1a2e !important;
+}
+
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+  .pros-cons-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  article table {
+    font-size: 13px !important;
+  }
+
+  article thead th {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+  }
+
+  article tbody td {
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+  }
+
+  .verdict-box {
+    padding: 20px !important;
+  }
+
+  .worth-it-box,
+  .not-worth-box {
+    padding: 16px 18px !important;
+  }
+
+  .tool-card {
+    padding: 18px 20px !important;
+  }
+
+  .tool-score {
+    position: static !important;
+    font-size: 24px !important;
+    margin-top: 8px;
+  }
+
+  .faq-item summary {
+    font-size: 14px !important;
+    padding: 14px 16px !important;
+  }
+
+  .faq-item p {
+    padding: 14px 16px !important;
+    font-size: 14px !important;
+  }
 }

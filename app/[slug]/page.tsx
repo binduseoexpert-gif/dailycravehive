@@ -118,13 +118,13 @@ const components = {
     />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mb-5 text-[16px] leading-[1.85] text-[#1a1a2e] text-justify prose-inherit" {...props} />
+    <p className="mb-5 text-[15px] leading-[1.85] text-[#3a3a45] prose-inherit" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="mb-5 list-disc space-y-2 pl-6 text-[16px] leading-[1.85] text-[#1a1a2e]" {...props} />
+    <ul className="mb-5 list-disc space-y-2 pl-6 text-[15px] leading-[1.85] text-[#3a3a45]" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[16px] leading-[1.85] text-[#1a1a2e]" {...props} />
+    <ol className="mb-5 list-decimal space-y-2 pl-6 text-[15px] leading-[1.85] text-[#3a3a45]" {...props} />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li className="leading-[1.85]" {...props} />
@@ -137,7 +137,7 @@ const components = {
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
-      className="my-6 border-l-4 border-[#E8505B] bg-[#FDF0F1] py-5 pl-6 pr-5 text-[16px] leading-[1.8] text-[#444450] rounded-r-lg"
+      className="my-6 border-l-4 border-[#E8505B] bg-[#FDF0F1] py-5 pl-6 pr-5 text-[15px] leading-[1.8] text-[#444450] rounded-r-lg"
       {...props}
     />
   ),
@@ -385,7 +385,7 @@ export default async function BlogPostPage({
               {slug === "best-ai-writing-tools" ? (
                 <>
                   <MDXRemote source={post.content.split("## How We Tested")[0]} components={components} />
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px", margin: "32px 0" }}>
+                  <div className="grid grid-cols-1 gap-4 my-8 sm:grid-cols-2 lg:grid-cols-3">
                     {[
                       { label: "BEST OVERALL", name: "Jasper AI", score: "9.0/10", desc: "Best for marketing teams. Brand voice that actually works.", link: "https://www.jasper.ai/", cta: "Try Jasper AI →" },
                       { label: "BEST FREE OPTION", name: "ChatGPT", score: "9.2/10", desc: "Most versatile. Free tier handles everyday writing well.", link: "https://chat.openai.com", cta: "Try ChatGPT →" },
@@ -405,7 +405,7 @@ export default async function BlogPostPage({
               ) : slug === "best-ai-image-generators" ? (
                 <>
                   <MDXRemote source={post.content.split("## How We Tested")[0]} components={components} />
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px", margin: "32px 0" }}>
+                  <div className="grid grid-cols-1 gap-4 my-8 sm:grid-cols-2 lg:grid-cols-3">
                     {[
                       { label: "BEST OVERALL", name: "Midjourney V7", score: "9.2/10", desc: "Unmatched artistic quality. Cinematic visuals that stop you mid-scroll.", link: "https://www.midjourney.com/", cta: "Try Midjourney →" },
                       { label: "SMARTEST GENERATOR", name: "GPT Image 1.5", score: "9.0/10", desc: "Best text rendering & prompt understanding. Free tier available.", link: "https://chatgpt.com", cta: "Try ChatGPT →" },
@@ -447,7 +447,7 @@ export default async function BlogPostPage({
                 <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#E8505B", marginBottom: "24px", borderBottom: "2px solid #E8505B", paddingBottom: "12px" }}>
                   You May Also Like:
                 </h2>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {relatedPosts.map((rp) => (
                     <div key={rp.slug}>
                       {rp.thumbnail && (
