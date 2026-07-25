@@ -383,10 +383,10 @@ export default async function BlogPostPage({
       {/* Light Content Area - article body card */}
       <div className="bg-[#F7F4F2]">
         <div className="mx-auto max-w-4xl px-4 py-10">
-          <div className="rounded-2xl bg-white p-6 md:p-10 shadow-sm ring-1 ring-gray-200">
+          <div className="overflow-hidden rounded-2xl bg-white p-6 md:p-10 shadow-sm ring-1 ring-gray-200">
 
             {/* Article Body */}
-            <article className="mx-auto max-w-3xl px-4 py-10 overflow-hidden">
+            <article className="mx-auto max-w-3xl px-4 py-10">
               {slug === "best-ai-writing-tools" ? (
                 <>
                   <MDXRemote source={post.content.split("## How We Tested")[0]} components={components} />
