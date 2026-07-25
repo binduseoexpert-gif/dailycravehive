@@ -153,8 +153,8 @@ const components = {
     />
   ),
   table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
-    <div className="-mx-4 sm:mx-0 my-8 overflow-x-auto" style={{ WebkitOverflowScrolling: "touch" }}>
-      <table {...props} />
+    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch", margin: "32px 0" }}>
+      <table style={{ minWidth: "600px" }} {...props} />
     </div>
   ),
 };
@@ -382,9 +382,8 @@ export default async function BlogPostPage({
 
       {/* Light Content Area - article body card */}
       <div className="bg-[#F7F4F2]">
-        <div className="mx-auto max-w-4xl px-4 py-10">
-          <div className="overflow-hidden rounded-2xl bg-white p-6 md:p-10 shadow-sm ring-1 ring-gray-200">
-
+      <div className="mx-auto max-w-4xl px-4 py-6 overflow-x-hidden">
+        <div className="rounded-2xl bg-white p-6 md:p-10 shadow-sm ring-1 ring-gray-200">
             {/* Article Body */}
             <article className="mx-auto max-w-3xl px-4 py-10">
               {slug === "best-ai-writing-tools" ? (
