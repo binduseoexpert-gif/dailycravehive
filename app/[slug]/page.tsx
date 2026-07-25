@@ -153,7 +153,7 @@ const components = {
     />
   ),
   table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
-    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch", margin: "32px 0" }}>
+    <div className="-mx-4 sm:mx-0 my-8 overflow-x-auto" style={{ WebkitOverflowScrolling: "touch" }}>
       <table {...props} />
     </div>
   ),
