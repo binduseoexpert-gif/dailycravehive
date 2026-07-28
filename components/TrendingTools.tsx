@@ -56,6 +56,7 @@ export default function TrendingTools() {
           <p className="text-sm text-[#777]">Pick your goal — we&apos;ll point you to the right guide</p>
         </div>
 
+        <div className="rounded-2xl bg-[#2d2d3a] p-5">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {GOALS.map((goal, i) => (
             <Link
@@ -90,6 +91,7 @@ export default function TrendingTools() {
             </Link>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );
