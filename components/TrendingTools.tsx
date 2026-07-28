@@ -82,7 +82,7 @@ export default function TrendingTools() {
               key={goal.href}
               href={goal.href}
               style={{ animation: `goalFadeUp 0.5s ease-out ${i * 0.1}s both` }}
-              className={`goal-card group relative overflow-hidden rounded-2xl bg-gradient-to-br ${goal.bg} p-6 ring-2 ring-[#1a1a2e]/20 transition-all duration-300 hover:-translate-y-1.5 ${goal.glow} ${goal.ring}`}
+              className={`goal-card group relative overflow-hidden rounded-2xl bg-gradient-to-br ${goal.bg} p-6 ring-2 ring-[#1a1a2e]/50 transition-all duration-300 hover:-translate-y-1.5 ${goal.glow} ${goal.ring}`}
             >
               {/* shine sweep on hover */}
               <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
