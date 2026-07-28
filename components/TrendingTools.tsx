@@ -1,119 +1,78 @@
 // components/TrendingTools.tsx
-// "Editor's Top Picks" — replaces the static trending list.
-// Every card links to one of your own posts. To update picks later,
-// just edit the PICKS array below (name, score, tag, blurb, href).
+// "Start Here by Goal" — evergreen, never needs updating.
+// Guides visitors to the right content based on what they want to accomplish.
 
 import Link from "next/link";
 
-const PICKS = [
+const GOALS = [
   {
-    rank: 1,
-    name: "Claude",
-    tag: "Best AI Writer",
-    score: "9.3",
-    blurb: "The most human-sounding writing of any AI tool we tested.",
-    href: "/chatgpt-vs-claude",
+    emoji: "✍️",
+    title: "I Want to Write Better Content",
+    desc: "AI writing tools that actually produce usable content — tested, scored, and ranked.",
+    cta: "See Best Writing Tools",
+    href: "/best-ai-writing-tools",
+    gradient: "from-[#E8505B]/20 to-[#E8505B]/5",
+    border: "hover:border-[#E8505B]",
   },
   {
-    rank: 2,
-    name: "Midjourney V7",
-    tag: "Best AI Images",
-    score: "9.2",
-    blurb: "Unmatched artistic quality — cinematic visuals every time.",
+    emoji: "🖼️",
+    title: "I Need to Create Images",
+    desc: "Midjourney, DALL-E, FLUX and more — which AI image generator fits your style and budget.",
+    cta: "See Best Image Tools",
     href: "/best-ai-image-generators",
+    gradient: "from-[#3b82f6]/20 to-[#3b82f6]/5",
+    border: "hover:border-[#3b82f6]",
   },
   {
-    rank: 3,
-    name: "Jasper AI",
-    tag: "Best for Marketing",
-    score: "9.0",
-    blurb: "Brand voice and content pipelines built for teams at scale.",
-    href: "/jasper-ai-review",
+    emoji: "💰",
+    title: "I Want to Earn Online",
+    desc: "Honest platform reviews with real fees, verified payouts, and anti-scam guides.",
+    cta: "See Earning Platforms",
+    href: "/best-websites-to-sell-feet-pics-online",
+    gradient: "from-[#22c55e]/20 to-[#22c55e]/5",
+    border: "hover:border-[#22c55e]",
   },
   {
-    rank: 4,
-    name: "Surfer SEO",
-    tag: "Best for SEO",
-    score: "8.5",
-    blurb: "Real-time SEO scoring that helps content actually rank.",
-    href: "/frase-vs-surfer-seo",
+    emoji: "⚔️",
+    title: "I'm Comparing Two Tools",
+    desc: "Head-to-head breakdowns — same prompts, same tests, clear winner. No bias.",
+    cta: "See All Comparisons",
+    href: "/category/comparisons",
+    gradient: "from-[#f59e0b]/20 to-[#f59e0b]/5",
+    border: "hover:border-[#f59e0b]",
   },
 ];
 
 export default function TrendingTools() {
   return (
-    <section className="relative overflow-hidden bg-[#f4f5f8]">
-      {/* ambient glow behind the cards */}
-      <div className="pointer-events-none absolute -left-24 top-8 h-72 w-72 rounded-full bg-[#E8505B]/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-pink-400/10 blur-3xl" />
-
-      {/* entrance animation keyframes */}
-      <style>{`
-        @keyframes pickFadeUp {
-          from { opacity: 0; transform: translateY(24px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .pick-card { animation: none !important; }
-        }
-      `}</style>
-
-      <div className="relative mx-auto max-w-6xl px-4 py-10">
+    <section className="bg-[#f4f5f8]">
+      <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-2">
           <h2 className="text-[24px] font-bold text-[#1a1a2e]">
-            🏆 Editor&apos;s Top Picks
+            🧭 Start Here — What Are You Looking For?
           </h2>
-          <p className="text-sm text-[#777]">Tested by us — not sponsored</p>
+          <p className="text-sm text-[#777]">Pick your goal — we'll point you to the right guide</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {PICKS.map((pick) => (
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {GOALS.map((goal) => (
             <Link
-              key={pick.rank}
-              href={pick.href}
-              style={{ animation: `pickFadeUp 0.6s ease-out ${pick.rank * 0.12}s both` }}
-              className={`pick-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e1e30] to-[#14141f] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(232,80,91,0.45)] hover:ring-[#E8505B]/60 ${
-                pick.rank === 1
-                  ? "ring-2 ring-[#E8505B]/50 shadow-[0_8px_30px_-12px_rgba(232,80,91,0.35)]"
-                  : "ring-1 ring-white/5"
-              }`}
+              key={goal.href}
+              href={goal.href}
+              className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${goal.gradient} border-2 border-transparent bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${goal.border}`}
             >
-              {pick.rank === 1 && (
-                <span className="absolute right-4 top-4 z-10 rounded-full bg-gradient-to-r from-[#E8505B] to-[#ff8a93] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-white shadow-md">
-                  👑 Top Rated
-                </span>
-              )}
-              {/* top accent line — expands on hover */}
-              <span className="absolute left-0 top-0 h-[3px] w-0 bg-gradient-to-r from-[#E8505B] to-[#ff8a93] transition-all duration-500 group-hover:w-full" />
+              <span className="text-3xl">{goal.emoji}</span>
 
-              {/* shine sweep on hover */}
-              <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+              <h3 className="mt-3 text-[18px] font-bold text-[#1a1a2e]">
+                {goal.title}
+              </h3>
 
-              {/* big faint rank number — lights up coral on hover */}
-              <span className="pointer-events-none absolute -right-2 -top-6 text-[90px] font-black leading-none text-white/5 transition-all duration-300 group-hover:text-[#E8505B]/15 group-hover:scale-110">
-                {pick.rank}
-              </span>
-
-              <span className="relative inline-block rounded-full bg-[#E8505B]/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#E8505B] transition-colors duration-300 group-hover:bg-[#E8505B] group-hover:text-white">
-                {pick.tag}
-              </span>
-
-              <div className="mt-4 flex items-baseline justify-between gap-2">
-                <h3 className="text-[19px] font-bold text-white transition group-hover:text-[#E8505B]">
-                  {pick.name}
-                </h3>
-                <span className="shrink-0 text-[20px] font-black text-[#E8505B] transition-transform duration-300 group-hover:scale-110">
-                  {pick.score}
-                  <span className="text-[12px] font-semibold text-gray-500">/10</span>
-                </span>
-              </div>
-
-              <p className="mt-2 text-[13px] leading-relaxed text-gray-400">
-                {pick.blurb}
+              <p className="mt-2 text-[14px] leading-relaxed text-[#555]">
+                {goal.desc}
               </p>
 
-              <span className="mt-4 inline-flex items-center gap-1 text-[13px] font-semibold text-[#E8505B]">
-                Read review
+              <span className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold text-[#E8505B]">
+                {goal.cta}
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </span>
             </Link>
