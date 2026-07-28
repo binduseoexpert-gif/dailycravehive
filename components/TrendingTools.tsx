@@ -50,7 +50,7 @@ export default function TrendingTools() {
 
       <div className="relative mx-auto max-w-6xl px-4 py-10">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-2">
-          <h2 className="text-[24px] font-bold text-[#1a1a2e]">
+        <h2 className="border-l-4 border-[#E8505B] pl-4 text-[24px] font-bold text-[#1a1a2e]">
             🧭 Start Here — What Are You Looking For?
           </h2>
           <p className="text-sm text-[#777]">Pick your goal — we&apos;ll point you to the right guide</p>
