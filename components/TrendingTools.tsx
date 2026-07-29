@@ -22,7 +22,7 @@ const GOALS = [
     title: "I Want to Earn Online",
     desc: "Honest platform reviews with real fees, verified payouts, and anti-scam guides.",
     cta: "See Earning Platforms",
-    href: "/best-websites-to-sell-feet-pics-online",
+    href: "/top-money-making-ideas-start-earning-from-home",
     accent: "#22c55e",
   },
   {
