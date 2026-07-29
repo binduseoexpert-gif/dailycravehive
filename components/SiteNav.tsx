@@ -19,6 +19,12 @@ const NAV_CATEGORIES = [
 // Long titles get shortened for the dropdown:
 // take the part before ":" / "(" / "–", then cap at 42 chars.
 function shortTitle(title: string) {
+   // Custom overrides for specific posts
+   const overrides: Record<string, string> = {
+    "Top 35 Money Making Ideas 2026: Start Earning From Home Today": "Money Making Ideas 2026",
+  };
+  
+  if (overrides[title]) return overrides[title];
   let t = title.split(/[:(\u2013\u2014|]/)[0].trim();
   if (t.length > 42) t = t.slice(0, 42).trimEnd() + "\u2026";
   return t;
