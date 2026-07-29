@@ -8,6 +8,16 @@ import AuthorBox from "@/components/AuthorBox";
 
 const SITE_URL = "https://www.dailycravehive.com";
 
+// Slugify function to generate IDs from heading text
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special chars
+    .replace(/\s+/g, '-')      // Replace spaces with hyphens
+    .replace(/-+/g, '-')       // Replace multiple hyphens with single
+    .trim();
+}
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((post) => ({ slug: post.slug }));
@@ -80,15 +90,36 @@ function extractRankedItems(content: string): { position: number; name: string }
 }
 
 const components = {
-  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className="mb-4 mt-12 border-b border-[#E8505B] pb-3 text-[26px] font-bold text-[#E8505B]" {...props} />
-  ),
-  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="mb-3 mt-8 text-[22px] font-bold text-[#1a1a2e]" {...props} />
-  ),
-  h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h4 className="mb-2 mt-6 text-[16px] font-bold text-[#1a1a2e]" {...props} />
-  ),
+  h2: (props: React.HTMLAttributes<HTMLHeadingElement> & { children: React.ReactNode }) => {
+    const id = slugify(String(props.children));
+    return (
+      <h2 
+        id={id}
+        className="mb-4 mt-12 border-b border-[#E8505B] pb-3 text-[26px] font-bold text-[#E8505B]" 
+        {...props} 
+      />
+    );
+  },
+  h3: (props: React.HTMLAttributes<HTMLHeadingElement> & { children: React.ReactNode }) => {
+    const id = slugify(String(props.children));
+    return (
+      <h3 
+        id={id}
+        className="mb-3 mt-8 text-[22px] font-bold text-[#1a1a2e]" 
+        {...props} 
+      />
+    );
+  },
+  h4: (props: React.HTMLAttributes<HTMLHeadingElement> & { children: React.ReactNode }) => {
+    const id = slugify(String(props.children));
+    return (
+      <h4 
+        id={id}
+        className="mb-2 mt-6 text-[16px] font-bold text-[#1a1a2e]" 
+        {...props} 
+      />
+    );
+  },
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p className="mb-5 text-[17px] leading-[1.85] text-[#1a1a2e] text-justify prose-inherit" {...props} />
   ),
@@ -131,7 +162,7 @@ const components = {
           border: "2px solid #1a1a2e",
         }}
       >
-       <table
+        <table
           style={{
             width: "100%",
             tableLayout: "auto",
@@ -257,7 +288,8 @@ export default async function BlogPostPage({
       {/* Content Area */}
       <div className="bg-[#F7F4F2]">
         <div className="mx-auto max-w-4xl px-4 py-6">
-        <div className="rounded-2xl bg-white px-4 pt-2 pb-4 sm:px-6 sm:pt-3 sm:pb-6 md:px-10 md:pt-4 md:pb-10 shadow-sm ring-1 ring-gray-200">            <article className="mx-auto max-w-3xl py-4">
+          <div className="rounded-2xl bg-white px-4 pt-2 pb-4 sm:px-6 sm:pt-3 sm:pb-6 md:px-10 md:pt-4 md:pb-10 shadow-sm ring-1 ring-gray-200">
+            <article className="mx-auto max-w-3xl py-4">
               {slug === "best-ai-writing-tools" ? (
                 <>
                   <MDXRemote source={post.content.split("## How We Tested")[0]} components={components} />
