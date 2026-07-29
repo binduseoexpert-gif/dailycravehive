@@ -81,10 +81,10 @@ function extractRankedItems(content: string): { position: number; name: string }
 
 const components = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className="mb-4 mt-12 border-b border-[#E8505B] pb-3 text-[22px] font-bold text-[#E8505B]" {...props} />
+    <h2 className="mb-4 mt-12 border-b border-[#E8505B] pb-3 text-[26px] font-bold text-[#E8505B]" {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="mb-3 mt-8 text-[18px] font-bold text-[#1a1a2e]" {...props} />
+    <h3 className="mb-3 mt-8 text-[22px] font-bold text-[#1a1a2e]" {...props} />
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4 className="mb-2 mt-6 text-[16px] font-bold text-[#1a1a2e]" {...props} />
