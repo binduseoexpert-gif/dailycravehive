@@ -5,25 +5,10 @@ import type { Metadata } from "next";
 const SITE_URL = "https://www.dailycravehive.com";
 
 const categoryMeta: Record<string, { name: string; description: string; keywords: string[] }> = {
-  "ai-writing-tools": {
-    name: "AI Writing Tools",
-    description: "Expert reviews and comparisons of the best AI writing tools in 2026. Jasper, ChatGPT, Claude, Copy.ai and more — tested and ranked.",
-    keywords: ["AI writing tools", "best AI writer", "AI content generator", "AI copywriting"],
-  },
-  "ai-image-tools": {
-    name: "AI Image Tools",
-    description: "In-depth reviews of the best AI image generators in 2026. Midjourney, DALL-E, FLUX, Firefly — real tests, honest scores.",
-    keywords: ["AI image generators", "AI art generator", "best AI image tools", "AI image creation"],
-  },
-  "ai-video-tools": {
-    name: "AI Video Tools",
-    description: "Reviews and rankings of the best AI video generation tools in 2026. Sora, Runway, Kling and more — tested with real projects.",
-    keywords: ["AI video tools", "AI video generator", "best AI video maker"],
-  },
-  "ai-coding-tools": {
-    name: "AI Coding Tools",
-    description: "Reviews and comparisons of the best AI coding assistants in 2026. Cursor, GitHub Copilot, Claude Code and more — developer tested.",
-    keywords: ["AI coding tools", "AI code assistant", "best AI for coding"],
+  reviews: {
+    name: "Reviews",
+    description: "Honest, hands-on reviews of AI tools, apps and earning platforms — real testing, real fees, no sponsored rankings.",
+    keywords: ["AI tool reviews", "honest AI reviews", "app reviews", "platform reviews 2026"],
   },
   comparisons: {
     name: "Comparisons",
@@ -32,8 +17,13 @@ const categoryMeta: Record<string, { name: string; description: string; keywords
   },
   "best-of": {
     name: "Best Of",
-    description: "Curated rankings of the best AI tools in 2026. Writing tools, image generators, and more — tested, scored, and ranked by category.",
+    description: "Curated rankings of the best AI tools, apps and platforms in 2026 — tested, scored, and ranked by category.",
     keywords: ["best AI tools 2026", "top AI tools", "AI tools ranked", "best AI software"],
+  },
+  guides: {
+    name: "Guides",
+    description: "Beginner-friendly guides and explainers — what tools are, how they work, and how to actually use them in 2026.",
+    keywords: ["AI guides", "how to use AI tools", "what is AI", "AI explained 2026"],
   },
 };
 
