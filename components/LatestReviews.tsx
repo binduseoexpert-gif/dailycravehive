@@ -7,8 +7,7 @@ export default function LatestReviews() {
   return (
     <section className="bg-white py-10">
       <div className="mx-auto w-full max-w-6xl px-4">
-      <h2 className="border-l-4 border-[#E8505B] pl-4 text-[24px] font-bold text-[#1a1a2e] mb-10">Latest Reviews & Guides</h2>
-
+      <h2 className="border-l-4 border-[#E8505B] pl-4 text-[24px] font-bold text-[#1a1a2e] mb-10">Latest Posts</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {posts.map((post) => (
             <article
@@ -40,7 +39,7 @@ export default function LatestReviews() {
                 <p className="line-clamp-2 text-sm text-gray-500">{post.excerpt}</p>
                 <div className="flex items-center justify-between">
                   <Link href={`/${post.slug}`} className="text-sm text-[#E8505B] hover:text-[#d9434d]">
-                    Read Review →
+                  Read More →
                   </Link>
                   <time className="text-sm text-gray-400">{formatDate(post.date)}</time>
                 </div>

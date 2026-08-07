@@ -1,11 +1,10 @@
 import Link from "next/link";
 
 const categoryLinks = [
-  { name: "AI Writing Tools", slug: "ai-writing-tools" },
+  { name: "Reviews", slug: "reviews" },
   { name: "Comparisons", slug: "comparisons" },
   { name: "Best Of", slug: "best-of" },
-  { name: "Lifestyle", slug: "lifestyle" },
-
+  { name: "Guides", slug: "guides" },
 ];
 
 export default function Footer() {
@@ -17,8 +16,8 @@ export default function Footer() {
             <img src="/images/logo.png" alt="DailyCraveHive" className="h-16 w-auto" />
           </Link>
           <p className="mt-5 max-w-xs text-[14px] leading-relaxed text-white/80">
-            Your daily dose of the hottest AI tools. Honest reviews, viral
-            picks, and trending tools — curated by real humans, not bots.
+            Honest reviews, comparisons and rankings of AI tools, apps and
+            websites — curated by real humans, not bots.
           </p>
         </div>
 

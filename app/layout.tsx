@@ -15,23 +15,22 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "DailyCraveHive — AI Tools Tested, Ranked & Reviewed (2026)",
+    default: "Daily Crave Hive — Honest Reviews, Comparisons & Best-Of Rankings (2026)",
     template: "%s | DailyCraveHive",
   },
 
   description:
-    "Honest AI tool reviews, rankings, and head-to-head comparisons. We test AI writing tools, image generators, coding assistants & more — so you don't have to.",
-
-  keywords: [
-    "AI tools",
-    "AI writing tools",
-    "AI image generators",
-    "best AI tools 2026",
-    "AI tool reviews",
-    "ChatGPT vs Claude",
-    "Midjourney",
-    "AI comparisons",
-  ],
+"Honest reviews, head-to-head comparisons and best-of rankings of AI tools, apps, websites and platforms. Real testing, real fees, no sponsored picks.",
+keywords: [
+  "AI tool reviews",
+  "honest reviews 2026",
+  "AI tool comparisons",
+  "best AI tools 2026",
+  "ChatGPT vs Claude",
+  "earning platform reviews",
+  "app reviews",
+  "best of rankings",
+],
 
   authors: [{ name: "DailyCraveHive", url: SITE_URL }],
   creator: "DailyCraveHive",
@@ -46,9 +45,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "DailyCraveHive",
-    title: "DailyCraveHive — AI Tools Tested, Ranked & Reviewed",
+    title: "DailyCraveHive — Honest Reviews, Comparisons & Rankings",
     description:
-      "Honest AI tool reviews, rankings, and head-to-head comparisons. We test AI writing tools, image generators & more.",
+      "Honest reviews, comparisons and best-of rankings of AI tools, apps and earning platforms — real testing, no sponsored picks.",
     images: [
       {
         url: `${SITE_URL}/images/og-default.png`,
@@ -61,9 +60,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "DailyCraveHive — AI Tools Tested, Ranked & Reviewed",
+    title: "DailyCraveHive — Honest Reviews, Comparisons & Rankings",
     description:
-      "Honest AI tool reviews, rankings, and head-to-head comparisons.",
+      "Honest reviews, comparisons and best-of rankings of AI tools, apps and earning platforms.",
     images: [`${SITE_URL}/images/og-default.png`],
   },
 
@@ -97,7 +96,7 @@ export default function RootLayout({
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
     description:
-      "AI tools reviews, rankings, and comparisons — tested by real humans.",
+      "Honest reviews, comparisons and rankings of AI tools, apps and earning platforms — tested by real humans.",
     sameAs: [],
     contactPoint: {
       "@type": "ContactPoint",

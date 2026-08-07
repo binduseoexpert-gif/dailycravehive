@@ -8,10 +8,10 @@ import { getAllPosts } from "@/lib/posts";
 // Pick which 4 categories to feature here (order matters).
 // Swap any line to change the featured categories.
 const FEATURED_CATEGORIES = [
-  { label: "AI Writing Tools", slug: "ai-writing-tools", emoji: "✍️" },
-  { label: "AI Image Tools", slug: "ai-image-tools", emoji: "🖌️" },
+  { label: "Reviews", slug: "reviews", emoji: "🔍" },
   { label: "Comparisons", slug: "comparisons", emoji: "⚔️" },
-  { label: "Lifestyle", slug: "lifestyle", emoji: "🌟" },
+  { label: "Best Of", slug: "best-of", emoji: "🏆" },
+  { label: "Guides", slug: "guides", emoji: "📚" },
 ];
 
 export default function CategoryCards() {

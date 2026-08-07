@@ -1,12 +1,11 @@
 import Link from "next/link";
 
-// Pills now link to real category pages (only categories that have content).
+// Pills link to the real format-based category pages.
 const categories = [
-  { label: "✍️ AI Writing", href: "/category/ai-writing-tools" },
-  { label: "🖌️ AI Image", href: "/category/ai-image-tools" },
-  { label: "🏆 Best Of", href: "/category/best-of" },
+  { label: "🔍 Reviews", href: "/category/reviews" },
   { label: "⚔️ Comparisons", href: "/category/comparisons" },
-  { label: "🌟 Lifestyle", href: "/category/lifestyle" },
+  { label: "🏆 Best Of", href: "/category/best-of" },
+  { label: "📚 Guides", href: "/category/guides" },
 ];
 
 export default function Hero() {
@@ -20,14 +19,14 @@ export default function Hero() {
     >
       <div className="mx-auto w-full max-w-6xl px-4 text-center">
         <span className="inline-flex items-center gap-2 rounded-full border border-[#E8505B] bg-white/80 px-4 py-1 text-xs font-semibold tracking-wide text-[#E8505B]">
-          🔥 UPDATED DAILY
+          🔥 UPDATED WEEKLY
         </span>
         <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-bold text-[#1a1a2e] md:text-5xl">
-          Your Daily Dose of the Hottest AI Tools
+          Honest Reviews, Comparisons &amp; Rankings — Worth Your Money
         </h1>
         <p className="mx-auto mt-4 max-w-3xl text-base text-[#1a1a2e] md:text-lg">
-          Discover trending AI tools, honest reviews, and viral picks — before
-          everyone else. No fluff, just the tools that actually matter.
+          We test AI tools, apps and websites so you don&apos;t have to
+          — real fees, real results, no sponsored rankings.
         </p>
 
         {/* Working search — submits to /search?q=... */}
@@ -40,14 +39,14 @@ export default function Hero() {
           <input
             type="text"
             name="q"
-            placeholder='Search AI tools & reviews... (e.g. "Jasper", "ChatGPT", "writing")'
+            placeholder='Search reviews, comparisons &amp; platforms… (e.g. "Feetify", "ChatGPT", "Jasper")'
             className="flex-1 bg-transparent px-1 py-2 text-sm text-[#1a1a2e] outline-none placeholder:text-gray-400"
           />
           <button
             type="submit"
             className="rounded-full bg-[#E8505B] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#d9434d]"
           >
-            Search Tools
+            Search
           </button>
         </form>
 
