@@ -9,19 +9,14 @@ import PostEditor from "@/components/admin/PostEditor";
 type PostType = "review" | "best-of" | "comparison" | "blog";
 
 const REVIEW_CATEGORIES = [
-  "AI Writing Tools",
-  "AI Image Tools",
-  "AI Coding Tools",
-  "AI Video Tools",
-  "AI Marketing Tools",
-  "Lifestyle",
+  "Reviews",
 ];
 
 const POST_TYPES: { id: PostType; label: string; hint: string }[] = [
   { id: "review", label: "🔍 Single Review", hint: "e.g. Jasper AI Review" },
   { id: "best-of", label: "🏆 Best Of List", hint: "e.g. Best AI Writing Tools" },
   { id: "comparison", label: "⚔️ Comparison", hint: "e.g. ChatGPT vs Claude" },
-  { id: "blog", label: "📝 Lifestyle", hint: "dating, lifestyle, general topics" },
+  { id: "blog", label: "📚 Guide", hint: "e.g. What is Jasper AI? / How-to guides" },
 ];
 
 function slugify(text: string) {
@@ -57,7 +52,7 @@ export default function NewPostPage() {
   // Inline images from editor
   const [inlineImages, setInlineImages] = useState<InlineImage[]>([]);
 
-  const [blogCategory, setBlogCategory] = useState("Lifestyle");
+  const [blogCategory, setBlogCategory] = useState("Guides");
   const effectiveCategory =
     postType === "best-of" ? "Best Of" : postType === "comparison" ? "Comparisons" : postType === "blog" ? blogCategory : category;
 

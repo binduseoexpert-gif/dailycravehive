@@ -9,11 +9,10 @@ import Navbar, { type NavGroup } from "./Navbar";
 // Categories shown in the navbar, in this order.
 // To add a new nav category later, just add a line here.
 const NAV_CATEGORIES = [
-  { label: "AI Writing Tools", slug: "ai-writing-tools" },
-  { label: "AI Image Tools", slug: "ai-image-tools" },
-  { label: "Best Of", slug: "best-of" },
+  { label: "Reviews", slug: "reviews" },
   { label: "Comparisons", slug: "comparisons" },
-  { label: "Lifestyle", slug: "lifestyle" },
+  { label: "Best Of", slug: "best-of" },
+  { label: "Guides", slug: "guides" },
 ];
 
 // Long titles get shortened for the dropdown:
