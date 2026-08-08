@@ -47,10 +47,13 @@ export default function AboutUsPage() {
               found, without sugarcoating it.
             </p>
             <p>
-              We&apos;re not backed by any company whose products we cover. We
-              don&apos;t accept paid placements in our reviews. When we recommend
-              something, it&apos;s because we actually liked using it — and when
-              something disappoints, we say that too.
+            <p>
+              We&apos;re independent, and our rankings can&apos;t be bought — no
+              company can pay to score higher or land the top spot. When we
+              recommend something, it&apos;s because we actually liked using it —
+              and when something disappoints, we say that too. Any sponsored or
+              featured content is always clearly labelled as such.
+            </p>
             </p>
           </div>
         </div>
@@ -106,8 +109,8 @@ export default function AboutUsPage() {
                 d: "Every tool gets real hands-on testing before we write a single word. We don't copy feature lists from pricing pages and call it a review.",
               },
               {
-                t: "No paid rankings.",
-                d: "Our reviews are never influenced by sponsorships. If something ranks high on our list, it earned that spot through performance — not payment.",
+                t: "Rankings can't be bought.",
+                d: "If something ranks high on our list, it earned that spot through performance — not payment. Any sponsored or featured content is always clearly labelled.",
               },
               {
                 t: "We update regularly.",
