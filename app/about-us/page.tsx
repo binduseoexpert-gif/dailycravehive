@@ -151,8 +151,7 @@ export default function AboutUsPage() {
             </p>
             <p>
               <strong>Comparisons</strong> — Detailed side-by-side breakdowns of
-              tools people frequently confuse, tested with identical prompts —
-              like ChatGPT vs Claude, Rytr vs Writesonic, Frase vs Surfer SEO.
+              tools people frequently confuse, tested with identical prompts.
             </p>
             <p>
               <strong>Best Of</strong> — Ranked roundups of the top tools, apps

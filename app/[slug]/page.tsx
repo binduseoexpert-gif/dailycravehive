@@ -66,10 +66,25 @@ export async function generateMetadata({
 
 function extractFAQs(content: string) {
   const faqs: { question: string; answer: string }[] = [];
-  const faqRegex = /<summary>(.*?)<\/summary>\s*<p>(.*?)<\/p>/gs;
+
+  // Find the FAQ section
+  const faqSection = content.split(/##\s*Frequently Asked Questions/i)[1];
+  if (!faqSection) return faqs;
+
+  // Stop at the next ## heading (e.g. "## Final Verdict")
+  const faqBlock = faqSection.split(/\n##\s/)[0];
+
+  // Match: **Question?** followed by the answer paragraph(s)
+  const regex = /\*\*(.+?\?)\*\*\s*\n+([\s\S]*?)(?=\n\*\*.+?\?\*\*|\n##|$)/g;
   let match;
-  while ((match = faqRegex.exec(content)) !== null) {
-    faqs.push({ question: match[1].trim(), answer: match[2].trim() });
+  while ((match = regex.exec(faqBlock)) !== null) {
+    const question = match[1].replace(/<[^>]+>/g, "").trim();
+    const answer = match[2]
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // strip markdown links, keep text
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (question && answer) faqs.push({ question, answer });
   }
   return faqs;
 }
