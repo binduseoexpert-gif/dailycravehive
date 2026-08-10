@@ -67,20 +67,31 @@ export async function generateMetadata({
 function extractFAQs(content: string) {
   const faqs: { question: string; answer: string }[] = [];
 
-  // Find the FAQ section
+  // Format 1: HTML <details><summary>Q</summary><p>A</p></details>
+  const htmlRegex = /<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>/g;
+  let match;
+  while ((match = htmlRegex.exec(content)) !== null) {
+    const question = match[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    const answer = match[2]
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (question && answer) faqs.push({ question, answer });
+  }
+
+  // If HTML format found FAQs, return them
+  if (faqs.length > 0) return faqs;
+
+  // Format 2 (fallback): markdown **Question?** + paragraph
   const faqSection = content.split(/##\s*Frequently Asked Questions/i)[1];
   if (!faqSection) return faqs;
-
-  // Stop at the next ## heading (e.g. "## Final Verdict")
   const faqBlock = faqSection.split(/\n##\s/)[0];
-
-  // Match: **Question?** followed by the answer paragraph(s)
-  const regex = /\*\*(.+?\?)\*\*\s*\n+([\s\S]*?)(?=\n\*\*.+?\?\*\*|\n##|$)/g;
-  let match;
-  while ((match = regex.exec(faqBlock)) !== null) {
+  const mdRegex = /\*\*(.+?\?)\*\*\s*\n+([\s\S]*?)(?=\n\*\*.+?\?\*\*|\n##|$)/g;
+  while ((match = mdRegex.exec(faqBlock)) !== null) {
     const question = match[1].replace(/<[^>]+>/g, "").trim();
     const answer = match[2]
-      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // strip markdown links, keep text
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
       .replace(/<[^>]+>/g, " ")
       .replace(/\s+/g, " ")
       .trim();
