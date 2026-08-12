@@ -37,6 +37,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <a href="mailto:alma@dailycravehive.com" className="text-[13px] text-white hover:text-[#E8505B] transition">
+                alma@dailycravehive.com
+              </a>
+            </li>
+            <li>
               <Link href="/privacy-policy" className="text-[13px] text-white hover:text-[#E8505B] transition">
                 Privacy Policy
               </Link>

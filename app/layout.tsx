@@ -101,6 +101,7 @@ export default function RootLayout({
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
+      email: "alma@dailycravehive.com",
       url: `${SITE_URL}/contact-us`,
     },
   };

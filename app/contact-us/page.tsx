@@ -142,6 +142,21 @@ export default function ContactUsPage() {
             <strong>Response Time:</strong> We typically respond within 24–48
             hours on business days.
           </p>
+
+          <div className="rounded-xl border border-[#E8505B]/20 bg-[#FDF0F1] p-5">
+            <h3 className="mb-1 text-lg font-bold text-[#1a1a2e]">
+              Prefer email?
+            </h3>
+            <p className="mb-2 text-sm text-gray-600">
+              Reach us directly at:
+            </p>
+            
+              href="mailto:alma@dailycravehive.com"
+              className="text-lg font-semibold text-[#E8505B] hover:underline"
+            >
+              alma@dailycravehive.com
+            </a>
+          </div>
         </div>
 
         {/* Right — Form */}
