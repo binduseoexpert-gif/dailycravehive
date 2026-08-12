@@ -150,7 +150,7 @@ export default function ContactUsPage() {
             <p className="mb-2 text-sm text-gray-600">
               Reach us directly at:
             </p>
-            
+            <a
               href="mailto:alma@dailycravehive.com"
               className="text-lg font-semibold text-[#E8505B] hover:underline"
             >
