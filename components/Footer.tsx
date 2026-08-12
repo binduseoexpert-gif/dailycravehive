@@ -19,6 +19,11 @@ export default function Footer() {
             Honest reviews, comparisons and rankings of AI tools, apps and
             websites — curated by real humans, not bots.
           </p>
+          <p>
+              <a href="mailto:alma@dailycravehive.com" className="text-[13px] text-white hover:text-[#E8505B] transition">
+                alma@dailycravehive.com
+              </a>
+            </p>
         </div>
 
         <div>
@@ -36,11 +41,7 @@ export default function Footer() {
                 Contact
               </Link>
             </li>
-            <li>
-              <a href="mailto:alma@dailycravehive.com" className="text-[13px] text-white hover:text-[#E8505B] transition">
-                alma@dailycravehive.com
-              </a>
-            </li>
+            
             <li>
               <Link href="/privacy-policy" className="text-[13px] text-white hover:text-[#E8505B] transition">
                 Privacy Policy
