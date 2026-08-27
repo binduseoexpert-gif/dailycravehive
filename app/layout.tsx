@@ -97,7 +97,10 @@ export default function RootLayout({
     logo: `${SITE_URL}/images/logo.png`,
     description:
       "Honest reviews, comparisons and rankings of AI tools, apps and earning platforms — tested by real humans.",
-    sameAs: [],
+      sameAs: [
+        "https://x.com/DailyCraveHive",
+        "https://www.reddit.com/user/dailycravehive/",
+      ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
