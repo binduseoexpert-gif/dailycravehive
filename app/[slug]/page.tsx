@@ -196,12 +196,45 @@ const components = {
             border: "none",
             borderRadius: 0,
             boxShadow: "none",
+            borderCollapse: "collapse",
           }}
           {...props}
         />
       </div>
     );
   },
+  thead: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <thead style={{ backgroundColor: "#1a1a2e" }} {...props} />
+  ),
+  th: (props: React.ThHTMLAttributes<HTMLTableCellElement>) => (
+    <th
+      style={{
+        padding: "14px 18px",
+        textAlign: "left",
+        fontSize: "15px",
+        fontWeight: 700,
+        color: "#ffffff",
+        borderBottom: "3px solid #E8505B",
+        verticalAlign: "middle",
+        whiteSpace: "nowrap",
+      }}
+      {...props}
+    />
+  ),
+  td: (props: React.TdHTMLAttributes<HTMLTableCellElement>) => (
+    <td
+      style={{
+        padding: "12px 18px",
+        textAlign: "left",
+        fontSize: "15px",
+        color: "#1a1a2e",
+        borderBottom: "1px solid #e8e8f0",
+        verticalAlign: "top",
+        lineHeight: 1.6,
+      }}
+      {...props}
+    />
+  ),
 };
 
 export default async function BlogPostPage({
