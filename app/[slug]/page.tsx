@@ -330,10 +330,10 @@ export default async function BlogPostPage({
         <div className="mx-auto max-w-4xl px-4 pt-8">
           <h1 className="text-[28px] font-bold leading-tight text-[#1a1a2e] md:text-[36px]">{post.title}</h1>
           <div className="mt-4 flex flex-wrap items-center gap-4 pb-5 text-[13px] text-[#888]">
-            <span className="flex items-center gap-2">
+          <Link href="/about-us" className="flex items-center gap-2 hover:opacity-80 transition">
               <span className="inline-block h-6 w-6 rounded-full bg-[#E8505B] text-center text-xs leading-6 text-white">{AUTHOR.name.charAt(0)}</span>
-              <span className="font-medium text-[#555]">{AUTHOR.name}</span>
-            </span>
+              <span className="font-medium text-[#555] hover:text-[#E8505B] transition">{AUTHOR.name}</span>
+            </Link>
             <span>Last Updated: {formatDate(post.date)}</span>
             <span>⏳ No Comments</span>
           </div>
