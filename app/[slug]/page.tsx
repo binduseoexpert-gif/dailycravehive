@@ -255,6 +255,7 @@ export default async function BlogPostPage({
     description: AUTHOR.bio,
     url: AUTHOR.url,
     jobTitle: AUTHOR.role,
+    sameAs: AUTHOR.sameAs,
   };
 
   const articleSchema = {
