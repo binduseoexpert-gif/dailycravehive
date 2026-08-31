@@ -6,7 +6,20 @@ import { Post } from "./types";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
-export function getAllPosts(): Post[] {
+// AI-niche posts: URLs live rahenge (direct link se khulenge),
+// lekin nav, homepage, category pages aur listings me nahi dikhenge.
+const HIDDEN_SLUGS = [
+  "jasper-ai-review",
+  "chatgpt-vs-claude",
+  "grammarly-vs-chatgpt",
+  "frase-vs-surfer-seo",
+  "rytr-vs-writesonic",
+  "best-ai-writing-tools",
+  "best-ai-image-generators",
+];
+
+// Internal: reads ALL posts, including hidden ones.
+function getAllPostsRaw(): Post[] {
   if (!fs.existsSync(postsDirectory)) return [];
 
   const filenames = fs.readdirSync(postsDirectory).filter((f) => f.endsWith(".mdx"));
@@ -38,9 +51,14 @@ export function getAllPosts(): Post[] {
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
+// Public: hidden posts filtered out — nav, homepage, listings sab isi ko use karte hain.
+export function getAllPosts(): Post[] {
+  return getAllPostsRaw().filter((p) => !HIDDEN_SLUGS.includes(p.slug));
+}
+
+// Uses raw list so hidden post URLs still work (no 404).
 export function getPostBySlug(slug: string): Post | undefined {
-  const posts = getAllPosts();
-  return posts.find((p) => p.slug === slug);
+  return getAllPostsRaw().find((p) => p.slug === slug);
 }
 
 export function getPostsByCategory(categorySlug: string): Post[] {
@@ -58,6 +76,7 @@ export function getAllCategories(): { name: string; slug: string }[] {
   });
   return Array.from(categoryMap.entries()).map(([slug, name]) => ({ slug, name }));
 }
+
 export function formatDate(dateStr: string): string {
   if (!dateStr) return "";
   const d = new Date(dateStr);

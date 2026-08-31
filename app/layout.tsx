@@ -15,22 +15,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "Daily Crave Hive — Honest Reviews, Comparisons & Best-Of Rankings (2026)",
+    default:
+      "Creator & Adult Platform Reviews, Comparisons & Guides (2026) | DailyCraveHive",
     template: "%s | DailyCraveHive",
   },
 
   description:
-"Honest reviews, head-to-head comparisons and best-of rankings of AI tools, apps, websites and platforms. Real testing, real fees, no sponsored picks.",
-keywords: [
-  "AI tool reviews",
-  "honest reviews 2026",
-  "AI tool comparisons",
-  "best AI tools 2026",
-  "ChatGPT vs Claude",
-  "earning platform reviews",
-  "app reviews",
-  "best of rankings",
-],
+    "Honest reviews of creator and adult platforms — real fees, payout proof, scam checks, comparisons and earning guides. Know before you pay. 18+.",
 
   authors: [{ name: "DailyCraveHive", url: SITE_URL }],
   creator: "DailyCraveHive",
@@ -45,24 +36,24 @@ keywords: [
     locale: "en_US",
     url: SITE_URL,
     siteName: "DailyCraveHive",
-    title: "DailyCraveHive — Honest Reviews, Comparisons & Rankings",
+    title: "Creator & Adult Platform Reviews, Comparisons & Guides | DailyCraveHive",
     description:
-      "Honest reviews, comparisons and best-of rankings of AI tools, apps and earning platforms — real testing, no sponsored picks.",
+      "Honest reviews of creator and adult platforms — real fees, verified payouts, scam checks and comparisons. Know before you pay. 18+.",
     images: [
       {
         url: `${SITE_URL}/images/og-default.png`,
         width: 1200,
         height: 630,
-        alt: "DailyCraveHive — AI Tools Reviews",
+        alt: "DailyCraveHive — Creator & Adult Platform Reviews",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "DailyCraveHive — Honest Reviews, Comparisons & Rankings",
+    title: "Creator & Adult Platform Reviews, Comparisons & Guides | DailyCraveHive",
     description:
-      "Honest reviews, comparisons and best-of rankings of AI tools, apps and earning platforms.",
+      "Honest reviews of creator and adult platforms — real fees, verified payouts, scam checks and comparisons. 18+.",
     images: [`${SITE_URL}/images/og-default.png`],
   },
 
@@ -96,11 +87,11 @@ export default function RootLayout({
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
     description:
-      "Honest reviews, comparisons and rankings of AI tools, apps and earning platforms — tested by real humans.",
-      sameAs: [
-        "https://x.com/DailyCraveHive",
-        "https://www.reddit.com/user/dailycravehive/",
-      ],
+      "Honest reviews, comparisons and rankings of creator and adult platforms — real fees, verified payouts and scam checks, tested by real humans.",
+    sameAs: [
+      "https://x.com/DailyCraveHive",
+      "https://www.reddit.com/user/dailycravehive/",
+    ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
@@ -125,8 +116,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
-      <link rel="icon" href="/favicon.ico" sizes="32x32" />
-      <link rel="icon" href="/icon.png" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/icon.png" />
 
         <script
           type="application/ld+json"
@@ -142,7 +133,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-white font-sans text-[#1a1a2e]">
-      <SiteNav />
+        <SiteNav />
         <main>{children}</main>
         <Footer />
       </body>

@@ -6,44 +6,91 @@
 import { useState } from "react";
 
 type Result = { emoji: string; title: string; desc: string; href: string };
+type Goal = "sell" | "compare" | "legit";
+type Priority = "fast" | "fees" | "safety";
 
-const RESULTS: Record<string, Result> = {
-  earn: {
-    emoji: "💰",
-    title: "Money Making Ideas 2026",
-    desc: "Based on your answers, this is your best starting point — 35 ideas ranked by profit potential and safety.",
-    href: "/top-money-making-ideas-start-earning-from-home",
+const RESULTS: Record<Goal, Record<Priority, Result>> = {
+  sell: {
+    fast: {
+      emoji: "⚡",
+      title: "FeetFinder Review 2026",
+      desc: "You want your first sale fast — start with the platform that has built-in buyer discovery, so buyers find you instead of the other way around.",
+      href: "/feetfinder-review",
+    },
+    fees: {
+      emoji: "💰",
+      title: "Best Platforms to Sell On (2026)",
+      desc: "You care about keeping more of what you earn — here's every major platform ranked by real fees, commissions, and payout minimums.",
+      href: "/best-websites-to-sell-feet-pics-online",
+    },
+    safety: {
+      emoji: "🛡️",
+      title: "How to Sell Safely & Anonymously",
+      desc: "Safety first — this guide covers verification, staying anonymous, spotting fake buyers, and keeping payments protected.",
+      href: "/how-to-sell-feet-pics-and-make-money",
+    },
   },
-  write: {
-    emoji: "✍️",
-    title: "Best AI Writing Tools 2026",
-    desc: "You'll want our hands-on ranking of AI writers — tested, scored, and compared on real output.",
-    href: "/best-ai-writing-tools",
+  compare: {
+    fast: {
+      emoji: "⚔️",
+      title: "All Platform Comparisons",
+      desc: "Head-to-head breakdowns with clear winners — same criteria, real numbers, no bias.",
+      href: "/category/comparisons",
+    },
+    fees: {
+      emoji: "⚔️",
+      title: "All Platform Comparisons",
+      desc: "We compare real fees, commissions, and payout terms side by side — so you can see exactly which platform costs less.",
+      href: "/category/comparisons",
+    },
+    safety: {
+      emoji: "⚔️",
+      title: "All Platform Comparisons",
+      desc: "We compare verification, buyer quality, and seller protection side by side — so you know which platform keeps you safer.",
+      href: "/category/comparisons",
+    },
   },
-  reviews: {
-    emoji: "🔍",
-    title: "Our Latest Honest Reviews",
-    desc: "You'll get the most from our in-depth, tested reviews — real fees, safety checks, and honest verdicts.",
-    href: "/category/reviews",
+  legit: {
+    fast: {
+      emoji: "🚩",
+      title: "Our Latest Honest Reviews",
+      desc: "Every review runs the same checks — verification, payout proof, and real seller complaints. Get the honest verdict before you pay.",
+      href: "/category/reviews",
+    },
+    fees: {
+      emoji: "🚩",
+      title: "Our Latest Honest Reviews",
+      desc: "We break down the real fees most reviews get wrong — subscriptions, commissions, and hidden payout minimums.",
+      href: "/category/reviews",
+    },
+    safety: {
+      emoji: "🚩",
+      title: "Our Latest Honest Reviews",
+      desc: "We check verification, privacy, and scam reports on every platform — so you know it's safe before you sign up.",
+      href: "/category/reviews",
+    },
   },
 };
 
 export default function ToolFinderQuiz() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [goal, setGoal] = useState<keyof typeof RESULTS | null>(null);
+  const [goal, setGoal] = useState<Goal | null>(null);
+  const [priority, setPriority] = useState<Priority | null>(null);
 
   const progress = step === 1 ? "33%" : step === 2 ? "66%" : "100%";
-  const result = goal ? RESULTS[goal] : null;
+  const result = goal && priority ? RESULTS[goal][priority] : null;
 
-  function pickGoal(g: keyof typeof RESULTS) {
+  function pickGoal(g: Goal) {
     setGoal(g);
     setStep(2);
   }
-  function finish() {
+  function pickPriority(p: Priority) {
+    setPriority(p);
     setStep(3);
   }
   function restart() {
     setGoal(null);
+    setPriority(null);
     setStep(1);
   }
 
@@ -58,7 +105,7 @@ export default function ToolFinderQuiz() {
             FIND YOUR MATCH
           </span>
           <h2 className="text-[26px] font-extrabold text-[#1a1a2e] md:text-[28px]">
-            Not Sure Where to Start? Take the 30-Second Quiz
+            Not Sure Which Platform Is Right for You? Take the 30-Second Quiz
           </h2>
           <p className="mt-2 text-[15px] text-[#6b6b78]">
             Answer 2 quick questions, get a personalized recommendation.
@@ -80,14 +127,14 @@ export default function ToolFinderQuiz() {
                 What&apos;s your main goal?
               </div>
               <div className="grid gap-3">
-                <button type="button" onClick={() => pickGoal("earn")} className={optClass}>
-                  <span className="text-[22px]">💰</span> Earn money online
+                <button type="button" onClick={() => pickGoal("sell")} className={optClass}>
+                  <span className="text-[22px]">💰</span> Start selling my content
                 </button>
-                <button type="button" onClick={() => pickGoal("write")} className={optClass}>
-                  <span className="text-[22px]">✍️</span> Create better content with AI
+                <button type="button" onClick={() => pickGoal("compare")} className={optClass}>
+                  <span className="text-[22px]">⚔️</span> Compare two platforms
                 </button>
-                <button type="button" onClick={() => pickGoal("reviews")} className={optClass}>
-                  <span className="text-[22px]">🔍</span> Read honest platform reviews
+                <button type="button" onClick={() => pickGoal("legit")} className={optClass}>
+                  <span className="text-[22px]">🚩</span> Check if a platform is legit
                 </button>
               </div>
             </div>
@@ -100,14 +147,14 @@ export default function ToolFinderQuiz() {
                 What matters most to you?
               </div>
               <div className="grid gap-3">
-                <button type="button" onClick={finish} className={optClass}>
-                  <span className="text-[22px]">🆓</span> Lowest cost / free options
-                </button>
-                <button type="button" onClick={finish} className={optClass}>
+                <button type="button" onClick={() => pickPriority("fast")} className={optClass}>
                   <span className="text-[22px]">⚡</span> Fastest results
                 </button>
-                <button type="button" onClick={finish} className={optClass}>
-                  <span className="text-[22px]">🛡️</span> Safety &amp; trust
+                <button type="button" onClick={() => pickPriority("fees")} className={optClass}>
+                  <span className="text-[22px]">🆓</span> Lowest fees &amp; costs
+                </button>
+                <button type="button" onClick={() => pickPriority("safety")} className={optClass}>
+                  <span className="text-[22px]">🛡️</span> Safety &amp; anonymity
                 </button>
               </div>
             </div>

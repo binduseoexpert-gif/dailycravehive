@@ -4,11 +4,19 @@
 const FAQS = [
     {
       q: "Are your reviews sponsored?",
-      a: "No. We never accept payment for rankings or positive reviews. We may earn affiliate commissions if you buy through our links, but that never changes our scores or recommendations.",
+      a: "No. We never accept payment for rankings or positive reviews. We may earn affiliate commissions if you sign up through our links, but that never changes our scores or recommendations.",
     },
     {
-      q: "How do you test the tools and platforms?",
-      a: "We sign up, pay, and use every tool hands-on, verify pricing from official sources, and score each one on the same fixed criteria — fees, safety, results, and value.",
+      q: "How do you test the platforms you review?",
+      a: "We sign up, pay the real fees, and use every platform hands-on. We verify pricing from official sources, check payout terms and seller complaints, and score each platform on the same fixed criteria — fees, payouts, safety, buyer traffic, and value.",
+    },
+    {
+      q: "Is selling content on these platforms legal?",
+      a: "Yes — selling your own content is legal in most countries as long as you're 18 or older and pass the platform's identity verification. Rules vary by country, so always check your local laws. Every platform we recommend requires age verification.",
+    },
+    {
+      q: "Do I have to show my face or reveal my identity?",
+      a: "No. Most platforms let you sell completely anonymously — no face, no real name. Platforms require ID verification for legal compliance, but that information stays private and is never shown to buyers.",
     },
     {
       q: "Do you earn money from this site?",
@@ -16,7 +24,7 @@ const FAQS = [
     },
     {
       q: "How often is the content updated?",
-      a: "We update reviews regularly as prices, features, and platforms change, so you're always reading current 2026 data.",
+      a: "We update reviews as prices, fees, and platform policies change, so you're always reading current data — every review shows its last-updated date.",
     },
   ];
   

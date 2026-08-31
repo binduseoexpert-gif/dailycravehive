@@ -1,15 +1,17 @@
 import type { MetadataRoute } from "next";
 
+const SITE_URL = "https://www.dailycravehive.com";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/admin/", "/api/"],
       },
     ],
-    sitemap: "https://www.dailycravehive.com/sitemap.xml",
-    host: "https://www.dailycravehive.com",
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

@@ -22,11 +22,11 @@ export default function Hero() {
           🔥 UPDATED WEEKLY
         </span>
         <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-bold text-[#1a1a2e] md:text-5xl">
-          Honest Reviews, Comparisons &amp; Rankings — Worth Your Money
+          Creator &amp; Adult Platforms — Honest Reviews, Comparisons, Rankings &amp; Guides
         </h1>
         <p className="mx-auto mt-4 max-w-3xl text-base text-[#1a1a2e] md:text-lg">
-          We test AI tools, apps and websites so you don&apos;t have to
-          — real fees, real results, no sponsored rankings.
+          We test earning platforms so you don&apos;t have to — real fees, verified
+          payouts, scam checks, and no sponsored rankings. 18+.
         </p>
 
         {/* Working search — submits to /search?q=... */}
@@ -39,7 +39,7 @@ export default function Hero() {
           <input
             type="text"
             name="q"
-            placeholder='Search reviews, comparisons &amp; platforms… (e.g. "Feetify", "ChatGPT", "Jasper")'
+            placeholder='Search platforms, reviews & comparisons… (e.g. "FeetFinder", "OnlyFans", "Fanvue")'
             className="flex-1 bg-transparent px-1 py-2 text-sm text-[#1a1a2e] outline-none placeholder:text-gray-400"
           />
           <button
