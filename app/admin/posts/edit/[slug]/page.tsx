@@ -15,8 +15,10 @@ export default function EditPostPage() {
 
   const [loaded, setLoaded] = useState(false);
   const [title, setTitle] = useState("");
+  const [metaTitle, setMetaTitle] = useState("");
   const [category, setCategory] = useState("");
   const [excerpt, setExcerpt] = useState("");
+  const [metaDescription, setMetaDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [keywords, setKeywords] = useState("");
   const [featured, setFeatured] = useState(false);
@@ -62,8 +64,10 @@ export default function EditPostPage() {
         if (!res.ok) throw new Error(data.error || "Could not load post");
         const fm = data.frontmatter || {};
         setTitle(fm.title || "");
+        setMetaTitle(fm.metaTitle || "");
         setCategory(fm.category || "");
         setExcerpt(fm.excerpt || "");
+        setMetaDescription(fm.metaDescription || "");
         setThumbnail(fm.thumbnail || "");
         setKeywords(Array.isArray(fm.keywords) ? fm.keywords.join("\n") : "");
         setFeatured(Boolean(fm.featured));
@@ -100,7 +104,7 @@ export default function EditPostPage() {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          title, category, excerpt,
+          title, metaTitle, category, excerpt, metaDescription,
           thumbnail: imageName ? `/images/${imageName}` : thumbnail,
           imageData, imageName,
           inlineImages: inlineImages.map((img) => ({ name: img.name, data: img.data })),
@@ -139,6 +143,12 @@ export default function EditPostPage() {
             <input className={input} value={title} onChange={(e) => setTitle(e.target.value)} />
           </div>
 
+          <div>
+            <label className={label}>Meta Title <span className="text-neutral-400 font-normal">(optional — for Google/SEO; defaults to Title)</span></label>
+            <input className={input} value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)} placeholder="Keyword-rich title for search results (50-60 chars)" />
+            <p className="mt-1 text-xs text-neutral-400">{metaTitle.length} characters {metaTitle.length > 60 ? "⚠️ may truncate in Google" : ""}</p>
+          </div>
+
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <div>
               <label className={label}>Category</label>
@@ -161,9 +171,15 @@ export default function EditPostPage() {
           </div>
 
           <div>
-            <label className={label}>Excerpt / meta description</label>
+            <label className={label}>Excerpt <span className="text-neutral-400 font-normal">(shown on cards &amp; article preview)</span></label>
             <textarea className={input} rows={2} value={excerpt} onChange={(e) => setExcerpt(e.target.value)} />
             <p className="mt-1 text-xs text-neutral-400">{excerpt.length} characters</p>
+          </div>
+
+          <div>
+            <label className={label}>Meta Description <span className="text-neutral-400 font-normal">(optional — for Google; defaults to Excerpt)</span></label>
+            <textarea className={input} rows={2} value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} placeholder="150–160 characters, keyword-rich, for search results" />
+            <p className="mt-1 text-xs text-neutral-400">{metaDescription.length} characters {metaDescription.length > 160 ? "⚠️ may truncate" : ""}</p>
           </div>
 
           <div>

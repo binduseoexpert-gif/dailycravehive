@@ -45,7 +45,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
 export async function PUT(req: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
     const { slug } = await params;
-    const { title, category, excerpt, thumbnail, keywords, featured, date, body, password, imageData, imageName, inlineImages } =
+    const { title, metaTitle, category, excerpt, metaDescription, thumbnail, keywords, featured, date, body, password, imageData, imageName, inlineImages } =
       await req.json();
 
     if (!ADMIN_SECRET || password !== ADMIN_SECRET) return NextResponse.json({ error: "Incorrect password." }, { status: 401 });
@@ -80,6 +80,8 @@ export async function PUT(req: Request, { params }: { params: Promise<{ slug: st
       `thumbnail: ${yamlStr(thumbnail || `/images/${slug}.png`)}`,
       `featured: ${featured ? "true" : "false"}`,
     ];
+    if (metaTitle && metaTitle.trim()) lines.push(`metaTitle: ${yamlStr(metaTitle)}`);
+    if (metaDescription && metaDescription.trim()) lines.push(`metaDescription: ${yamlStr(metaDescription)}`);
     if (Array.isArray(keywords) && keywords.length > 0) {
       lines.push("keywords:");
       for (const k of keywords) lines.push(`  - ${k}`);
