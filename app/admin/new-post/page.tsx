@@ -37,6 +37,8 @@ export default function NewPostPage() {
   const [slugEdited, setSlugEdited] = useState(false);
   const [category, setCategory] = useState(REVIEW_CATEGORIES[0]);
   const [excerpt, setExcerpt] = useState("");
+  const [metaTitle, setMetaTitle] = useState("");
+  const [metaDescription, setMetaDescription] = useState("");
   const [keywords, setKeywords] = useState("");
   const [featured, setFeatured] = useState(true);
   const [body, setBody] = useState("");
@@ -123,7 +125,7 @@ export default function NewPostPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          title, slug, category: effectiveCategory, excerpt,
+          title, slug, category: effectiveCategory, excerpt, metaTitle, metaDescription,
           thumbnail: imageName ? `/images/${imageName}` : thumbnail,
           imageData, imageName,
           inlineImages: inlineImages.map((img) => ({ name: img.name, data: img.data })),
@@ -178,6 +180,15 @@ export default function NewPostPage() {
             placeholder={postType === "review" ? "e.g. Notion AI Review 2026: Worth It or Overhyped? (Tested)" : postType === "best-of" ? "e.g. Best AI Video Tools in 2026 – Tested & Ranked" : postType === "comparison" ? "e.g. Midjourney vs DALL-E (2026): We Tested Both — Here's the Winner" : "e.g. How to Use AI to Plan Your Content Calendar in 2026"} />
         </div>
 
+              
+
+        <div>
+          <label className={label}>Meta Title <span className="text-neutral-400 font-normal">(optional — for Google/SEO; defaults to Title)</span></label>
+          <input className={input} value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)}
+            placeholder="Keyword-rich title for search results (50-60 chars)" />
+          <p className="mt-1 text-xs text-neutral-400">{metaTitle.length} characters {metaTitle.length > 60 ? "⚠️ may truncate in Google" : ""}</p>
+        </div>
+
         <div>
           <label className={label}>URL slug</label>
           <div className="flex items-center gap-2">
@@ -216,9 +227,15 @@ export default function NewPostPage() {
         </div>
 
         <div>
-          <label className={label}>Excerpt / meta description</label>
-          <textarea className={input} rows={2} value={excerpt} onChange={(e) => setExcerpt(e.target.value)} placeholder="150–160 characters, for SEO" />
+          <label className={label}>Excerpt <span className="text-neutral-400 font-normal">(shown on cards &amp; article preview)</span></label>
+          <textarea className={input} rows={2} value={excerpt} onChange={(e) => setExcerpt(e.target.value)} placeholder="Short summary shown on cards and previews" />
           <p className="mt-1 text-xs text-neutral-400">{excerpt.length} characters</p>
+        </div>
+
+        <div>
+          <label className={label}>Meta Description <span className="text-neutral-400 font-normal">(optional — for Google; defaults to Excerpt)</span></label>
+          <textarea className={input} rows={2} value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} placeholder="150–160 characters, keyword-rich, for search results" />
+          <p className="mt-1 text-xs text-neutral-400">{metaDescription.length} characters {metaDescription.length > 160 ? "⚠️ may truncate" : ""}</p>
         </div>
 
         <div>

@@ -10,4 +10,6 @@ export interface Post {
   keywords: string[];
   readingTime: string;
   content: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }

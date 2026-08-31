@@ -37,15 +37,15 @@ export async function generateMetadata({
     ? `${SITE_URL}${post.thumbnail}`
     : `${SITE_URL}/images/og-default.png`;
 
-  return {
-    title: post.title,
-    description: post.excerpt,
-    keywords: post.keywords || [],
+    return {
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
+      keywords: post.keywords || [],
     alternates: { canonical: postUrl },
     openGraph: {
       type: "article",
-      title: post.title,
-      description: post.excerpt,
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
       url: postUrl,
       siteName: "DailyCraveHive",
       images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
@@ -56,8 +56,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
       images: [ogImage],
     },
     robots: { index: true, follow: true },

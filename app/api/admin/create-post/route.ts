@@ -20,8 +20,8 @@ const yamlStr = (s: string) => `"${String(s).replace(/\\/g, "\\\\").replace(/"/g
 
 export async function POST(req: Request) {
   try {
-    const { title, slug, category, excerpt, thumbnail, keywords, featured, body, password, imageData, imageName, inlineImages } =
-      await req.json();
+    const { title, slug, category, excerpt, metaTitle, metaDescription, thumbnail, keywords, featured, body, password, imageData, imageName, inlineImages } =
+    await req.json();
 
     if (!ADMIN_SECRET || password !== ADMIN_SECRET) {
       return NextResponse.json({ error: "Incorrect password." }, { status: 401 });
@@ -59,6 +59,8 @@ export async function POST(req: Request) {
       `thumbnail: ${yamlStr(thumbnail || `/images/${slug}.png`)}`,
       `featured: ${featured ? "true" : "false"}`,
     ];
+    if (metaTitle && metaTitle.trim()) lines.push(`metaTitle: ${yamlStr(metaTitle)}`);
+    if (metaDescription && metaDescription.trim()) lines.push(`metaDescription: ${yamlStr(metaDescription)}`);
     if (Array.isArray(keywords) && keywords.length > 0) {
       lines.push("keywords:");
       for (const k of keywords) lines.push(`  - ${k}`);

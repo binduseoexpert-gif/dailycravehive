@@ -21,6 +21,8 @@ export function getAllPosts(): Post[] {
     return {
       slug,
       title: data.title || "",
+      metaTitle: data.metaTitle || "",
+      metaDescription: data.metaDescription || "",
       excerpt: data.excerpt || "",
       category: data.category || "",
       categorySlug: data.categorySlug || "",
