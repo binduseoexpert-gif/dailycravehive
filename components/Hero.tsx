@@ -21,11 +21,11 @@ export default function Hero() {
         <span className="inline-flex items-center gap-2 rounded-full border border-[#E8505B] bg-white/80 px-4 py-1 text-xs font-semibold tracking-wide text-[#E8505B]">
           🔥 UPDATED WEEKLY
         </span>
-        <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-bold text-[#1a1a2e] md:text-5xl">
+        <h1 className="mx-auto mt-5 max-w-4xl text-3xl font-bold text-[#1a1a2e] md:text-4xl">
           Creator &amp; Adult Platforms — Honest Reviews, Comparisons, Rankings &amp; Guides
         </h1>
         <p className="mx-auto mt-4 max-w-3xl text-base text-[#1a1a2e] md:text-lg">
-          We test earning platforms so you don&apos;t have to — real fees, verified
+          We test platforms so you don&apos;t have to — real fees, verified
           payouts, scam checks, and no sponsored rankings. 18+.
         </p>
 

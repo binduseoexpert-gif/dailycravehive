@@ -1,5 +1,5 @@
 // app/search/page.tsx
-// Real search: /search?q=jasper — matches title, excerpt, category and keywords.
+// Real search with relevance ranking: title matches rank highest, then slug, then excerpt/keywords.
 
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
@@ -20,13 +20,50 @@ export default async function SearchPage({
   const terms = query.split(/\s+/).filter(Boolean);
 
   const posts = getAllPosts();
+
+  // Score each post by where and how well the query matches.
+  // Higher score = more relevant = shown first.
+  function scorePost(p: (typeof posts)[number]): number {
+    const title = p.title.toLowerCase();
+    const slug = p.slug.toLowerCase();
+    const excerpt = (p.excerpt || "").toLowerCase();
+    const category = (p.category || "").toLowerCase();
+    const keywords = (p.keywords || []).join(" ").toLowerCase();
+
+    // A "compact" version ignores spaces so "feetfinder" matches "Feet Finder" / "FeetFinder".
+    const titleCompact = title.replace(/\s+/g, "");
+    const queryCompact = query.replace(/\s+/g, "");
+
+    let score = 0;
+
+    // Whole-query matches (strongest signals)
+    if (title === query) score += 1000;                 // exact title match
+    if (titleCompact === queryCompact) score += 800;    // exact ignoring spaces
+    if (slug === queryCompact) score += 700;            // slug is exactly the query
+    if (title.includes(query)) score += 300;            // query appears in title
+    if (titleCompact.includes(queryCompact)) score += 250;
+    if (slug.includes(queryCompact)) score += 200;      // query appears in slug
+    if (excerpt.includes(query)) score += 40;
+    if (keywords.includes(query)) score += 30;
+
+    // Per-term matches (handles multi-word queries)
+    for (const t of terms) {
+      if (title.includes(t)) score += 60;
+      if (slug.includes(t)) score += 40;
+      if (keywords.includes(t)) score += 20;
+      if (excerpt.includes(t)) score += 15;
+      if (category.includes(t)) score += 10;
+    }
+
+    return score;
+  }
+
   const results = query
-    ? posts.filter((p) => {
-        const haystack = [p.title, p.excerpt, p.category, ...(p.keywords || [])]
-          .join(" ")
-          .toLowerCase();
-        return terms.every((t) => haystack.includes(t));
-      })
+    ? posts
+        .map((p) => ({ post: p, score: scorePost(p) }))
+        .filter((r) => r.score > 0)
+        .sort((a, b) => b.score - a.score) // highest relevance first
+        .map((r) => r.post)
     : [];
 
   return (
@@ -48,7 +85,7 @@ export default async function SearchPage({
             type="text"
             name="q"
             defaultValue={q || ""}
-            placeholder="Search tools, reviews, comparisons…"
+            placeholder="Search platforms, reviews, comparisons…"
             className="w-full px-5 py-3 text-[15px] text-[#1a1a2e] outline-none"
           />
           <button
@@ -97,9 +134,9 @@ export default async function SearchPage({
         {query && results.length === 0 && (
           <div className="mt-10 rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
             <p className="text-[15px] text-[#555]">
-              No results for &ldquo;{q}&rdquo;. Try a different keyword — like a tool
-              name (&ldquo;Jasper&rdquo;, &ldquo;ChatGPT&rdquo;) or a category
-              (&ldquo;writing&rdquo;, &ldquo;comparison&rdquo;).
+              No results for &ldquo;{q}&rdquo;. Try a different keyword — like a platform
+              name (&ldquo;FeetFinder&rdquo;, &ldquo;Feetify&rdquo;) or a category
+              (&ldquo;reviews&rdquo;, &ldquo;comparisons&rdquo;).
             </p>
             <Link
               href="/"

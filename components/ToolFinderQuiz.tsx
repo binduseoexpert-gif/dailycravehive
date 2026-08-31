@@ -98,7 +98,7 @@ export default function ToolFinderQuiz() {
     "flex w-full items-center gap-3 rounded-xl border-2 border-[#e8e8f0] bg-white px-5 py-4 text-left text-[15px] font-semibold text-[#1a1a2e] transition-all hover:border-[#E8505B] hover:bg-[#FDF0F1] hover:shadow-[0_2px_10px_rgba(232,80,91,0.12)] cursor-pointer";
 
   return (
-    <section className="bg-[#F7F4F2] py-14">
+    <section className="bg-[#F7F4F2] py-10">
       <div className="mx-auto max-w-6xl px-5">
         <div className="text-center">
           <span className="mb-4 inline-block border-b-2 border-[#E8505B] pb-1 text-xs font-bold tracking-wider text-[#E8505B]">
@@ -112,7 +112,7 @@ export default function ToolFinderQuiz() {
           </p>
         </div>
 
-        <div className="mx-auto mt-7 max-w-[560px] rounded-2xl border border-[#e8e8f0] bg-white p-6 shadow-[0_4px_20px_rgba(26,26,46,0.06)] md:p-8">
+        <div className="mx-auto mt-5 max-w-[560px] rounded-2xl border border-[#e8e8f0] bg-white p-6 shadow-[0_4px_20px_rgba(26,26,46,0.06)] md:p-6">
           <div className="mb-6 h-1.5 overflow-hidden rounded-full bg-[#e8e8f0]">
             <div
               className="h-full rounded-full bg-[#E8505B] transition-all duration-300"
