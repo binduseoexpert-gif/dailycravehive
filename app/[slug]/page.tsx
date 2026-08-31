@@ -101,8 +101,13 @@ function extractFAQs(content: string) {
 }
 
 function extractScore(content: string): string | null {
-  const match = content.match(/Final Score:\s*\**\s*([\d.]+)\s*\/\s*10/i);
-  return match ? match[1] : null;
+  // "X / 10" format
+  const outOf10 = content.match(/Final Score:\s*\**\s*([\d.]+)\s*\/\s*10/i);
+  if (outOf10) return outOf10[1];
+  // "Our rating: X/5" or "earns a X out of 5" → convert to /10
+  const outOf5 = content.match(/(?:our rating|earns?\s+a)[:\s]*\**\s*([\d.]+)\s*(?:\/|out of)\s*5/i);
+  if (outOf5) return (parseFloat(outOf5[1]) * 2).toFixed(1);
+  return null;
 }
 
 function extractRankedItems(content: string): { position: number; name: string }[] {
@@ -161,9 +166,23 @@ const components = {
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
     <strong className="font-bold text-[#1a1a2e]" {...props} />
   ),
-  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a className="text-[#E8505B] underline hover:text-[#c93842]" {...props} />
-  ),
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    const href = props.href || "";
+    const isAffiliate = /feetfinder\.com\/affiliate|af_id=/i.test(href);
+    const isExternal = /^https?:\/\//i.test(href) && !href.includes("dailycravehive.com");
+    return (
+      <a
+        className="text-[#E8505B] underline hover:text-[#c93842]"
+        {...(isExternal ? { target: "_blank" } : {})}
+        {...(isAffiliate
+          ? { rel: "sponsored noopener noreferrer" }
+          : isExternal
+          ? { rel: "noopener noreferrer" }
+          : {})}
+        {...props}
+      />
+    );
+  },
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote className="my-6 border-l-4 border-[#E8505B] bg-[#FDF0F1] py-5 pl-6 pr-5 text-[15px] leading-[1.8] text-[#444450] rounded-r-lg" {...props} />
   ),
