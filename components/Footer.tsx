@@ -21,7 +21,7 @@ export default function Footer() {
           </p>
 
           <div className="mt-5 flex items-center gap-3">
-            
+            <a
               href="https://x.com/DailyCraveHive"
               target="_blank"
               rel="noopener noreferrer"
