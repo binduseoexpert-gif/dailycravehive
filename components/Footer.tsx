@@ -16,12 +16,12 @@ export default function Footer() {
             <img src="/images/logo.png" alt="DailyCraveHive" className="h-16 w-auto" />
           </Link>
           <p className="mt-5 max-w-xs text-[14px] leading-relaxed text-white/80">
-            Honest reviews, comparisons and rankings of AI tools, apps and
-            websites — curated by real humans, not bots.
+            Honest reviews, comparisons and rankings of creator and adult platforms —
+            real fees, verified payouts and scam checks, curated by real humans, not bots.
           </p>
 
           <div className="mt-5 flex items-center gap-3">
-            <a
+            
               href="https://x.com/DailyCraveHive"
               target="_blank"
               rel="noopener noreferrer"
@@ -56,11 +56,13 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link
-                href="/affiliate-disclosure"
-                className="text-[13px] text-white hover:text-[#E8505B] transition"
-              >
+              <Link href="/affiliate-disclosure" className="text-[13px] text-white hover:text-[#E8505B] transition">
                 Affiliate Disclosure
+              </Link>
+            </li>
+            <li>
+              <Link href="/disclaimer" className="text-[13px] text-white hover:text-[#E8505B] transition">
+                Disclaimer
               </Link>
             </li>
           </ul>
@@ -81,7 +83,22 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto mt-10 w-full max-w-6xl border-t border-white/10 pt-6 text-center text-sm text-white/50">
+
+      {/* 18+ + affiliate + informational disclaimer */}
+      <div className="mx-auto mt-10 w-full max-w-6xl border-t border-white/10 px-6 pt-6">
+        <p className="mx-auto max-w-3xl text-center text-[12px] leading-relaxed text-white/45">
+          <strong className="text-white/70">18+ Only.</strong> This website contains
+          information about adult-oriented and creator platforms and is intended solely
+          for individuals aged 18 or older. DailyCraveHive does not host, produce, or
+          sell adult content. Our articles may contain affiliate links, and we may earn a
+          commission at no extra cost to you — this never influences our reviews. All
+          content is for informational purposes only and is not legal or financial
+          advice; always verify current details on the official platform before making
+          any decision.
+        </p>
+      </div>
+
+      <div className="mx-auto mt-6 w-full max-w-6xl px-6 text-center text-sm text-white/50">
         © 2026 DailyCraveHive.com — All Rights Reserved
       </div>
     </footer>
