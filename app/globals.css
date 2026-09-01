@@ -288,3 +288,24 @@ body {
   .faq-item summary { font-size: 14px !important; padding: 14px 16px !important; }
   .faq-item p { padding: 14px 16px !important; font-size: 14px !important; }
 }
+/* Quick Answer box — one unified branded box */
+.quick-answer-box {
+  background: #FDF0F1;
+  border-left: 4px solid #E8505B;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+.quick-answer-box .qa-title {
+  color: #E8505B;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+.quick-answer-box p {
+  margin: 0.6rem 0 0;
+  line-height: 1.7;
+}
+.quick-answer-box strong {
+  color: #1a1a2e; /* bold text dark rahe, red nahi */
+}
