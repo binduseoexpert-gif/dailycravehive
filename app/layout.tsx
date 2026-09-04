@@ -93,7 +93,7 @@ export default function RootLayout({
       "Honest reviews, comparisons and rankings of creator and adult platforms — real fees, verified payouts and scam checks, tested by real humans.",
     sameAs: [
       "https://x.com/DailyCraveHive",
-      "https://www.reddit.com/user/dailycravehive/",
+      "https://in.pinterest.com/dailycravehive/",
     ],
     contactPoint: {
       "@type": "ContactPoint",
