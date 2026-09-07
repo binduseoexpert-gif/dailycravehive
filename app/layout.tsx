@@ -16,16 +16,16 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Creator & Adult Platform Reviews, Comparisons & Guides (2026) | DailyCraveHive",
-    template: "%s | DailyCraveHive",
+      "Creator & Adult Platform Reviews, Comparisons & Guides (2026) | Daily Crave Hive",
+    template: "%s | Daily Crave Hive",
   },
 
   description:
     "Honest reviews of creator and adult platforms — real fees, payout proof, scam checks, comparisons and earning guides. Know before you pay. 18+.",
 
-  authors: [{ name: "DailyCraveHive", url: SITE_URL }],
-  creator: "DailyCraveHive",
-  publisher: "DailyCraveHive",
+  authors: [{ name: "Daily Crave Hive", url: SITE_URL }],
+  creator: "Daily Crave Hive",
+  publisher: "Daily Crave Hive",
 
   formatDetection: {
     telephone: false,
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    siteName: "DailyCraveHive",
-    title: "Creator & Adult Platform Reviews, Comparisons & Guides | DailyCraveHive",
+    siteName: "Daily Crave Hive",
+    title: "Creator & Adult Platform Reviews, Comparisons & Guides | Daily Crave Hive",
     description:
       "Honest reviews of creator and adult platforms — real fees, verified payouts, scam checks and comparisons. Know before you pay. 18+.",
     images: [
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/images/og-default.png`,
         width: 1200,
         height: 630,
-        alt: "DailyCraveHive — Creator & Adult Platform Reviews",
+        alt: "Daily Crave Hive — Creator & Adult Platform Reviews",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Creator & Adult Platform Reviews, Comparisons & Guides | DailyCraveHive",
+    title: "Creator & Adult Platform Reviews, Comparisons & Guides | Daily Crave Hive",
     description:
       "Honest reviews of creator and adult platforms — real fees, verified payouts, scam checks and comparisons. 18+.",
     images: [`${SITE_URL}/images/og-default.png`],
@@ -86,7 +86,7 @@ export default function RootLayout({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "DailyCraveHive",
+    name: "Daily Crave Hive",
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
     description:
@@ -107,7 +107,7 @@ export default function RootLayout({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "DailyCraveHive",
+    name: "Daily Crave Hive",
     url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",
