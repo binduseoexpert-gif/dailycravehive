@@ -41,10 +41,8 @@ export default function FeaturedPosts() {
             >
               {/* big outlined number */}
               <span
-                className="shrink-0 select-none text-[38px] font-extrabold leading-none text-transparent transition-colors duration-300 md:text-[44px]"
-                style={{
-                  WebkitTextStroke: "2px #E8505B",
-                }}
+                className="shrink-0 select-none text-[38px] font-extrabold leading-none text-transparent md:text-[44px]"
+                style={{ WebkitTextStroke: "2px #E8505B" }}
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
@@ -54,17 +52,21 @@ export default function FeaturedPosts() {
                 <span className="inline-block rounded bg-[#E8505B] px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
                   {post.category}
                 </span>
-                <h3 className="mt-2 text-[16px] font-bold leading-snug text-[#1a1a2e]>
+                <h3 className="mt-2 text-[16px] font-bold leading-snug text-[#1a1a2e] transition-colors duration-300 group-hover:text-[#E8505B] md:text-[18px]">
                   {post.title}
                 </h3>
               </div>
 
               {/* meta + arrow */}
               <div className="hidden shrink-0 flex-col items-end gap-2 sm:flex">
-                <span className="text-[13px] text-[#8a8a98]">⏱ {post.readingTime}</span>
+                <span className="text-[13px] text-[#8a8a98]">
+                  {post.readingTime}
+                </span>
                 <span className="text-[14px] font-bold text-[#E8505B]">
                   Read
-                  <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                  <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1.5">
+                    →
+                  </span>
                 </span>
               </div>
             </Link>
