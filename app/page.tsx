@@ -8,6 +8,7 @@ import LegitChecker, { type CheckedPlatform } from "@/components/LegitChecker";
 import HowWeTest from "@/components/HowWeTest";
 import HomepageFAQ from "@/components/HomepageFAQ";
 import { getAllPosts } from "@/lib/posts";
+import FeaturedPosts from "@/components/FeaturedPosts";
 
 const DIVIDER = <div className="mx-auto my-0 max-w-6xl border-t-2 border-[#E8505B]" />;
 
@@ -34,6 +35,9 @@ export default function Home() {
       <Hero />
       {DIVIDER}
       <TrendingTools />
+      {DIVIDER}
+      {/* NEW: Trending/Featured posts */}
+      <FeaturedPosts />
       {DIVIDER}
 
       {/* NEW: Tool Finder Quiz */}
