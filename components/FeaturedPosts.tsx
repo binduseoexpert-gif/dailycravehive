@@ -37,11 +37,11 @@ export default function FeaturedPosts() {
             <Link
               key={post.slug}
               href={`/${post.slug}`}
-              className="group flex items-center gap-6 rounded-2xl border border-[#f0d5dc] bg-white px-6 py-5 shadow-[0_2px_10px_rgba(26,26,46,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#E8505B] hover:shadow-[0_12px_30px_-10px_rgba(232,80,91,0.3)]"
+              className="group flex items-center gap-6 rounded-2xl border border-[#f0d5dc] bg-white px-6 py-4 shadow-[0_2px_10px_rgba(26,26,46,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#E8505B] hover:shadow-[0_12px_30px_-10px_rgba(232,80,91,0.3)]"
             >
               {/* big outlined number */}
               <span
-                className="shrink-0 select-none text-[56px] font-extrabold leading-none text-transparent transition-colors duration-300 md:text-[64px]"
+                className="shrink-0 select-none text-[38px] font-extrabold leading-none text-transparent transition-colors duration-300 md:text-[44px]"
                 style={{
                   WebkitTextStroke: "2px #E8505B",
                 }}
@@ -54,7 +54,7 @@ export default function FeaturedPosts() {
                 <span className="inline-block rounded bg-[#E8505B] px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
                   {post.category}
                 </span>
-                <h3 className="mt-2 truncate-none text-[18px] font-bold leading-snug text-[#1a1a2e] transition-colors duration-300 group-hover:text-[#E8505B] md:text-[21px]">
+                className="mt-2 text-[16px] font-bold leading-snug text-[#1a1a2e] transition-colors duration-300 group-hover:text-[#E8505B] md:text-[18px]"
                   {post.title}
                 </h3>
               </div>
