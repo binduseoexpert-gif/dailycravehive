@@ -54,7 +54,7 @@ export default function FeaturedPosts() {
                 <span className="inline-block rounded bg-[#E8505B] px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
                   {post.category}
                 </span>
-                className="mt-2 text-[16px] font-bold leading-snug text-[#1a1a2e] transition-colors duration-300 group-hover:text-[#E8505B] md:text-[18px]"
+                <h3 className="mt-2 text-[16px] font-bold leading-snug text-[#1a1a2e]>
                   {post.title}
                 </h3>
               </div>
