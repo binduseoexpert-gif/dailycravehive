@@ -14,7 +14,7 @@ export default function AboutUsPage() {
       <section className="bg-gradient-to-b from-pink-200 via-pink-300 to-pink-100 py-12">
         <div className="mx-auto w-full max-w-6xl px-4 text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-[#E8505B] bg-white/80 px-4 py-1 text-xs font-semibold tracking-wide text-[#E8505B]">
-            🐝 ABOUT US
+            ABOUT US
           </span>
           <h1 className="mt-5 text-3xl font-bold text-[#1a1a2e] md:text-4xl">
             About Daily Crave Hive

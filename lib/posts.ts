@@ -9,13 +9,7 @@ const postsDirectory = path.join(process.cwd(), "content/posts");
 // AI-niche posts: URLs live rahenge (direct link se khulenge),
 // lekin nav, homepage, category pages aur listings me nahi dikhenge.
 const HIDDEN_SLUGS = [
-  "jasper-ai-review",
-  "chatgpt-vs-claude",
-  "grammarly-vs-chatgpt",
-  "frase-vs-surfer-seo",
-  "rytr-vs-writesonic",
-  "best-ai-writing-tools",
-  "best-ai-image-generators",
+
 ];
 
 // Internal: reads ALL posts, including hidden ones.
