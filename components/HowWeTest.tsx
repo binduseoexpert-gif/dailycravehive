@@ -4,7 +4,7 @@
 const STEPS = [
     { n: 1, title: "Hands-on testing", desc: "We sign up, pay, and use every tool ourselves — no reviewing from the outside." },
     { n: 2, title: "Real fees & data", desc: "We verify pricing from official sources, not outdated third-party claims." },
-    { n: 3, title: "Scored on fixed criteria", desc: "Every tool gets the same scorecard — fees, safety, results, and value." },
+    { n: 3, title: "Scored on fixed criteria", desc: "Every platform gets the same scorecard — fees, safety, results, and value." },
     { n: 4, title: "No sponsored rankings", desc: "We may earn affiliate commissions, but they never change our scores." },
   ];
   

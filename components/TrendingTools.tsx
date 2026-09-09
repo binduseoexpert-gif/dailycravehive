@@ -7,7 +7,7 @@ const GOALS = [
     title: "I Want to Start Earning as a Creator",
     desc: "The best platforms to sell your content — ranked by real fees, payouts, and buyer traffic.",
     cta: "See Best Platforms",
-    href: "/best-websites-to-sell-feet-pics-online",
+    href: "/category/best-of",
     accent: "#22c55e",
   },
   {
