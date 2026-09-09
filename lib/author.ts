@@ -5,8 +5,8 @@
 export const AUTHOR = {
   name: "Alma Martin",
   email: "alma@dailycravehive.com",
-  role: "Editor, DailyCraveHive",
-  bio: "Alma is the editor behind DailyCraveHive. She researches and tests AI writing tools, image generators, and trending platforms — comparing real pricing, features, and output quality before anything gets published on this site.",
+  role: "Editor, Daily Crave Hive",
+  bio: "Alma Martin is the editor at Daily Crave Hive. She tests creator and adult platforms hands-on — fees, payouts, safety, and scam checks — so readers get honest reviews before they sign up. 18+.",
   url: "https://www.dailycravehive.com/about-us",
   sameAs: [
     "https://www.indiehackers.com/AlmaMartin",

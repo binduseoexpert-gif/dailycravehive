@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About Daily Crave Hive | Honest Creator & Adult Platform Reviews",
+  description:
+    "Independent hands-on reviews of creator platforms — fees, payouts, scam checks. No paid rankings. 18+.",
+};
 
 export default function AboutUsPage() {
   return (
@@ -13,8 +20,9 @@ export default function AboutUsPage() {
             About Daily Crave Hive
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-[15px] text-[#1a1a2e]/70">
-            Honest, hands-on reviews of AI tools, apps, websites and platforms —
-            tested by real humans, never ranked by payment.
+            Honest, hands-on reviews of creator and adult platforms — real fees,
+            verified payouts, scam checks. Tested by humans. Rankings aren&apos;t
+            for sale. 18+.
           </p>
         </div>
       </section>
@@ -30,30 +38,24 @@ export default function AboutUsPage() {
           </h2>
           <div className="space-y-4 text-base leading-relaxed text-gray-700">
             <p>
-              Daily Crave Hive started with a simple frustration: every time we
-              searched for an honest tool recommendation, we&apos;d land on a
-              page that was either stuffed with affiliate links disguised as
-              reviews, or written by someone who clearly hadn&apos;t spent five
-              minutes actually using the product. We got tired of wasting money
-              on tools that looked impressive in screenshots but fell apart
-              during real work.
+              Daily Crave Hive started with a simple frustration: every search for
+              &quot;is this platform legit?&quot; led to either hype-filled
+              affiliate spam or a review clearly written by someone who never
+              signed up, never paid a fee, and never waited on a payout.
             </p>
             <p>So we built the site we wished existed.</p>
             <p>
-              Daily Crave Hive is an independent review platform run by editor{" "}
-              <strong>Alma Martin</strong>, who genuinely uses these tools every
-              day. We test AI writing assistants, image generators, apps, earning
-              platforms and trending websites — then tell you exactly what we
-              found, without sugarcoating it.
+              Daily Crave Hive is an independent review site run by editor{" "}
+              <strong>Alma Martin</strong>. We test creator platforms and niche
+              marketplaces the way a new seller actually experiences them —
+              signup, ID verification, fees, payout rules, safety tools, and
+              support — then tell you what&apos;s real without sugarcoating it.
             </p>
             <p>
-            <p>
-              We&apos;re independent, and our rankings can&apos;t be bought — no
-              company can pay to score higher or land the top spot. When we
-              recommend something, it&apos;s because we actually liked using it —
-              and when something disappoints, we say that too. Any sponsored or
-              featured content is always clearly labelled as such.
-            </p>
+              We&apos;re independent. No company can pay to rank higher or buy a
+              &quot;best of&quot; slot. When we recommend something, it&apos;s
+              because the product earned it. When something disappoints, we say
+              that too. Sponsored or featured content is always clearly labelled.
             </p>
           </div>
         </div>
@@ -65,30 +67,24 @@ export default function AboutUsPage() {
           </h2>
           <div className="space-y-4 text-base leading-relaxed text-gray-700">
             <p>
-              Every week, we pick up tools, apps and platforms that people are
-              actually talking about — the ones trending on Reddit, blowing up on
-              Twitter, or quietly gaining traction in niche communities. We sign
-              up and run each one through a consistent set of real-world tests.
+              Every week we pick platforms people are actually searching for —
+              OnlyFans alternatives, Fansly, Fanvue, FeetFinder, and other earning
+              marketplaces trending with creators. We sign up, pay real fees where
+              required, and run each one through the same checks.
             </p>
             <p>
-              For AI writing tools, that means generating blog posts, ad copy,
-              emails, and product descriptions using identical prompts across
-              every platform. For image tools, we compare output quality, style
-              control, and speed. For apps, websites and earning platforms, we
-              dig into real pricing, fees, safety, and whether they actually
-              deliver what they promise.
+              For subscription platforms, that means commission splits, payout
+              minimums and hold times, discovery (or the lack of it), content
+              rules, and whether beginners can actually get found. For niche
+              marketplaces, we dig into seller plans, service fees, buyer traffic,
+              anonymity, and scam risk.
             </p>
             <p>
-              Once testing is done, we score each one across five areas: output
-              quality, ease of use, features, pricing value, and how well it fits
-              the people it&apos;s designed for. Those scores feed into our final
-              rating, and the full breakdown goes into every review we publish.
-            </p>
-            <p>
-              We also produce head-to-head comparison guides for tools that get
-              frequently confused with each other — like Rytr vs Writesonic,
-              ChatGPT vs Claude, Frase vs Surfer SEO — because sometimes the best
-              way to choose is to see two options side by side.
+              Then we score each platform on fixed criteria: fees &amp; value,
+              payouts, safety, results for new creators, and overall fit. Those
+              scores feed the review. We also publish head-to-head comparisons
+              (like Fansly vs OnlyFans) and practical guides on pricing,
+              promotion, and staying anonymous.
             </p>
           </div>
         </div>
@@ -100,25 +96,25 @@ export default function AboutUsPage() {
           </h2>
           <p className="mb-6 text-base leading-relaxed text-gray-700">
             There are hundreds of review sites out there. Here&apos;s what makes
-            DailyCraveHive different:
+            Daily Crave Hive different:
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {[
               {
                 t: "We actually use what we review.",
-                d: "Every tool gets real hands-on testing before we write a single word. We don't copy feature lists from pricing pages and call it a review.",
+                d: "Every platform gets hands-on testing before we write. We don't copy fee tables from pricing pages and call it a review.",
               },
               {
                 t: "Rankings can't be bought.",
-                d: "If something ranks high on our list, it earned that spot through performance — not payment. Any sponsored or featured content is always clearly labelled.",
+                d: "If something ranks high, it earned the spot through performance — not payment. Sponsored content is always labelled.",
               },
               {
-                t: "We update regularly.",
-                d: "Tools change fast. A tool that was great six months ago might have doubled its price. We revisit articles and update pricing, features and scores.",
+                t: "We update when the product changes.",
+                d: "Fees, payouts, and policies move fast. We revisit reviews and refresh numbers, dates, and verdicts so you're not reading stale advice.",
               },
               {
-                t: "We write for real people.",
-                d: "Our readers are freelancers, small business owners, students and creators — not researchers. Simple language, actionable advice, honest opinions.",
+                t: "We write for real creators.",
+                d: "Our readers need clear answers: Is it legit? What do I actually keep? How long until payout? Can I stay anonymous? Simple language, real numbers, honest opinions.",
               },
             ].map((item) => (
               <div
@@ -141,28 +137,44 @@ export default function AboutUsPage() {
           </h2>
           <div className="space-y-4 text-base leading-relaxed text-gray-700">
             <p>
-              Daily Crave Hive is organised around what you&apos;re trying to do,
-              not just what topic a tool falls under:
+              Daily Crave Hive is organised around what you&apos;re trying to do —
+              find a legit platform, compare fees, or learn how to sell safely:
             </p>
             <p>
-              <strong>Reviews</strong> — Hands-on, single-product reviews of AI
-              tools, apps, websites and earning platforms like Jasper, Feetify,
-              FeetFinder and more — real testing, real fees, honest verdicts.
+              <strong>Reviews</strong> — Single-platform deep dives: fees,
+              payouts, legitimacy, safety, and who it&apos;s for (and who should
+              skip it).
             </p>
             <p>
-              <strong>Comparisons</strong> — Detailed side-by-side breakdowns of
-              tools people frequently confuse, tested with identical prompts.
+              <strong>Comparisons</strong> — Side-by-side breakdowns of platforms
+              people confuse — same criteria, clear winner by creator type.
             </p>
             <p>
-              <strong>Best Of</strong> — Ranked roundups of the top tools, apps
-              and platforms in each category, scored and updated as the market
-              changes.
+              <strong>Best Of</strong> — Ranked roundups of platforms that are
+              actually active and worth your time, updated as the market changes.
             </p>
             <p>
-              <strong>Guides</strong> — Beginner-friendly explainers and how-tos:
-              what a tool is, how it works, and how to actually use it.
+              <strong>Guides</strong> — How-tos on selling, pricing, promotion,
+              and privacy — including niche guides for staying anonymous and
+              getting paid.
             </p>
-            <p>More categories are on the way as we expand our testing.</p>
+          </div>
+        </div>
+
+        {/* Meet the Editor */}
+        <div>
+          <h2 className="mb-6 border-l-4 border-[#E8505B] pl-4 text-2xl font-bold text-[#1a1a2e]">
+            Meet the Editor
+          </h2>
+          <div className="space-y-4 text-base leading-relaxed text-gray-700">
+            <p>
+              <strong>Alma Martin</strong> is the editor behind Daily Crave Hive.
+              She signs up for creator platforms and niche marketplaces, verifies
+              real fees and payout rules, and checks legitimacy and safety before
+              anything gets published. Her focus is practical advice for adult
+              creators: which platforms actually pay, how payouts work, and how to
+              stay anonymous. Rankings aren&apos;t for sale.
+            </p>
           </div>
         </div>
 
@@ -173,16 +185,30 @@ export default function AboutUsPage() {
           </h2>
           <div className="space-y-4 text-base leading-relaxed text-gray-700">
             <p>
-              Some of our articles contain affiliate links. This means if you
-              click a link and make a purchase, we may earn a small commission at
-              no extra cost to you. This helps us keep the site running, pay for
-              tool subscriptions, and continue producing free content.
+              Some articles contain affiliate links. If you click and sign up or
+              purchase, we may earn a commission at no extra cost to you. That
+              helps fund testing, subscriptions, and free content.
             </p>
             <p>
-              Important: affiliate partnerships never influence our ratings or
-              recommendations. Our scores and rankings are decided before we ever
-              look at whether a tool has an affiliate program. Editorial decisions
-              are based entirely on testing and performance.
+              Important: affiliate partnerships never change our scores or
+              recommendations. Editorial decisions are based on testing and
+              performance — not who pays a commission.
+            </p>
+          </div>
+        </div>
+
+        {/* 18+ */}
+        <div>
+          <h2 className="mb-6 border-l-4 border-[#E8505B] pl-4 text-2xl font-bold text-[#1a1a2e]">
+            18+ Only
+          </h2>
+          <div className="space-y-4 text-base leading-relaxed text-gray-700">
+            <p>
+              Daily Crave Hive covers platforms used by adult creators. Content
+              and recommendations are intended for readers aged 18 or over.
+              Selling your own content is legal in most places when you&apos;re
+              18+, verified, and following platform and local rules — always check
+              your own country&apos;s laws.
             </p>
           </div>
         </div>
@@ -191,8 +217,8 @@ export default function AboutUsPage() {
         <div className="rounded-2xl bg-gradient-to-b from-pink-100 to-pink-50 p-8 text-center">
           <h2 className="text-2xl font-bold text-[#1a1a2e]">Get in Touch</h2>
           <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-gray-700">
-            Have a question? Want to suggest a tool for review? Found something we
-            got wrong? We&apos;d love to hear from you — we typically reply within
+            Have a question? Want a platform reviewed? Found something we got
+            wrong? We&apos;d love to hear from you — we typically reply within
             24–48 hours.
           </p>
           <Link
