@@ -89,7 +89,7 @@ export default function Footer() {
         <p className="mx-auto max-w-3xl text-center text-[12px] leading-relaxed text-white/45">
           <strong className="text-white/70">18+ Only.</strong> This website contains
           information about adult-oriented and creator platforms and is intended solely
-          for individuals aged 18 or older. DailyCraveHive does not host, produce, or
+          for individuals aged 18 or older. Daily Crave Hive does not host, produce, or
           sell adult content. Our articles may contain affiliate links, and we may earn a
           commission at no extra cost to you — this never influences our reviews. All
           content is for informational purposes only and is not legal or financial
