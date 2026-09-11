@@ -127,13 +127,13 @@ export default function WriteForUsPage() {
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             
-              href="#submit"
+              <a href="#submit"
               className="rounded-full bg-[#E8505B] px-7 py-3 text-sm font-bold text-white transition hover:bg-[#c93842]"
             >
               Submit a Post ↓
             </a>
             
-              href="#pricing"
+              <a href="#pricing"
               className="rounded-full bg-[#1a1a2e] px-7 py-3 text-sm font-bold text-white transition hover:opacity-90"
             >
               View Options ↓
@@ -234,7 +234,7 @@ export default function WriteForUsPage() {
                 ))}
               </ul>
               
-                href="#submit"
+                <a href="#submit"
                 className={
                   plan.popular
                     ? "mt-6 block rounded-full bg-[#E8505B] px-5 py-2.5 text-center text-sm font-bold text-white transition hover:bg-[#c93842]"
@@ -287,16 +287,16 @@ export default function WriteForUsPage() {
           which option you&apos;re interested in. We reply within 48 hours.
         </p>
         
-          href="mailto:alma@dailycravehive.com?subject=Guest%20Post%20Submission"
+         <a href="mailto:alma@dailycravehive.com?subject=Guest%20Post%20Submission"
           className="mt-6 inline-block rounded-full bg-[#E8505B] px-8 py-3.5 text-[15px] font-bold text-white transition hover:bg-[#c93842]"
         >
           📧 alma@dailycravehive.com
         </a>
         <p className="mt-4 text-[13px] text-[#8a8a98]">
           Or use our{" "}
-          <Link href="/contact-us" className="text-[#E8505B] underline">
+          <a href="/contact-us" className="text-[#E8505B] underline">
             contact page
-          </Link>
+          </a>
           . Free submissions are reviewed but not guaranteed publication.
         </p>
       </section>
