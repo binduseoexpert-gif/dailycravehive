@@ -56,6 +56,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+  <Link href="/write-for-us" className="text-[13px] text-white hover:text-[#E8505B] transition">
+    Write For Us
+  </Link>
+</li>
+            <li>
               <Link href="/affiliate-disclosure" className="text-[13px] text-white hover:text-[#E8505B] transition">
                 Affiliate Disclosure
               </Link>
