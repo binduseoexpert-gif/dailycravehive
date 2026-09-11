@@ -70,6 +70,38 @@ const PLANS = [
   },
 ];
 
+const BENEFITS = [
+  {
+    emoji: "🎯",
+    title: "Targeted Niche Audience",
+    desc: "Readers here are actively researching creator platforms, fees and payouts — not random traffic.",
+  },
+  {
+    emoji: "🔗",
+    title: "Real Editorial Standards",
+    desc: "We test platforms hands-on. Publishing here signals credibility, not a link farm.",
+  },
+  {
+    emoji: "♾️",
+    title: "Permanent Placement",
+    desc: "Approved posts stay live. No 90-day removals. Your content keeps working.",
+  },
+  {
+    emoji: "🤝",
+    title: "Fair Attribution",
+    desc: "Full author bio with your links and photo on every published post.",
+  },
+];
+
+const GUIDELINES = [
+  ["📝 Word count", "1,000+ words minimum. Well-researched beats long."],
+  ["✍️ Originality", "100% original. We check every submission — AI-generated or previously published content is rejected."],
+  ["🔗 Links", "Relevant links only, per your plan. No gambling, pharma or off-topic links. We may adjust link attributes."],
+  ["📸 Images", "2–3 royalty-free images with credits, or we add our own."],
+  ["📋 Formatting", "Proper H2/H3 headings, short paragraphs, honest claims with sources."],
+  ["🔞 Compliance", "18+ niche. Everything must be legal, verified and non-explicit — we cover platforms, not adult content itself."],
+];
+
 export default function WriteForUsPage() {
   return (
     <div className="bg-white">
@@ -116,28 +148,7 @@ export default function WriteForUsPage() {
           Why Publish on Daily Crave Hive?
         </h2>
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              emoji: "🎯",
-              title: "Targeted Niche Audience",
-              desc: "Readers here are actively researching creator platforms, fees and payouts — not random traffic.",
-            },
-            {
-              emoji: "🔗",
-              title: "Real Editorial Standards",
-              desc: "We test platforms hands-on. Publishing here signals credibility, not a link farm.",
-            },
-            {
-              emoji: "♾️",
-              title: "Permanent Placement",
-              desc: "Approved posts stay live. No 90-day removals. Your content keeps working.",
-            },
-            {
-              emoji: "🤝",
-              title: "Fair Attribution",
-              desc: "Full author bio with your links and photo on every published post.",
-            },
-          ].map((b) => (
+          {BENEFITS.map((b) => (
             <div
               key={b.title}
               className="rounded-2xl border border-[#f0d5dc] bg-[#FDF6F8] p-5"
@@ -163,7 +174,7 @@ export default function WriteForUsPage() {
           <div className="mt-6 grid gap-8 md:grid-cols-2">
             <div>
               <h3 className="mb-3 text-[17px] font-bold text-[#16a34a]">
-                ✅ We welcome
+                We welcome
               </h3>
               <ul className="space-y-2">
                 {TOPICS_YES.map((t) => (
@@ -175,7 +186,7 @@ export default function WriteForUsPage() {
             </div>
             <div>
               <h3 className="mb-3 text-[17px] font-bold text-[#E8505B]">
-                ❌ We reject
+                We reject
               </h3>
               <ul className="space-y-2">
                 {TOPICS_NO.map((t) => (
@@ -198,11 +209,11 @@ export default function WriteForUsPage() {
           {PLANS.map((plan) => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl border-2 bg-white p-6 ${
+              className={
                 plan.popular
-                  ? "border-[#E8505B] shadow-[0_12px_30px_-10px_rgba(232,80,91,0.3)]"
-                  : "border-[#f0d5dc]"
-              }`}
+                  ? "relative rounded-2xl border-2 border-[#E8505B] bg-white p-6 shadow-[0_12px_30px_-10px_rgba(232,80,91,0.3)]"
+                  : "relative rounded-2xl border-2 border-[#f0d5dc] bg-white p-6"
+              }
             >
               {plan.popular && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#E8505B] px-4 py-1 text-[11px] font-bold uppercase text-white">
@@ -224,11 +235,11 @@ export default function WriteForUsPage() {
               </ul>
               
                 href="#submit"
-                className={`mt-6 block rounded-full px-5 py-2.5 text-center text-sm font-bold transition ${
+                className={
                   plan.popular
-                    ? "bg-[#E8505B] text-white hover:bg-[#c93842]"
-                    : "border-2 border-[#E8505B] text-[#E8505B] hover:bg-[#FDF0F1]"
-                }`}
+                    ? "mt-6 block rounded-full bg-[#E8505B] px-5 py-2.5 text-center text-sm font-bold text-white transition hover:bg-[#c93842]"
+                    : "mt-6 block rounded-full border-2 border-[#E8505B] px-5 py-2.5 text-center text-sm font-bold text-[#E8505B] transition hover:bg-[#FDF0F1]"
+                }
               >
                 Get Started
               </a>
@@ -249,17 +260,15 @@ export default function WriteForUsPage() {
             Guidelines &amp; Requirements
           </h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              ["📝 Word count", "1,000+ words minimum. Well-researched beats long."],
-              ["✍️ Originality", "100% original. We check every submission — AI-generated or previously published content is rejected."],
-              ["🔗 Links", "Relevant links only, per your plan. No gambling, pharma or off-topic links. We may adjust link attributes."],
-              ["📸 Images", "2–3 royalty-free images with credits, or we add our own."],
-              ["📋 Formatting", "Proper H2/H3 headings, short paragraphs, honest claims with sources."],
-              ["🔞 Compliance", "18+ niche. Everything must be legal, verified and non-explicit — we cover platforms, not adult content itself."],
-            ].map(([title, desc]) => (
-              <div key={title} className="rounded-2xl border border-[#f0d5dc] bg-white p-5">
+            {GUIDELINES.map(([title, desc]) => (
+              <div
+                key={title}
+                className="rounded-2xl border border-[#f0d5dc] bg-white p-5"
+              >
                 <h3 className="text-[15px] font-bold text-[#1a1a2e]">{title}</h3>
-                <p className="mt-1 text-[14px] leading-relaxed text-[#6b6b78]">{desc}</p>
+                <p className="mt-1 text-[14px] leading-relaxed text-[#6b6b78]">
+                  {desc}
+                </p>
               </div>
             ))}
           </div>
