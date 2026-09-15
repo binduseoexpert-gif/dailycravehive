@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const TOPICS_YES = [
   "Creator & adult platform reviews and comparisons",
-  "OnlyFans, Fansly, Fanvue & creator platform guides",
+  "Creator platform guides",
   "Selling content online — pricing, promotion, safety",
   "Feet pic & niche marketplace selling guides",
   "Creator economy trends and monetization",
@@ -32,7 +32,7 @@ const TOPICS_NO = [
 const PLANS = [
   {
     name: "Free Guest Post",
-    price: "$0",
+    price: "$49",
     popular: false,
     features: [
       "1,000+ word original article",
