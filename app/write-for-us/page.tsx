@@ -32,7 +32,7 @@ const TOPICS_NO = [
 const PLANS = [
   {
     name: "Free Guest Post",
-    price: "$49",
+    price: "$29",
     popular: false,
     features: [
       "1,000+ word original article",
