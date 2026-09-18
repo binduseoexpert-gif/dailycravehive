@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import SiteNav from "@/components/SiteNav";
-import { DM_Sans } from "next/font/google";
+import { Quicksand } from "next/font/google";
 import "./globals.css";
 
-const inter = DM_Sans({
+const inter = Quicksand({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://www.dailycravehive.com";
+const SITE_URL = "https://www.dailycravehive.com"; 
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

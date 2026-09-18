@@ -288,3 +288,13 @@ body {
   .faq-item summary { font-size: 14px !important; padding: 14px 16px !important; }
   .faq-item p { padding: 14px 16px !important; font-size: 14px !important; }
 }
+/* Body text slightly bolder for readability */
+body {
+  font-weight: 500;
+}
+
+/* Keep real bold clearly bolder than body */
+strong,
+b {
+  font-weight: 700;
+}
