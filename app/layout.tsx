@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import SiteNav from "@/components/SiteNav";
 import { Quicksand } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const inter = Quicksand({
   variable: "--font-inter",
@@ -136,6 +137,19 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-white font-sans text-[#1a1a2e]">
+                {/* Google Analytics */}
+                <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-419ZP5ZLZV"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-419ZP5ZLZV');
+          `}
+        </Script>
         <SiteNav />
         <main>{children}</main>
         <Footer />
