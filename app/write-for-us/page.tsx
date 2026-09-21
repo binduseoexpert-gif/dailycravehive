@@ -32,7 +32,7 @@ const TOPICS_NO = [
 const PLANS = [
   {
     name: "Free Guest Post",
-    price: "$29",
+    price: "$0",
     popular: false,
     features: [
       "1,000+ word original article",
@@ -44,7 +44,7 @@ const PLANS = [
   },
   {
     name: "Standard Placement",
-    price: "$79",
+    price: "$49",
     popular: true,
     features: [
       "1,200+ word article (yours, reviewed by us)",
@@ -57,7 +57,7 @@ const PLANS = [
   },
   {
     name: "Premium Placement",
-    price: "$149",
+    price: "$99",
     popular: false,
     features: [
       "1,500+ word in-depth article",
