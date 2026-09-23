@@ -23,6 +23,7 @@ export default function EditPostPage() {
   const [keywords, setKeywords] = useState("");
   const [featured, setFeatured] = useState(false);
   const [date, setDate] = useState("");
+  const [updated, setUpdated] = useState("");
   const [body, setBody] = useState("");
   const [password, setPassword] = useState("");
   // Featured image
@@ -72,6 +73,7 @@ export default function EditPostPage() {
         setKeywords(Array.isArray(fm.keywords) ? fm.keywords.join("\n") : "");
         setFeatured(Boolean(fm.featured));
         setDate(fm.date || "");
+        setUpdated(fm.updated || "");
         setBody(data.body || "");
         setLoaded(true);
       } catch (err: unknown) {
@@ -109,7 +111,7 @@ export default function EditPostPage() {
           imageData, imageName,
           inlineImages: inlineImages.map((img) => ({ name: img.name, data: img.data })),
           keywords: keywords.split("\n").map((k) => k.trim()).filter(Boolean),
-          featured, date, body, password,
+          featured, date, updated, body, password,
         }),
       });
       const data = await res.json();
@@ -196,6 +198,10 @@ export default function EditPostPage() {
               Date
               <input className={`${input} w-40`} value={date} onChange={(e) => setDate(e.target.value)} placeholder="YYYY-MM-DD" />
             </label>
+          </div>
+          <div>
+            <label className={label}>Updated date (optional — shows &quot;Published · Updated&quot; on the post)</label>
+            <input className={input} type="date" value={updated} onChange={(e) => setUpdated(e.target.value)} />
           </div>
 
           {/* Rich Editor */}

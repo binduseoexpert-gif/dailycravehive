@@ -5,6 +5,7 @@ export interface Post {
   category: string;
   categorySlug: string;
   date: string;
+  updated?: string;
   thumbnail: string;
   featured: boolean;
   keywords: string[];

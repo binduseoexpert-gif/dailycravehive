@@ -45,8 +45,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
 export async function PUT(req: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
     const { slug } = await params;
-    const { title, metaTitle, category, excerpt, metaDescription, thumbnail, keywords, featured, date, body, password, imageData, imageName, inlineImages } =
-      await req.json();
+    const { title, metaTitle, category, excerpt, metaDescription, thumbnail, keywords, featured, date, updated, body, password, imageData, imageName, inlineImages } =
+    await req.json();
 
     if (!ADMIN_SECRET || password !== ADMIN_SECRET) return NextResponse.json({ error: "Incorrect password." }, { status: 401 });
     if (!/^[a-z0-9-]+$/.test(slug)) return NextResponse.json({ error: "Invalid slug." }, { status: 400 });
@@ -80,6 +80,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ slug: st
       `thumbnail: ${yamlStr(thumbnail || `/images/${slug}.png`)}`,
       `featured: ${featured ? "true" : "false"}`,
     ];
+    if (updated && String(updated).trim()) lines.push(`updated: ${yamlStr(updated)}`);
     if (metaTitle && metaTitle.trim()) lines.push(`metaTitle: ${yamlStr(metaTitle)}`);
     if (metaDescription && metaDescription.trim()) lines.push(`metaDescription: ${yamlStr(metaDescription)}`);
     if (Array.isArray(keywords) && keywords.length > 0) {

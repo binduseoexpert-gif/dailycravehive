@@ -249,7 +249,7 @@ export default function NewPostPage() {
         </label>
 
         {/* Template helper */}
-        <div className="rounded-lg border border-dashed border-amber-300 bg-amber-50/50 p-4">
+        {/* <div className="rounded-lg border border-dashed border-amber-300 bg-amber-50/50 p-4">
           <p className="mb-3 text-sm font-medium text-neutral-700">
             📋 Template loader — loads the full {POST_TYPES.find((t) => t.id === postType)?.label} skeleton into the body
           </p>
@@ -276,7 +276,7 @@ export default function NewPostPage() {
               Load template
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* Rich Editor */}
         <PostEditor body={body} onBodyChange={setBody} slug={slug} inlineImages={inlineImages} onInlineImagesChange={setInlineImages} />
