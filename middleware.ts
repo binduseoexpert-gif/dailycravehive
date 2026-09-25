@@ -15,9 +15,19 @@ const GONE_PATHS = new Set([
   "/best-ai-image-generators",
 ]);
 
-export function middleware(req: NextRequest) {
-  if (GONE_PATHS.has(req.nextUrl.pathname)) {
+export function proxy(req: NextRequest) {
+  const path = req.nextUrl.pathname;
+
+  if (path === "/top-money-making-ideas-start-earning-from-home") {
+    return NextResponse.redirect(
+      new URL("/how-to-sell-feet-pics-and-make-money", req.url),
+      308
+    );
+  }
+
+  if (GONE_PATHS.has(path)) {
     return new NextResponse("Gone", { status: 410 });
   }
+
   return NextResponse.next();
 }
