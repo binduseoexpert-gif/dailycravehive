@@ -4,10 +4,7 @@ import type { Metadata } from "next";
 
 const SITE_URL = "https://www.dailycravehive.com";
 
-const categoryMeta: Record
-  string,
-  { name: string; h1: string; metaTitle: string; description: string; intro: string; keywords: string[] }
-> = {
+const categoryMeta: Record<string, { name: string; h1: string; metaTitle: string; description: string; intro: string; keywords: string[] }> = {
   reviews: {
     name: "Reviews",
     h1: "Creator & Adult Platform Reviews",
