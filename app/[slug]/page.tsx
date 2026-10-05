@@ -168,7 +168,12 @@ const components = {
   ),
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const href = props.href || "";
-    const isAffiliate = /feetfinder\.com\/affiliate|af_id=/i.test(href);
+    // Flag FeetFinder affiliate links + common affiliate query params (rel=sponsored).
+    const isAffiliate =
+      /feetfinder\.com\/affiliate/i.test(href) ||
+      /[?&#]af_id=/i.test(href) ||
+      /feetfinder\.com\/[^\s"']*[?&](ref|aff|affiliate)=/i.test(href) ||
+      /[?&#](utm_medium=affiliate|ref=aff)/i.test(href);
     const isExternal = /^https?:\/\//i.test(href) && !href.includes("dailycravehive.com");
     return (
       <a
@@ -372,49 +377,7 @@ export default async function BlogPostPage({
         <div className="mx-auto max-w-4xl px-4 py-6">
           <div className="rounded-2xl bg-white px-4 pt-2 pb-4 sm:px-6 sm:pt-3 sm:pb-6 md:px-10 md:pt-4 md:pb-10 shadow-sm ring-1 ring-gray-200">
             <article className="mx-auto max-w-3xl py-4">
-              {slug === "best-ai-writing-tools" ? (
-                <>
-                  <MDXRemote source={post.content.split("## How We Tested")[0]} components={components} />
-                  <div className="grid grid-cols-1 gap-4 my-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {[
-                      { label: "BEST OVERALL", name: "Jasper AI", score: "9.0/10", desc: "Best for marketing teams. Brand voice that actually works.", link: "https://www.jasper.ai/", cta: "Try Jasper AI →" },
-                      { label: "BEST FREE OPTION", name: "ChatGPT", score: "9.2/10", desc: "Most versatile. Free tier handles everyday writing well.", link: "https://chat.openai.com", cta: "Try ChatGPT →" },
-                      { label: "MOST NATURAL WRITING", name: "Claude", score: "9.3/10", desc: "Writes like a human. Best tone control of any AI tool.", link: "https://claude.ai", cta: "Try Claude →" },
-                    ].map((tool) => (
-                      <div key={tool.name} style={{ border: "1px solid #e8e8f0", borderRadius: "12px", backgroundColor: "#ffffff", padding: "24px", textAlign: "center", boxShadow: "0 1px 3px rgba(26, 26, 46, 0.06)" }}>
-                        <p style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: "#E8505B", marginBottom: "12px" }}>{tool.label}</p>
-                        <h4 style={{ fontSize: "22px", fontWeight: 700, color: "#1a1a2e", margin: "8px 0" }}>{tool.name}</h4>
-                        <p style={{ fontSize: "15px", fontWeight: 600, color: "#E8505B", margin: "8px 0" }}>Score: {tool.score}</p>
-                        <p style={{ fontSize: "14px", color: "#555560", lineHeight: 1.6, margin: "12px 0 20px" }}>{tool.desc}</p>
-                        <a href={tool.link} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#E8505B", color: "#fff", padding: "10px 24px", borderRadius: "8px", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}>{tool.cta}</a>
-                      </div>
-                    ))}
-                  </div>
-                  <MDXRemote source={"## How We Tested" + post.content.split("## How We Tested")[1]} components={components} />
-                </>
-              ) : slug === "best-ai-image-generators" ? (
-                <>
-                  <MDXRemote source={post.content.split("## How We Tested")[0]} components={components} />
-                  <div className="grid grid-cols-1 gap-4 my-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {[
-                      { label: "BEST OVERALL", name: "Midjourney V7", score: "9.2/10", desc: "Unmatched artistic quality. Cinematic visuals that stop you mid-scroll.", link: "https://www.midjourney.com/", cta: "Try Midjourney →" },
-                      { label: "SMARTEST GENERATOR", name: "GPT Image 1.5", score: "9.0/10", desc: "Best text rendering & prompt understanding. Free tier available.", link: "https://chatgpt.com", cta: "Try ChatGPT →" },
-                      { label: "PHOTOREALISM KING", name: "FLUX.2", score: "8.8/10", desc: "Best photorealistic output. Open-source & pay-per-use.", link: "https://blackforestlabs.ai/", cta: "Try FLUX.2 →" },
-                    ].map((tool) => (
-                      <div key={tool.name} style={{ border: "1px solid #e8e8f0", borderRadius: "12px", backgroundColor: "#ffffff", padding: "24px", textAlign: "center", boxShadow: "0 1px 3px rgba(26, 26, 46, 0.06)" }}>
-                        <p style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: "#E8505B", marginBottom: "12px" }}>{tool.label}</p>
-                        <h4 style={{ fontSize: "22px", fontWeight: 700, color: "#1a1a2e", margin: "8px 0" }}>{tool.name}</h4>
-                        <p style={{ fontSize: "15px", fontWeight: 600, color: "#E8505B", margin: "8px 0" }}>Score: {tool.score}</p>
-                        <p style={{ fontSize: "14px", color: "#555560", lineHeight: 1.6, margin: "12px 0 20px" }}>{tool.desc}</p>
-                        <a href={tool.link} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", backgroundColor: "#E8505B", color: "#fff", padding: "10px 24px", borderRadius: "8px", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}>{tool.cta}</a>
-                      </div>
-                    ))}
-                  </div>
-                  <MDXRemote source={"## How We Tested" + post.content.split("## How We Tested")[1]} components={components} />
-                </>
-              ) : (
-                <MDXRemote source={post.content} components={components} />
-              )}
+              <MDXRemote source={post.content} components={components} />
 
               <div className="mt-10 rounded-lg border border-gray-200 bg-gray-50 p-5 text-[13px] leading-relaxed text-[#666]">
                 <strong className="text-[#1a1a2e]">Disclosure: </strong>

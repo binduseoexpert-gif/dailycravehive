@@ -1,15 +1,27 @@
 // components/FeaturedPosts.tsx
 // "Top Reads" — numbered list of featured posts.
-// Auto-populated from posts with `featured: true` in frontmatter.
-// Toggle "Featured post" in the admin panel to control what appears here.
+// Prefers FeetFinder / Fanvue / Fansly comparison cards; falls back to
+// other posts with `featured: true` in frontmatter.
 
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 
+const FEATURED_PRIORITY = [
+  "feetfinder-review",
+  "fanvue-vs-onlyfans",
+  "fansly-vs-onlyfans",
+  "best-websites-to-sell-feet-pics-online",
+];
+
 export default function FeaturedPosts() {
-  const featured = getAllPosts()
-    .filter((p) => p.featured)
-    .slice(0, 3);
+  const allFeatured = getAllPosts().filter((p) => p.featured);
+  const bySlug = new Map(allFeatured.map((p) => [p.slug, p]));
+
+  const prioritized = FEATURED_PRIORITY.map((slug) => bySlug.get(slug)).filter(
+    (p): p is NonNullable<typeof p> => Boolean(p)
+  );
+  const rest = allFeatured.filter((p) => !FEATURED_PRIORITY.includes(p.slug));
+  const featured = [...prioritized, ...rest].slice(0, 3);
 
   // Render nothing until at least 2 posts are featured
   if (featured.length < 2) return null;

@@ -39,9 +39,9 @@ const RESULTS: Record<Goal, Record<Priority, Result>> = {
     },
     fees: {
       emoji: "⚔️",
-      title: "All Platform Comparisons",
-      desc: "We compare real fees, commissions, and payout terms side by side — so you can see exactly which platform costs less.",
-      href: "/category/comparisons",
+      title: "Fanvue vs OnlyFans (Fees)",
+      desc: "Side-by-side fees and payouts — including Fanvue's real first-30-days-after-KYC intro rate — so you can see which platform costs less.",
+      href: "/fanvue-vs-onlyfans",
     },
     safety: {
       emoji: "⚔️",
