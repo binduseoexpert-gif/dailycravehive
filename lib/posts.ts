@@ -36,6 +36,7 @@ function getAllPostsRaw(): Post[] {
       date: data.date || "",
       updated: data.updated || "",
       thumbnail: data.thumbnail || "",
+      thumbnailCaption: data.thumbnailCaption || "",
       featured: data.featured || false,
       keywords: (data.keywords as string[]) || [],
       readingTime: stats.text,

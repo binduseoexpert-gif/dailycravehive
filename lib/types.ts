@@ -7,6 +7,7 @@ export interface Post {
   date: string;
   updated?: string;
   thumbnail: string;
+  thumbnailCaption?: string;
   featured: boolean;
   keywords: string[];
   readingTime: string;

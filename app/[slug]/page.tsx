@@ -365,9 +365,14 @@ export default async function BlogPostPage({
             </span>
           </div>
           {post.thumbnail && (
-            <div className="mb-4">
+            <figure className="mb-4">
               <img src={post.thumbnail} alt={post.title} className="w-full rounded-lg" />
-            </div>
+              {post.thumbnailCaption && (
+                <figcaption className="mt-2 text-center text-[13px] italic text-[#666680]">
+                  {post.thumbnailCaption}
+                </figcaption>
+              )}
+            </figure>
           )}
         </div>
       </div>
