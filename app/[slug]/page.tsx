@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { getAllPosts, getPostBySlug, formatDate } from "@/lib/posts";
 import { AUTHOR } from "@/lib/author";
 import AuthorBox from "@/components/AuthorBox";
+import AffiliateCTA from "@/components/AffiliateCTA";
 
 const SITE_URL = "https://www.dailycravehive.com";
 
@@ -121,6 +122,7 @@ function extractRankedItems(content: string): { position: number; name: string }
 }
 
 const components = {
+  AffiliateCTA,
   h2: (props: React.HTMLAttributes<HTMLHeadingElement> & { children: React.ReactNode }) => {
     const id = slugify(String(props.children));
     return (
