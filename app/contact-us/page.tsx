@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const SUBJECTS = [
   "General Inquiry",
-  "Suggest a Tool for Review",
+  "Suggest a Platform for Review",
   "Guest Post Pitch",
   "Advertising & Partnerships",
   "Report an Error",
@@ -82,7 +82,7 @@ export default function ContactUsPage() {
               Get in Touch
             </h2>
             <p className="leading-relaxed text-gray-700">
-              Whether you want to suggest an AI tool for us to review, report an
+              Whether you want to suggest a platform for us to review, report an
               error in one of our articles, ask about advertising or
               partnerships, or just share your feedback — drop us a message and
               we&apos;ll get back to you within 24–48 hours.
@@ -91,13 +91,12 @@ export default function ContactUsPage() {
 
           <div>
             <h2 className="mb-3 text-xl font-bold text-[#1a1a2e]">
-              Suggest a Tool for Review
+              Suggest a Platform for Review
             </h2>
             <p className="leading-relaxed text-gray-700">
-              Know an AI tool that deserves more attention? We&apos;re always
-              looking for the next hidden gem to test. Tell us the tool name,
-              what it does, and why you think it&apos;s worth covering — we&apos;ll
-              add it to our testing queue.
+              Know a creator platform or marketplace that deserves a closer look?
+              Tell us its name, what it does, and why you think it&apos;s worth
+              covering — we&apos;ll add it to our review queue.
             </p>
           </div>
 
@@ -106,9 +105,9 @@ export default function ContactUsPage() {
               Guest Posts
             </h2>
             <p className="leading-relaxed text-gray-700">
-              We accept a limited number of high-quality guest posts about AI
-              tools, comparisons, and practical AI workflows. Pitch us your topic
-              idea with a short outline — original, hands-on content only. We
+              We accept a limited number of high-quality guest posts about creator
+              platforms, fees, payouts and safety. Pitch us your topic idea with a
+              short outline — original, well-sourced content only. We
               don&apos;t publish promotional articles disguised as guides, and
               we don&apos;t accept AI-generated spam.
             </p>
@@ -119,11 +118,11 @@ export default function ContactUsPage() {
               Business &amp; Partnership Inquiries
             </h2>
             <p className="leading-relaxed text-gray-700">
-              If you&apos;re an AI tool company interested in having your product
+              If you&apos;re a platform interested in having your product
               reviewed, or if you&apos;d like to discuss advertising or a
               partnership opportunity, reach out to us. Please note: we never
               accept payment in exchange for positive reviews. All editorial
-              decisions are made independently based on our testing process.
+              decisions are made independently based on our review process.
             </p>
           </div>
 
@@ -132,7 +131,7 @@ export default function ContactUsPage() {
               Found an Error?
             </h3>
             <p className="leading-relaxed text-gray-700">
-              AI tools update their pricing and features frequently. If you spot
+              Platforms update their fees and terms frequently. If you spot
               outdated information in any of our articles, let us know and
               we&apos;ll verify and update it promptly. Accuracy matters to us.
             </p>

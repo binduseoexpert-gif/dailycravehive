@@ -50,7 +50,7 @@ export default function LegitChecker({ platforms }: { platforms: CheckedPlatform
             Is That Platform Legit? Check Instantly
           </h2>
           <p className="mt-2 text-[15px] text-[#b8b8c8]">
-            Type a platform name — we&apos;ll tell you if we&apos;ve tested it and whether it&apos;s safe.
+            Type a platform name — we&apos;ll tell you if we&apos;ve reviewed it and whether it&apos;s safe.
           </p>
 
           <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
@@ -73,7 +73,7 @@ export default function LegitChecker({ platforms }: { platforms: CheckedPlatform
 
           {result.type === "safe" && (
             <div className="mt-5 rounded-xl border border-[#2ecc71] bg-[rgba(46,204,113,0.15)] p-4 font-semibold text-[#7ee2a8]">
-              ✓ TESTED &amp; LEGIT — We&apos;ve reviewed {result.name}. {result.blurb}{" "}
+              ✓ REVIEWED &amp; LEGIT — We&apos;ve reviewed {result.name}. {result.blurb}{" "}
               <a href={`/${result.slug}`} className="text-white underline">
                 → Read our review
               </a>
@@ -81,7 +81,7 @@ export default function LegitChecker({ platforms }: { platforms: CheckedPlatform
           )}
           {result.type === "unknown" && (
             <div className="mt-5 rounded-xl border border-[#E8505B] bg-[rgba(232,80,91,0.15)] p-4 font-semibold text-[#ffa8b0]">
-              ⚠️ We haven&apos;t tested &quot;{result.name}&quot; yet. Be cautious with unverified
+              ⚠️ We haven&apos;t reviewed &quot;{result.name}&quot; yet. Be cautious with unverified
               platforms — check for ID verification and on-platform payments before you pay.{" "}
               <a href="/contact-us" className="text-white underline">
                 Request a review →

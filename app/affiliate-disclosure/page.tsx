@@ -60,25 +60,25 @@ export default function AffiliateDisclosurePage() {
             </p>
             <ul className="list-disc space-y-2 pl-6">
               <li>
-                <strong>Testing comes first.</strong> We evaluate every tool
-                through our standard testing process before even checking if an
-                affiliate programme exists.
+                <strong>Research comes first.</strong> We review every platform
+                against its published fees, terms, help pages and user reports
+                before even checking if an affiliate programme exists.
               </li>
               <li>
-                <strong>Scores are based on performance.</strong> Our ratings
-                reflect actual testing results across output quality, ease of
-                use, features, pricing value, and support.
+                <strong>Scores are based on fixed criteria.</strong> Our ratings
+                reflect fees and value, payouts, safety, results for new
+                creators, and overall fit.
               </li>
               <li>
                 <strong>
-                  We recommend tools without affiliate programmes too.
+                  We recommend platforms without affiliate programmes too.
                 </strong>{" "}
-                If a tool performs well in testing, we&apos;ll recommend it
+                If a platform holds up in our review, we&apos;ll recommend it
                 regardless of whether we earn anything from it.
               </li>
               <li>
-                <strong>We give honest negative reviews.</strong> If a tool with
-                a generous affiliate programme performs poorly, we say so.
+                <strong>We give honest negative reviews.</strong> If a platform with
+                a generous affiliate programme falls short, we say so.
                 Revenue never outweighs honesty.
               </li>
             </ul>
@@ -91,10 +91,10 @@ export default function AffiliateDisclosurePage() {
             </h2>
             <p>
               The affiliate model allows us to remain independent while keeping
-              our content free. We don&apos;t rely on tool companies to fund our
+              our content free. We don&apos;t rely on platforms to fund our
               reviews, and we don&apos;t accept payment for favourable coverage.
-              This means our recommendations are based purely on what we&apos;ve
-              experienced during testing.
+              This means our recommendations are based purely on what the
+              published fees, terms and reports show.
             </p>
           </div>
 
@@ -106,14 +106,14 @@ export default function AffiliateDisclosurePage() {
             <p>
               We understand that trust is earned, not assumed. If you ever feel
               that a review seems biased or doesn&apos;t match your experience
-              with a tool, we genuinely want to hear about it. Reach out through
+              with a platform, we genuinely want to hear about it. Reach out through
               our{" "}
               <Link href="/contact-us" className="text-[#E8505B] hover:underline">Contact page</Link>
               {" "}and we&apos;ll look into it.
             </p>
             <p className="mt-4">
               Thank you for supporting DailyCraveHive by using our links. It
-              directly helps us continue testing tools and publishing free,
+              directly helps us continue researching platforms and publishing free,
               honest reviews.
             </p>
           </div>

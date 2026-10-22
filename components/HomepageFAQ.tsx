@@ -7,8 +7,8 @@ const FAQS = [
       a: "No. We never accept payment for rankings or positive reviews. We may earn affiliate commissions if you sign up through our links, but that never changes our scores or recommendations.",
     },
     {
-      q: "How do you test the platforms you review?",
-      a: "We sign up, pay the real fees, and use every platform hands-on. We verify pricing from official sources, check payout terms and seller complaints, and score each platform on the same fixed criteria — fees, payouts, safety, buyer traffic, and value.",
+      q: "How do you review platforms?",
+      a: "We review each platform's published fees, terms and help pages, check payout rules plus user and press reports, and score each platform on the same fixed criteria — fees, payouts, safety, buyer traffic, and value.",
     },
     {
       q: "Is selling content on these platforms legal?",
@@ -20,7 +20,7 @@ const FAQS = [
     },
     {
       q: "Do you earn money from this site?",
-      a: "Yes, through affiliate commissions when readers sign up via our links — at no extra cost to you. This funds our testing and never influences our honest opinions.",
+      a: "Yes, through affiliate commissions when readers sign up via our links — at no extra cost to you. This funds our research and never influences our honest opinions.",
     },
     {
       q: "How often is the content updated?",

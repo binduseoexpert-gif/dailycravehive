@@ -91,7 +91,7 @@ export default function RootLayout({
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
     description:
-      "Honest reviews, comparisons and rankings of creator and adult platforms — real fees, verified payouts and scam checks, tested by real humans.",
+      "Honest reviews, comparisons and rankings of creator and adult platforms — real fees, verified payouts and and scam checks, based on published terms and reports.",
     sameAs: [
       "https://x.com/DailyCraveHive",
       "https://in.pinterest.com/dailycravehive/",

@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Daily Crave Hive | Honest Creator & Adult Platform Reviews",
   description:
-    "Independent hands-on reviews of creator platforms — fees, payouts, scam checks. No paid rankings. 18+.",
+    "Independent reviews of creator and adult platforms based on published fees, terms, help pages and reports. No paid rankings. 18+.",
 };
 
 export default function AboutUsPage() {
@@ -20,9 +20,9 @@ export default function AboutUsPage() {
             About Daily Crave Hive
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-[15px] text-[#1a1a2e]/70">
-            Honest, hands-on reviews of creator and adult platforms — real fees,
-            verified payouts, scam checks. Tested by humans. Rankings aren&apos;t
-            for sale. 18+.
+            Honest reviews of creator and adult platforms — fees, payouts, safety
+            and scam checks, based on published terms and reports. Rankings
+            aren&apos;t for sale. 18+.
           </p>
         </div>
       </section>
@@ -40,16 +40,18 @@ export default function AboutUsPage() {
             <p>
               Daily Crave Hive started with a simple frustration: every search for
               &quot;is this platform legit?&quot; led to either hype-filled
-              affiliate spam or a review clearly written by someone who never
-              signed up, never paid a fee, and never waited on a payout.
+              affiliate spam or a review that never checked the actual fees,
+              payout rules or terms.
             </p>
             <p>So we built the site we wished existed.</p>
             <p>
               Daily Crave Hive is an independent review site run by editor{" "}
-              <strong>Alma Martin</strong>. We test creator platforms and niche
-              marketplaces the way a new seller actually experiences them —
-              signup, ID verification, fees, payout rules, safety tools, and
-              support — then tell you what&apos;s real without sugarcoating it.
+              <strong>Alma Martin</strong>. We review creator platforms and niche
+              marketplaces from a new seller&apos;s point of view — ID
+              verification rules, fees, payout rules, safety tools, and support —
+              using each platform&apos;s published fees, terms and help pages plus
+              user and press reports, then tell you what&apos;s real without
+              sugarcoating it.
             </p>
             <p>
               We&apos;re independent. No company can pay to rank higher or buy a
@@ -69,8 +71,9 @@ export default function AboutUsPage() {
             <p>
               Every week we pick platforms people are actually searching for —
               OnlyFans alternatives, Fansly, Fanvue, FeetFinder, and other earning
-              marketplaces trending with creators. We sign up, pay real fees where
-              required, and run each one through the same checks.
+              marketplaces trending with creators. We read their published fees,
+              terms and help pages, check user and press reports, and run each one
+              through the same checks.
             </p>
             <p>
               For subscription platforms, that means commission splits, payout
@@ -101,8 +104,8 @@ export default function AboutUsPage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {[
               {
-                t: "We actually use what we review.",
-                d: "Every platform gets hands-on testing before we write. We don't copy fee tables from pricing pages and call it a review.",
+                t: "We check the source, not the hype.",
+                d: "Every review is built on the platform's own published fees, terms and help pages, plus user and press reports. We say where a figure comes from, and when we couldn't confirm it.",
               },
               {
                 t: "Rankings can't be bought.",
@@ -168,10 +171,9 @@ export default function AboutUsPage() {
           </h2>
           <div className="space-y-4 text-base leading-relaxed text-gray-700">
             <p>
-              <strong>Alma Martin</strong> is the editor behind Daily Crave Hive.
-              She signs up for creator platforms and niche marketplaces, verifies
-              real fees and payout rules, and checks legitimacy and safety before
-              anything gets published. Her focus is practical advice for adult
+              <strong>Alma Martin</strong> is the editor at Daily Crave Hive. She
+              reviews creator and adult platforms - fees, payouts, safety and more
+              - so readers get honest guides before they sign up. Her focus is practical advice for adult
               creators: which platforms actually pay, how payouts work, and how to
               stay anonymous. Rankings aren&apos;t for sale.
             </p>
@@ -187,12 +189,12 @@ export default function AboutUsPage() {
             <p>
               Some articles contain affiliate links. If you click and sign up or
               purchase, we may earn a commission at no extra cost to you. That
-              helps fund testing, subscriptions, and free content.
+              helps fund research and free content.
             </p>
             <p>
               Important: affiliate partnerships never change our scores or
-              recommendations. Editorial decisions are based on testing and
-              performance — not who pays a commission.
+              recommendations. Editorial decisions are based on published fees, terms,
+              help pages and reports — not who pays a commission.
             </p>
           </div>
         </div>

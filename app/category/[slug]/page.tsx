@@ -30,7 +30,7 @@ const categoryMeta: Record<string, { name: string; h1: string; metaTitle: string
     h1: "Best Creator Platforms & Sites",
     metaTitle: "Best Creator Platforms 2026: Top Sites to Earn Online",
     description:
-      "Our ranked picks for the best creator and adult platforms — from selling feet pics to fan subscriptions. Tested rankings matched to your goals for 2026.",
+      "Our ranked picks for the best creator and adult platforms — from selling feet pics to fan subscriptions. Independent rankings matched to your goals for 2026.",
     intro:
       "Rankings without criteria are just opinions, so every list here is built on the same scorecard: fees, payout reliability, buyer traffic and beginner-friendliness. Platforms move up and down as the data changes — these lists get updated, not abandoned.",
     keywords: ["best creator platforms 2026", "best sites to sell feet pics", "best fan platforms", "top adult creator sites"],

@@ -36,7 +36,7 @@ export default function Home() {
     .map((p) => ({
       name: toolNameFromTitle(p.title),
       slug: p.slug,
-      blurb: "See our honest, hands-on breakdown before you sign up.",
+      blurb: "See our honest breakdown before you sign up.",
     }));
 
   const bySlug = new Map(allReviewed.map((p) => [p.slug, p]));
@@ -71,7 +71,7 @@ export default function Home() {
       <LegitChecker platforms={reviewedPlatforms} />
       {DIVIDER}
 
-      {/* NEW: How We Test (E-E-A-T) */}
+      {/* NEW: How We Review (E-E-A-T) */}
       <HowWeTest />
       {DIVIDER}
 

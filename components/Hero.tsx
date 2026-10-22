@@ -25,8 +25,8 @@ export default function Hero() {
           Creator &amp; Adult Platforms — Honest Reviews, Comparisons, Rankings &amp; Guides
         </h1>
         <p className="mx-auto mt-4 max-w-3xl text-base text-[#1a1a2e] md:text-lg">
-          We test platforms so you don&apos;t have to — real fees, verified
-          payouts, scam checks, and no sponsored rankings. 18+.
+          Honest guides before you sign up — published fees, payout rules,
+          scam checks, and no sponsored rankings. 18+.
         </p>
 
         {/* Working search — submits to /search?q=... */}

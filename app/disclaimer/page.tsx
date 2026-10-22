@@ -36,7 +36,7 @@ export default function DisclaimerPage() {
             <h2 className="mb-2 text-xl font-bold text-[#1a1a2e]">Informational Purposes Only</h2>
             <p>
               All content on DailyCraveHive is provided for general informational and
-              educational purposes only. While we test platforms and verify details to the
+              educational purposes only. While we review platforms and verify details to the
               best of our ability, we make no guarantees about the accuracy, completeness,
               or timeliness of any information. Platform fees, features, payout terms, and
               policies change frequently — always confirm current details directly on the

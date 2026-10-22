@@ -79,7 +79,7 @@ const BENEFITS = [
   {
     emoji: "🔗",
     title: "Real Editorial Standards",
-    desc: "We test platforms hands-on. Publishing here signals credibility, not a link farm.",
+    desc: "We review platforms against published terms. Publishing here signals credibility, not a link farm.",
   },
   {
     emoji: "♾️",

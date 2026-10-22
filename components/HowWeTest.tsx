@@ -1,9 +1,9 @@
 // components/HowWeTest.tsx
-// E-E-A-T trust section — explains the testing methodology. Server component (static).
+// E-E-A-T trust section — explains the review methodology. Server component (static).
 
 const STEPS = [
-    { n: 1, title: "Hands-on testing", desc: "We sign up, pay, and use every tool ourselves — no reviewing from the outside." },
-    { n: 2, title: "Real fees & data", desc: "We verify pricing from official sources, not outdated third-party claims." },
+    { n: 1, title: "Published terms & help pages", desc: "We read each platform's own fees, terms and help pages before we write." },
+    { n: 2, title: "User & press reports", desc: "We check what creators and reporters say, and label anything we couldn't confirm." },
     { n: 3, title: "Scored on fixed criteria", desc: "Every platform gets the same scorecard — fees, safety, results, and value." },
     { n: 4, title: "No sponsored rankings", desc: "We may earn affiliate commissions, but they never change our scores." },
   ];
@@ -18,7 +18,7 @@ const STEPS = [
                 OUR METHOD
               </span>
               <h2 className="text-[26px] font-extrabold text-[#1a1a2e] md:text-[28px]">
-                How We Actually Test
+                How We Review Platforms
               </h2>
               <p className="mb-6 mt-2 text-[15px] text-[#6b6b78]">
                 No guesswork, no payments for rankings. Here&apos;s the process behind every review.
@@ -39,8 +39,8 @@ const STEPS = [
             </div>
   
             <div className="rounded-2xl bg-[#1a1a2e] p-8 text-center text-white">
-              <div className="text-[44px] font-extrabold leading-none text-[#E8505B]">50+</div>
-              <div className="mt-1 text-[13px] text-[#b8b8c8]">Tools tested hands-on</div>
+              <div className="text-[44px] font-extrabold leading-none text-[#E8505B]">18+</div>
+              <div className="mt-1 text-[13px] text-[#b8b8c8]">Adults-only, honest guides</div>
               <hr className="my-[18px] border-t border-[#3a3a4d]" />
               <div className="text-[44px] font-extrabold leading-none text-[#E8505B]">$0</div>
               <div className="mt-1 text-[13px] text-[#b8b8c8]">Paid for rankings</div>

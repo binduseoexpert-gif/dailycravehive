@@ -14,7 +14,7 @@ export default function Newsletter() {
               🐝 New Here? Start With Our Best Guides
             </h2>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#555]">
-              Honest, hands-on reviews — no hype, no sponsored rankings. These two
+              Honest reviews — no hype, no sponsored rankings. These two
               guides are the fastest way to find the right platform for you.
             </p>
           </div>
