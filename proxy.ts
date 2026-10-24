@@ -1,32 +1,35 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// Old AI-niche URLs — permanently removed (410 Gone)
-const GONE_PATHS = new Set([
-  "/category/ai-writing-tools",
-  "/category/ai-image-tools",
-  "/category/lifestyle",
-  "/jasper-ai-review",
-  "/chatgpt-vs-claude",
-  "/grammarly-vs-chatgpt",
-  "/frase-vs-surfer-seo",
-  "/rytr-vs-writesonic",
-  "/best-ai-writing-tools",
-  "/best-ai-image-generators",
-]);
+// Old AI-niche / off-topic URLs: single-hop 301 to the closest DCH page.
+// Trailing-slash variants are resolved here directly (no chain).
+const LEGACY_REDIRECTS: Record<string, string> = {
+  "/frase-vs-surfer-seo": "/category/reviews",
+  "/grammarly-vs-chatgpt": "/category/reviews",
+  "/rytr-vs-writesonic": "/category/reviews",
+  "/chatgpt-vs-claude": "/category/reviews",
+  "/jasper-ai-review": "/category/reviews",
+  "/best-ai-image-generators": "/category/best-of",
+  "/best-ai-writing-tools": "/category/best-of",
+  "/top-money-making-ideas-start-earning-from-home": "/how-to-sell-feet-pics-and-make-money",
+  "/category/ai-image-tools": "/category/reviews",
+  "/category/ai-writing-tools": "/category/reviews",
+  "/category/lifestyle": "/category/guides",
+};
 
 export function proxy(req: NextRequest) {
-  const path = req.nextUrl.pathname;
+  const raw = req.nextUrl.pathname;
+  const hasSlash = raw.length > 1 && raw.endsWith("/");
+  const path = hasSlash ? raw.replace(/\/+$/, "") : raw;
 
-  if (path === "/top-money-making-ideas-start-earning-from-home") {
-    return NextResponse.redirect(
-      new URL("/how-to-sell-feet-pics-and-make-money", req.url),
-      308
-    );
+  const target = LEGACY_REDIRECTS[path];
+  if (target) {
+    return NextResponse.redirect(new URL(target, "https://www.dailycravehive.com"), 301);
   }
 
-  if (GONE_PATHS.has(path)) {
-    return new NextResponse("Gone", { status: 410 });
+  // Preserve default trailing-slash normalization (skipTrailingSlashRedirect is on)
+  if (hasSlash && !path.startsWith("/api") && !path.startsWith("/_next")) {
+    return NextResponse.redirect(new URL(path + req.nextUrl.search, req.url), 308);
   }
 
   return NextResponse.next();

@@ -39,7 +39,7 @@ export async function generateMetadata({
     : `${SITE_URL}/images/og-default.png`;
 
     return {
-      title: post.metaTitle || post.title,
+      title: post.metaTitle ? { absolute: post.metaTitle } : post.title,
       description: post.metaDescription || post.excerpt,
       keywords: post.keywords || [],
     alternates: { canonical: postUrl },
