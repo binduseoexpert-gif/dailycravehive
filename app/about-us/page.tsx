@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "About Daily Crave Hive | Honest Creator & Adult Platform Reviews",
   description:
     "Independent reviews of creator and adult platforms based on published fees, terms, help pages and reports. No paid rankings. 18+.",
+  alternates: { canonical: "https://www.dailycravehive.com/about-us" },
 };
 
 export default function AboutUsPage() {

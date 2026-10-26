@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How Daily Crave Hive collects, uses, and protects personal information when you visit the site.",
+  alternates: { canonical: "https://www.dailycravehive.com/privacy-policy" },
+  robots: { index: true, follow: true },
+};
+
 export default function PrivacyPolicyPage() {
     return (
       <div className="bg-white">

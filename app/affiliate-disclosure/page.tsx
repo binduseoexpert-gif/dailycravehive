@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Affiliate Disclosure",
+  description:
+    "How Daily Crave Hive makes money. Some links are affiliate links and may earn a commission. That does not change our reviews.",
+  alternates: { canonical: "https://www.dailycravehive.com/affiliate-disclosure" },
+  robots: { index: true, follow: true },
+};
 
 export default function AffiliateDisclosurePage() {
   return (

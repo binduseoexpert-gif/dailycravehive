@@ -3,12 +3,21 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://www.dailycravehive.com";
 
+function postLastModified(date: string, updated?: string): Date {
+  const stamps = [updated, date]
+    .filter((value): value is string => Boolean(value))
+    .map((value) => new Date(value))
+    .filter((value) => !Number.isNaN(value.getTime()));
+  stamps.sort((a, b) => b.getTime() - a.getTime());
+  return stamps[0] ?? new Date();
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
 
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${SITE_URL}/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: postLastModified(post.date, post.updated),
     changeFrequency: "weekly",
     priority: post.featured ? 0.9 : 0.7,
   }));
