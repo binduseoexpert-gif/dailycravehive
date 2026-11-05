@@ -2,16 +2,19 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // Retired AI-tool URLs. 410 (not a 301) so Google drops them.
-// A 301 into an unrelated category was a soft 404. The older
-// trailing-slash 308 that then 410'd was a Search Console redirect error.
+// Trailing-slash variants are normalized to the same path before lookup.
 const GONE_PATHS = new Set([
   "/best-ai-image-generators",
   "/best-ai-writing-tools",
   "/jasper-ai-review",
   "/chatgpt-vs-claude",
   "/frase-vs-surfer-seo",
+  "/frase-vs-surferseo",
   "/grammarly-vs-chatgpt",
   "/rytr-vs-writesonic",
+  "/rytr-review",
+  "/writesonic-review",
+  "/surfer-seo-review",
   "/category/ai-image-tools",
   "/category/ai-writing-tools",
 ]);
@@ -21,8 +24,10 @@ const LEGACY_REDIRECTS: Record<string, string> = {
   "/top-money-making-ideas-start-earning-from-home":
     "/how-to-sell-feet-pics-and-make-money",
   // Old lifestyle category. One 301 to /category/guides, which is 200.
-  // Handled before trailing-slash normalization so it cannot chain.
   "/category/lifestyle": "/category/guides",
+  // Company URL canonicals (also listed in next.config redirects)
+  "/about-us": "/about",
+  "/contact-us": "/contact",
 };
 
 const GONE_HTML = `<!DOCTYPE html>

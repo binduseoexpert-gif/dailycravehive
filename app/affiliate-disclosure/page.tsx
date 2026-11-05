@@ -117,7 +117,7 @@ export default function AffiliateDisclosurePage() {
               that a review seems biased or doesn&apos;t match your experience
               with a platform, we genuinely want to hear about it. Reach out through
               our{" "}
-              <Link href="/contact-us" className="text-[#E8505B] hover:underline">Contact page</Link>
+              <Link href="/contact" className="text-[#E8505B] hover:underline">Contact page</Link>
               {" "}and we&apos;ll look into it.
             </p>
             <p className="mt-4">

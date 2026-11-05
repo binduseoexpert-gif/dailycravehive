@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Daily Crave Hive | Honest Creator & Adult Platform Reviews",
+  title: "About Daily Crave Hive — Platform Reviews",
   description:
-    "Independent reviews of creator and adult platforms based on published fees, terms, help pages and reports. No paid rankings. 18+.",
-  alternates: { canonical: "https://www.dailycravehive.com/about-us" },
+    "Independent creator and adult platform reviews based on published fees, terms and reports. No paid rankings. 18+.",
+  alternates: { canonical: "https://www.dailycravehive.com/about" },
 };
 
 export default function AboutUsPage() {
@@ -225,7 +225,7 @@ export default function AboutUsPage() {
             24–48 hours.
           </p>
           <Link
-            href="/contact-us"
+            href="/contact"
             className="mt-6 inline-block rounded-full bg-[#E8505B] px-8 py-3 font-semibold text-white transition hover:bg-[#d4454e]"
           >
             Contact Us →

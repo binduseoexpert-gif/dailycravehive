@@ -15,9 +15,13 @@ const SITE_URL = "https://www.dailycravehive.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
+  alternates: {
+    canonical: SITE_URL,
+  },
+
   title: {
     default:
-      "Creator & Adult Platform Reviews, Comparisons & Guides (2026) | Daily Crave Hive",
+      "Creator Platform Reviews, Fees & Guides (2026)",
     template: "%s | Daily Crave Hive",
   },
 
@@ -37,7 +41,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Daily Crave Hive",
-    title: "Creator & Adult Platform Reviews, Comparisons & Guides | Daily Crave Hive",
+    title: "Creator Platform Reviews, Fees & Guides (2026)",
     description:
       "Honest reviews of creator and adult platforms — real fees, verified payouts, scam checks and comparisons. Know before you pay. 18+.",
     images: [
@@ -52,7 +56,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Creator & Adult Platform Reviews, Comparisons & Guides | Daily Crave Hive",
+    title: "Creator Platform Reviews, Fees & Guides (2026)",
     description:
       "Honest reviews of creator and adult platforms — real fees, verified payouts, scam checks and comparisons. 18+.",
     images: [`${SITE_URL}/images/og-default.png`],
@@ -91,7 +95,7 @@ export default function RootLayout({
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
     description:
-      "Honest reviews, comparisons and rankings of creator and adult platforms — real fees, verified payouts and and scam checks, based on published terms and reports.",
+      "Honest reviews, comparisons and rankings of creator and adult platforms — real fees, verified payouts and scam checks, based on published terms and reports.",
     sameAs: [
       "https://x.com/DailyCraveHive",
       "https://in.pinterest.com/dailycravehive/",
@@ -100,21 +104,16 @@ export default function RootLayout({
       "@type": "ContactPoint",
       contactType: "customer support",
       email: "alma@dailycravehive.com",
-      url: `${SITE_URL}/contact-us`,
+      url: `${SITE_URL}/contact`,
     },
   };
 
-  // WebSite Schema with SearchAction
+  // WebSite Schema (no SearchAction — /search is noindex)
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Daily Crave Hive",
     url: SITE_URL,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_URL}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   return (

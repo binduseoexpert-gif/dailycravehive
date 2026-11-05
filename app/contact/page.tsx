@@ -1,6 +1,6 @@
 "use client";
 
-// app/contact-us/page.tsx
+// app/contact/page.tsx
 // Contact form wired to Web3Forms — submissions arrive in your email inbox.
 
 import { useState } from "react";

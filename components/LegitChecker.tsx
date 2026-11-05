@@ -83,7 +83,7 @@ export default function LegitChecker({ platforms }: { platforms: CheckedPlatform
             <div className="mt-5 rounded-xl border border-[#E8505B] bg-[rgba(232,80,91,0.15)] p-4 font-semibold text-[#ffa8b0]">
               ⚠️ We haven&apos;t reviewed &quot;{result.name}&quot; yet. Be cautious with unverified
               platforms — check for ID verification and on-platform payments before you pay.{" "}
-              <a href="/contact-us" className="text-white underline">
+              <a href="/contact" className="text-white underline">
                 Request a review →
               </a>
             </div>

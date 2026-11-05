@@ -95,7 +95,7 @@ export default function DisclaimerPage() {
             <h2 className="mb-2 text-xl font-bold text-[#1a1a2e]">Contact</h2>
             <p>
               Questions about this disclaimer? Reach us through our{" "}
-              <Link href="/contact-us" className="text-[#E8505B] underline">
+              <Link href="/contact" className="text-[#E8505B] underline">
                 Contact page
               </Link>
               .

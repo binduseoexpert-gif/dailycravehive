@@ -294,7 +294,7 @@ export default function WriteForUsPage() {
         </a>
         <p className="mt-4 text-[13px] text-[#8a8a98]">
           Or use our{" "}
-          <a href="/contact-us" className="text-[#E8505B] underline">
+          <a href="/contact" className="text-[#E8505B] underline">
             contact page
           </a>
           . Free submissions are reviewed but not guaranteed publication.

@@ -41,7 +41,7 @@ export default function Newsletter() {
             💡 Want a platform reviewed or have a question?
           </p>
           <Link
-            href="/contact-us"
+            href="/contact"
             className="shrink-0 rounded-full bg-[#1a1a2e] px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-[#E8505B] hover:shadow-lg"
           >
             Contact Us →
