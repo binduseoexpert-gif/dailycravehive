@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Daily Crave Hive — Platform Reviews",
+  title: { absolute: "About Daily Crave Hive — Platform Reviews" },
   description:
     "Independent creator and adult platform reviews based on published fees, terms and reports. No paid rankings. 18+.",
   alternates: { canonical: "https://www.dailycravehive.com/about" },
