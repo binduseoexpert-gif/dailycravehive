@@ -3,6 +3,9 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://www.dailycravehive.com";
 
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 function postLastModified(date: string, updated?: string): Date {
   const stamps = [updated, date]
     .filter((value): value is string => Boolean(value))

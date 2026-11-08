@@ -1,3 +1,12 @@
+export interface SearchEntry {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  thumbnail: string;
+  keywords: string[];
+}
+
 export interface Post {
   slug: string;
   title: string;

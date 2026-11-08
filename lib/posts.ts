@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
-import { Post } from "./types";
+import { Post, SearchEntry } from "./types";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
@@ -12,8 +12,11 @@ const HIDDEN_SLUGS = [
 
 ];
 
+let rawCache: Post[] | null = null;
+
 // Internal: reads ALL posts, including hidden ones.
 function getAllPostsRaw(): Post[] {
+  if (process.env.NODE_ENV === "production" && rawCache) return rawCache;
   if (!fs.existsSync(postsDirectory)) return [];
 
   const filenames = fs.readdirSync(postsDirectory).filter((f) => f.endsWith(".mdx"));
@@ -44,12 +47,31 @@ function getAllPostsRaw(): Post[] {
     };
   });
 
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const sorted = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  if (process.env.NODE_ENV === "production") rawCache = sorted;
+  return sorted;
+}
+
+// Slim index for the static search page. Omits MDX body.
+export function getSearchIndex(): SearchEntry[] {
+  return getAllPosts().map((post) => ({
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    category: post.category,
+    thumbnail: post.thumbnail,
+    keywords: post.keywords,
+  }));
 }
 
 // Public: hidden posts filtered out — nav, homepage, listings sab isi ko use karte hain.
 export function getAllPosts(): Post[] {
   return getAllPostsRaw().filter((p) => !HIDDEN_SLUGS.includes(p.slug));
+}
+
+// Includes hidden slugs so their URLs still prerender.
+export function getAllPostSlugs(): string[] {
+  return getAllPostsRaw().map((post) => post.slug);
 }
 
 // Uses raw list so hidden post URLs still work (no 404).

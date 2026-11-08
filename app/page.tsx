@@ -10,6 +10,9 @@ import HomepageFAQ from "@/components/HomepageFAQ";
 import { getAllPosts } from "@/lib/posts";
 import FeaturedPosts from "@/components/FeaturedPosts";
 
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 const DIVIDER = <div className="mx-auto my-0 max-w-6xl border-t-2 border-[#E8505B]" />;
 
 // Extract the platform/tool name from a review post title.

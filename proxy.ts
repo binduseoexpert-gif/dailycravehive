@@ -53,20 +53,32 @@ export function proxy(req: NextRequest) {
       headers: {
         "Content-Type": "text/html; charset=utf-8",
         "X-Robots-Tag": "noindex",
-        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
       },
     });
   }
 
   const target = LEGACY_REDIRECTS[path];
   if (target) {
-    return NextResponse.redirect(new URL(target, "https://www.dailycravehive.com"), 301);
+    const res = NextResponse.redirect(new URL(target, "https://www.dailycravehive.com"), 301);
+    res.headers.set("Cache-Control", "public, max-age=86400");
+    return res;
   }
 
   // Preserve default trailing-slash normalization (skipTrailingSlashRedirect is on)
   if (hasSlash && !path.startsWith("/api") && !path.startsWith("/_next")) {
-    return NextResponse.redirect(new URL(path + req.nextUrl.search, req.url), 308);
+    const res = NextResponse.redirect(new URL(path + req.nextUrl.search, req.url), 308);
+    res.headers.set("Cache-Control", "public, max-age=86400");
+    return res;
   }
 
   return NextResponse.next();
 }
+
+// Proxy runs on the Node.js runtime. Skip static assets so they are served
+// from the CDN without invoking this function.
+export const config = {
+  matcher: [
+    "/((?!_next/static|_next/image|images(?:/|$)|favicon.ico|icon.png|apple-icon.png|sitemap.xml|robots.txt|api(?:/|$)|.*\\..*).*)",
+  ],
+};

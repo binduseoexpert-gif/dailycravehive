@@ -4,6 +4,10 @@ import type { Metadata } from "next";
 
 const SITE_URL = "https://www.dailycravehive.com";
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+export const revalidate = 86400;
+
 const categoryMeta: Record<string, { name: string; h1: string; metaTitle: string; description: string; intro: string; keywords: string[] }> = {
   reviews: {
     name: "Reviews",
@@ -57,8 +61,11 @@ const fallbackMeta = {
 };
 
 export async function generateStaticParams() {
-  const categories = getAllCategories();
-  return categories.map((cat) => ({ slug: cat.slug }));
+  const slugs = new Set<string>([
+    ...Object.keys(categoryMeta),
+    ...getAllCategories().map((cat) => cat.slug),
+  ]);
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

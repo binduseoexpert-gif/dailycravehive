@@ -2,8 +2,10 @@
 
 import { NextResponse } from "next/server";
 import { commitImages, type ImagePayload } from "@/lib/github-images";
+import { ttlDelete } from "@/lib/ttl-cache";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO = process.env.GITHUB_REPO!;
@@ -93,7 +95,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: `GitHub commit failed: ${err.message || commitRes.statusText}` }, { status: 500 });
     }
 
-    return NextResponse.json({ ok: true, url: `${SITE_URL}/${slug}` });
+    ttlDelete("admin-post", slug);
+    ttlDelete("admin-posts", "list");
+    return NextResponse.json(
+      { ok: true, url: `${SITE_URL}/${slug}` },
+      { headers: { "Cache-Control": "private, no-store" } }
+    );
   } catch {
     return NextResponse.json({ error: "Server error. Check your environment variables." }, { status: 500 });
   }

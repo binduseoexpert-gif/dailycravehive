@@ -2,12 +2,16 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getAllPosts, getPostBySlug, formatDate } from "@/lib/posts";
+import { getAllPostSlugs, getAllPosts, getPostBySlug, formatDate } from "@/lib/posts";
 import { AUTHOR } from "@/lib/author";
 import AuthorBox from "@/components/AuthorBox";
 import AffiliateCTA from "@/components/AffiliateCTA";
 
 const SITE_URL = "https://www.dailycravehive.com";
+
+export const dynamic = "force-static";
+export const dynamicParams = false;
+export const revalidate = 86400;
 
 // Slugify function to generate IDs from heading text
 function slugify(text: string): string {
@@ -20,8 +24,7 @@ function slugify(text: string): string {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
-  return posts.map((post) => ({ slug: post.slug }));
+  return getAllPostSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({

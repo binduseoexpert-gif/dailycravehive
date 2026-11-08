@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: { absolute: "About Daily Crave Hive — Platform Reviews" },
   description:

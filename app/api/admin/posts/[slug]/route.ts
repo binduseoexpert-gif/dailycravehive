@@ -3,8 +3,12 @@
 import { NextResponse } from "next/server";
 import matter from "gray-matter";
 import { commitImages, type ImagePayload } from "@/lib/github-images";
+import { ttlCache, ttlDelete } from "@/lib/ttl-cache";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+const PRIVATE = { "Cache-Control": "private, no-store" };
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO = process.env.GITHUB_REPO!;
@@ -32,13 +36,19 @@ async function getFile(slug: string) {
 export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
     const { slug } = await params;
-    if (!/^[a-z0-9-]+$/.test(slug)) return NextResponse.json({ error: "Invalid slug." }, { status: 400 });
-    const file = await getFile(slug);
-    if (!file) return NextResponse.json({ error: "Post not found." }, { status: 404 });
-    const { data, content } = matter(file.content);
-    return NextResponse.json({ frontmatter: data, body: content.trim() });
+    if (!/^[a-z0-9-]+$/.test(slug)) {
+      return NextResponse.json({ error: "Invalid slug." }, { status: 400, headers: PRIVATE });
+    }
+    const payload = await ttlCache("admin-post", slug, 60_000, async () => {
+      const file = await getFile(slug);
+      if (!file) return null;
+      const { data, content } = matter(file.content);
+      return { frontmatter: data, body: content.trim() };
+    });
+    if (!payload) return NextResponse.json({ error: "Post not found." }, { status: 404, headers: PRIVATE });
+    return NextResponse.json(payload, { headers: PRIVATE });
   } catch {
-    return NextResponse.json({ error: "Server error." }, { status: 500 });
+    return NextResponse.json({ error: "Server error." }, { status: 500, headers: PRIVATE });
   }
 }
 
@@ -105,9 +115,11 @@ export async function PUT(req: Request, { params }: { params: Promise<{ slug: st
       return NextResponse.json({ error: `GitHub commit failed: ${err.message || commitRes.statusText}` }, { status: 500 });
     }
 
-    return NextResponse.json({ ok: true });
+    ttlDelete("admin-post", slug);
+    ttlDelete("admin-posts", "list");
+    return NextResponse.json({ ok: true }, { headers: PRIVATE });
   } catch {
-    return NextResponse.json({ error: "Server error." }, { status: 500 });
+    return NextResponse.json({ error: "Server error." }, { status: 500, headers: PRIVATE });
   }
 }
 
@@ -129,8 +141,10 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ slug:
       const err = await delRes.json().catch(() => ({}));
       return NextResponse.json({ error: `GitHub delete failed: ${err.message || delRes.statusText}` }, { status: 500 });
     }
-    return NextResponse.json({ ok: true });
+    ttlDelete("admin-post", slug);
+    ttlDelete("admin-posts", "list");
+    return NextResponse.json({ ok: true }, { headers: PRIVATE });
   } catch {
-    return NextResponse.json({ error: "Server error." }, { status: 500 });
+    return NextResponse.json({ error: "Server error." }, { status: 500, headers: PRIVATE });
   }
 }
