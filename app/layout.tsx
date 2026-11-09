@@ -21,12 +21,12 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Creator Platform Reviews, Fees & Guides (2026)",
+      "Creator Platform Reviews: Fees Before You Join (2026)",
     template: "%s | Daily Crave Hive",
   },
 
   description:
-    "Honest reviews of creator and adult platforms — real fees, payout proof, scam checks, comparisons and earning guides. Know before you pay. 18+.",
+    "See 2026 fees, payout rules and scam checks for creator platforms before you pay. Reviews, comparisons and guides, with no sponsored rankings. 18+.",
 
   authors: [{ name: "Daily Crave Hive", url: SITE_URL }],
   creator: "Daily Crave Hive",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Daily Crave Hive",
-    title: "Creator Platform Reviews, Fees & Guides (2026)",
+    title: "Creator Platform Reviews: Fees Before You Join (2026)",
     description:
-      "Honest reviews of creator and adult platforms — real fees, verified payouts, scam checks and comparisons. Know before you pay. 18+.",
+      "See 2026 fees, payout rules and scam checks for creator platforms before you pay. Reviews, comparisons and guides, with no sponsored rankings. 18+.",
     images: [
       {
         url: `${SITE_URL}/images/og-default.png`,
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Creator Platform Reviews, Fees & Guides (2026)",
+    title: "Creator Platform Reviews: Fees Before You Join (2026)",
     description:
-      "Honest reviews of creator and adult platforms — real fees, verified payouts, scam checks and comparisons. 18+.",
+      "See 2026 fees, payout rules and scam checks for creator platforms before you pay. Reviews, comparisons and guides, with no sponsored rankings. 18+.",
     images: [`${SITE_URL}/images/og-default.png`],
   },
 
