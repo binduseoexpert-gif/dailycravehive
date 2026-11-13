@@ -1,0 +1,248 @@
+---
+title: "How to Go Live on Fansly: OBS, Access Controls and Stream Goals"
+category: "Guides"
+categorySlug: "guides"
+date: "2026-11-13"
+excerpt: "How to go live on Fansly with OBS or an RTMP mobile app: generate a private stream key, set viewing and chat permissions, add a goal and start streaming."
+thumbnail: "/images/fansly-live-stream.png"
+thumbnailCaption: "Fansly live streams run through broadcasting software such as OBS, connected with a private stream key from your Streaming Settings."
+featured: false
+metaTitle: "How to Go Live on Fansly: OBS Setup and Permissions"
+metaDescription: "Go live on Fansly with OBS or an RTMP mobile app: generate a stream key, set viewing and chat permissions, add a goal and keep the key private."
+keywords:
+  - how to go live on fansly
+  - fansly obs setup
+  - fansly stream viewing permissions
+  - fansly stream chat settings
+---
+
+> **18+ Disclosure:** This guide is for adults aged 18 or over. Fansly is an adult platform for adult users only. Some links on this page may be affiliate links, and we may earn a commission at no extra cost to you (see our [affiliate disclosure](/affiliate-disclosure)). We have not run a Fansly live stream for this guide. **It is based on Fansly's official Help Center and Creator Hub, not hands-on testing.** Earnings are not guaranteed.
+
+*Last checked: November 13, 2026. What Fansly's own help pages say about stream keys, OBS setup, viewing and chat permissions, and stream goals.*
+Fansly doesn't stream from the browser the way OnlyFans does. You broadcast from software such as **OBS Studio**, or a mobile app that supports **RTMP ingest**, using a private **stream key** from your Fansly Streaming Settings. Before you hit Start Streaming, you also choose who can **watch** and who can **chat**.
+
+That permission step matters. Fansly's official Start Live Streaming guide says: **"If you don't choose any permissions, your stream will be accessible to any logged-in Fansly user."** Leave viewing permissions empty only if you mean that.
+
+We checked these official Fansly pages: Help Center "Start Live Streaming!" (dated December 8, 2025) and "Monetizing Your Live Streams" (both re-checked November 13, 2026; the monetizing article showed as updated this week), plus Creator Hub "Livestreaming 101" (checked November 9, 2026). The two Help Center articles word the empty-permission default slightly differently, so we show both below. Anything we couldn't confirm on those pages is labelled **commonly reported**. For the platform overall, see our [Fansly review](/fansly-review). For OnlyFans' different browser-based flow, see [how to go live on OnlyFans](/onlyfans-live-stream).
+
+## Fansly Live Stream At A Glance
+
+| Topic | What Fansly says | Source |
+|---|---|---|
+| Broadcast method | External software (OBS used in the guide) or an RTMP-capable mobile app | Start Live Streaming |
+| Connection | Stream Server + Stream Key from Streaming Settings | Start Live Streaming |
+| Stream key | "Think of it like your stream's private passcode… it should never be shared" | Start Live Streaming |
+| If the key leaks | "Reset it immediately" | Start Live Streaming; Creator Hub |
+| Viewing permissions empty | "Any logged-in Fansly user" (Start guide); "everyone can watch" (Monetizing guide) | Start Live Streaming; Monetizing |
+| Viewing options | Follow, subscribe, buy a ticket, have tipped; private lists under Advanced | Start Live Streaming; Monetizing |
+| Chat | Optional chat room with its own "To message you, fans must" rules | Start Live Streaming; Monetizing |
+| Stream goals | Title, description and amount to raise; updates in real time | Monetizing |
+| Private VIP / one-fan shows | Restrict viewing to selected Lists | Creator Hub |
+| Browser-native Go Live | Not how Fansly works | Official guides use OBS / RTMP |
+
+## Fansly Vs OnlyFans Live Streams
+
+| | Fansly | OnlyFans |
+|---|---|---|
+| How you go live | OBS or RTMP mobile app + stream key | In-browser Go Live (see our OnlyFans guide) |
+| Who can watch by default | Any logged-in user if you set no viewing permissions | Follow OnlyFans' own access rules |
+| Chat | Separate chat-room permissions | Built into the live session |
+| Extra tools | Stream goals; optional Lovense (outside this guide) | Co-streams and other OF tools |
+
+If you already stream on OnlyFans, don't assume the same clicks work on Fansly. The setup, key security and empty-permission warning are different.
+
+## Step 1: Choose Broadcasting Software
+
+Fansly "doesn't endorse any specific platform," but its Start Live Streaming guide uses **OBS Studio** throughout and links to OBS's own Quickstart Guide.
+
+**Desktop:** Download OBS Studio and follow OBS's setup for scenes, mic and camera.
+
+**Mobile:** Fansly says to use an app that supports **RTMP ingest**. The official guide names **PRISM** (iOS and Android) and **Streamlabs** (iOS and Android) as popular options. Creator Hub also treats OBS as the main example.
+
+You don't need a fancy overlay on day one. A stable camera, clear audio and the right server/key settings are enough to go live.
+
+## Step 2: Generate Your Stream Key (And Keep It Private)
+
+Your Stream Key links your software to your Fansly account. Fansly says: "Think of it like your stream's private passcode: it's essential for connecting, and it should never be shared."
+
+To generate it:
+
+1. Open your Fansly **Streaming Settings** (Creator Dashboard → Streaming).
+2. Click **Generate Stream Key**.
+
+**Security rules from Fansly:**
+
+- Never share the key with anyone.
+- If someone else gets access, **reset it immediately** in Streaming Settings.
+- Creator Hub adds: reset the key if you suspect it's compromised, and keep it updated when you change devices.
+
+**Practical habits (editorial, not Fansly quotes):**
+
+- Don't paste the key into public chats, Discord tickets or "manager" DMs.
+- Don't leave the OBS Settings → Stream window on screen while you're live, the key can appear in your own broadcast.
+- Never show a real stream key in a screenshot or tutorial image. Use a blurred or placeholder string.
+- After a reset, paste the **new** key into OBS or your mobile app before the next stream.
+
+Fake "tech support" that asks for your stream key is a scam. Our [OnlyFans scams](/onlyfans-scams) guide covers the phishing scripts that hit creators across platforms.
+
+![Generic broadcasting software stream settings panel with Custom selected and the stream key field hidden](/images/fansly-live-stream-obs-settings.png)
+
+*In OBS, choose Custom, then paste Fansly's Stream Server and Stream Key. Keep the key off-screen while you're live. Generic illustration, not the real OBS or Fansly interface.*
+
+## Step 3: Connect OBS (Or Your Mobile App)
+
+From Fansly's Start Live Streaming guide:
+
+1. In OBS, go to **Settings → Stream**.
+2. Select **Custom** as your server/service.
+3. Enter both your **Stream Server** and **Stream Key** from Fansly Streaming Settings.
+
+On a mobile RTMP app, the labels are usually the same idea: server URL + stream key. Paste both from Streaming Settings, not from a third-party "Fansly key" site.
+
+Once this is saved correctly, Fansly says you can return to OBS later and just press **Start Streaming**.
+
+## Step 4: Set Viewing Permissions Before You Go Live
+
+In your Live Streaming Dashboard, Fansly's monetizing guide says to go to **Limit who can watch** and choose what fans must do to watch:
+
+- **Follow you**
+- **Subscribe**
+- **Buy a ticket**
+- **Have tipped you**
+
+You can tick more than one, and fans must meet **all** of the ones you tick. For other options, such as letting fans in through a **private list**, click **Advanced**. Fansly also says to check the **Fans will see** preview to confirm your setup.
+
+### The Empty-Permission Warning
+
+The two official Help Center articles say the same thing in slightly different words:
+
+- Start Live Streaming: **"If you don't choose any permissions, your stream will be accessible to any logged-in Fansly user."**
+- Monetizing Your Live Streams: **"If nothing is ticked, everyone can watch."**
+
+Either way, an empty setup is an open stream. Leave it empty only if you mean it.
+
+| Viewing setup | Who can watch |
+|---|---|
+| Nothing ticked | Open: "any logged-in Fansly user" / "everyone" per Fansly's two guides |
+| Buy a ticket | Fans who buy the ticket |
+| Subscribe | Your subscribers |
+| Several boxes ticked | Only fans who meet all of them |
+| Private list (Advanced) | Only people on the selected list(s) |
+
+Creator Hub's private-list tip: choose which List(s) get access, and "only users on those lists will be able to view or interact with the stream." That fits paid one-on-one sessions, VIP groups or pre-sale ticket lists.
+
+Set viewing permissions **before** you start. Creators **commonly report** that mid-stream permission changes may not apply until you restart. Treat that as commonly reported, not an official promise.
+
+## Step 5: Optional Chat Room, Goals And Title
+
+### Chat Room
+
+Enable a chat room with **"Generate chat room."** Chat has its **own** permissions, separate from viewing. In the Stream Chat pane, under **To message you, fans must**, Fansly's monetizing guide lists:
+
+- **Follow you**
+- **Subscribe**
+- **Pay per message** (viewers pay a set amount for each message)
+- **Have tipped you** (at least a set amount)
+- **Followed by you** (only people you follow can chat)
+- **Have bought media worth** (at least a set amount of your media)
+
+As with viewing, ticking several means fans must meet all of them. Click **Advanced** to give fans a choice or to limit chat to a private list. You can also toggle **Hide Creator Messages**, **Show Gifs in Messages** and **Allow Private Chat**.
+
+Creator Hub publishes chat commands for moderators, including `/MOD`, `/BAN`, `/TIMEOUT`, `/UNBAN`, `/SLOW` and `/SLOWOFF`. Brief a moderator before a busy stream if you use them.
+
+### Stream Goal
+
+Scroll to the bottom of Streaming Settings → **Create New Goal**. Enter:
+
+- **Title**, short name
+- **Description**, what the goal supports
+- **Amount to Raise**, tip/contribution target
+
+Fansly says the goal appears on the stream and updates in real time.
+
+### Stream Title
+
+Add a custom title so viewers know what the session is about, useful for themed or event streams.
+
+### Lovense And Toys
+
+Fansly supports Lovense when a chat room is generated. Toy integration is **outside the scope of this guide**, use Fansly's own Lovense help articles if you need that setup.
+
+## Step 6: Start Streaming
+
+When permissions, chat and goals look right:
+
+1. Open OBS (or your RTMP app).
+2. Click **Start Streaming**.
+3. Confirm viewers can connect (Fansly has a related Help article on viewing your live-stream audience).
+
+After the first successful setup, Fansly says you can simply return and press Start Streaming next time, as long as the key hasn't been reset and your permissions still match the audience you want.
+
+![Checklist graphic for a Fansly live stream: stream key private, Custom server set, viewing permissions chosen, chat and goal optional](/images/fansly-live-stream-checklist.png)
+
+*Before you go live: key private, Custom server set and viewing permissions chosen on purpose. Chat and a goal are optional. Generic illustration.*
+
+## Content Rules While You're Live
+
+Creator Hub's pro tip: keep content aligned with Fansly's guidelines and Terms of Service. "Avoid streaming restricted content, and make sure you have all the necessary rights for streamed material, especially when incorporating elements like background music or video game footage."
+
+Don't stream anything you don't have rights to. Background music and game footage are common trip-ups.
+
+## Pre-Stream Checklist
+
+| Check | Why |
+|---|---|
+| OBS / RTMP app updated | Avoid connection failures |
+| Stream Server + Stream Key pasted under Custom | Required connection |
+| Settings window off-screen | Keeps the key out of the broadcast |
+| Viewing permissions set on purpose | Empty = any logged-in user |
+| Chat room + chat permissions (if you want chat) | Separate from viewing |
+| Stream goal and title (optional) | Context and tips |
+| Moderator briefed (optional) | Chat commands ready |
+| Rights cleared for music / game footage | Terms alignment |
+
+## Frequently Asked Questions
+
+<div>
+
+<details className="faq-item">
+<summary>Does Fansly Have A Browser Go Live Button Like OnlyFans?</summary>
+<p>No. Fansly's official guides connect you through OBS Studio or an RTMP-capable mobile app using a Stream Server and Stream Key.</p>
+</details>
+
+<details className="faq-item">
+<summary>What Happens If I Don't Set Viewing Permissions?</summary>
+<p>Your stream is open. Fansly's Start Live Streaming guide says it will be accessible to any logged-in Fansly user, and its monetizing guide says everyone can watch if nothing is ticked. Tick follow, subscribe, ticket or tipped, or use a private list under Advanced, if you want a smaller audience.</p>
+</details>
+
+<details className="faq-item">
+<summary>What Should I Do If My Stream Key Leaks?</summary>
+<p>Reset it immediately in Streaming Settings, then paste the new key into OBS or your mobile app. Never share the key.</p>
+</details>
+
+<details className="faq-item">
+<summary>Can I Stream From My Phone?</summary>
+<p>Yes, if the app supports RTMP ingest. Fansly's guide names PRISM and Streamlabs as popular options.</p>
+</details>
+
+<details className="faq-item">
+<summary>How Do I Do A Private One-Fan Or VIP Stream?</summary>
+<p>Use a private list. In the viewing permissions, click Advanced and choose the list(s) that should get access, so only people on those lists can view or interact.</p>
+</details>
+
+<details className="faq-item">
+<summary>Do Chat Permissions Match Viewing Permissions?</summary>
+<p>Not automatically. Viewing and chatting are set separately, so someone who can watch may still be blocked from chatting, depending on your chat settings.</p>
+</details>
+
+</div>
+
+## Final Thoughts
+
+Going live on Fansly is a short setup: generate a stream key, connect OBS or an RTMP app under Custom, set viewing and chat permissions, then Start Streaming. Treat the key like a password, and remember that **an empty viewing setup is an open stream**. Once that's locked in, add a chat room, goal and title if you want them, and announce the stream through the same habits you already use in our [how to promote Fansly](/how-to-promote-fansly) guide.
+
+*Last checked: November 13, 2026. This guide is for adults aged 18 and over and is based on Fansly's official Help Center and Creator Hub, not hands-on testing. Not legal advice.*
+
+---
+
+**Alma Martin** - Editor, Daily Crave Hive. Alma reviews creator and adult platforms, covering fees, payouts, safety and more, so readers get honest guides before they sign up.
