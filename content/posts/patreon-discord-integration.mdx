@@ -1,0 +1,164 @@
+---
+title: "Patreon Discord Integration: Set Up Paid Roles and Fix Access Problems"
+category: "Guides"
+categorySlug: "guides"
+date: "2026-11-20"
+excerpt: "Patreon's Discord integration maps paid tiers to server roles. Here's the official three-step setup, how role sync works, and what to check when access fails."
+thumbnail: "/images/patreon-discord-integration.png"
+thumbnailCaption: "Patreon's official setup has three steps: create Discord roles, connect the Patreon bot and move it above the roles it manages, then assign those roles to paid tiers. Generic illustration, not the real Discord interface."
+featured: false
+metaTitle: "Patreon Discord Integration: Paid Roles and Access Fixes"
+metaDescription: "Connect Patreon to Discord in three official steps, map paid tiers to roles, and fix sync and bot-hierarchy issues. A paid role is not age verification."
+keywords:
+  - patreon discord integration
+  - connect patreon to discord
+  - patreon discord roles not syncing
+  - patreon bot role hierarchy
+  - patreon membership discord access
+---
+
+> **18+ Disclosure:** This guide is for adults aged 18 or over. Some creators use Discord for adult communities. Both Patreon's and Discord's rules still apply to anything you post or share. Some links on this page may be affiliate links, and we may earn a commission at no extra cost to you (see our [affiliate disclosure](/affiliate-disclosure)). We have not connected a Patreon page to Discord for this guide. **It is based on official Patreon and Discord help articles, not hands-on testing.**
+
+*Last checked: November 20, 2026. What Patreon's and Discord's own help articles say about connecting paid tiers to server roles, how role sync works and what to check when a member can't get in.*
+
+[Patreon](https://en.wikipedia.org/wiki/Patreon) can connect a [Discord](https://en.wikipedia.org/wiki/Discord) server to paid membership so people who pay for a tier get a matching server role and the permissions that go with it. Official Patreon help says the integration "syncs your Discord server roles with your Patreon tiers to grant exclusive server access and permissions."
+
+That is a membership-access task, not a platform comparison and not a "sell in a private Discord group" playbook. Our [Patreon vs OnlyFans](/patreon-vs-onlyfans) guide covers fees and eligibility. Our [best websites to sell feet pics online](/best-websites-to-sell-feet-pics-online) roundup mentions Discord and Telegram only as invite-only sales channels, not this bot-and-role workflow.
+
+Official help breaks the setup into three steps: create member-specific Discord roles, connect Discord on Patreon and move the bot, then assign those roles to paid tiers. We checked Patreon's "Setting up Discord for your members" article (updated March 3, 2026) and Discord's "Age-Restricted Channels and Content" article (updated September 22, 2026) on November 17, 2026, and re-checked both on November 20, 2026. Confirm what your Apps settings and Discord Server Settings show today. Anything those pages do not state is labelled **commonly reported** or left out.
+
+## Create Member-Specific Roles First
+
+Official help says to set up roles on Discord before you link the server:
+
+1. Log in to Discord on the app or the desktop site. Create a server first if you do not have one.
+2. Open the server you want to link, then the drop-down next to the server name.
+3. Open **Server Settings**, then the **Roles** tab.
+4. Click **Create role**, or search for an existing role you want to use.
+5. Give that role the permissions and channel access paid members in the matching tier should have.
+
+Official help also recommends matching role names to your Patreon tier names, dragging roles in order of the highest privileges, and checking that each role can open the private channels you intend to reserve. Create a **separate role** for collaborators or admins so staff access is not mixed into member-only roles.
+
+**Do not manually add** those member-specific roles to people who are not paid members. Official help says users added that way "will be removed accordingly," and that bot-managed roles "should be used exclusively for Patreon." If you want non-members or free members to have similar access, create a **separate role** the integration does not manage. Official help says the integration "is currently available only for paid members."
+
+## Connect The Server And Move The Bot
+
+Then, on Patreon:
+
+1. Log in and open **Settings**, then the **Apps** tab.
+2. Click **Connect** and log in to Discord in the pop-up window.
+3. On the authorization screen, keep **Manage Roles** and **Create Instant Invite** checked.
+
+Next, open the same Discord server, go to **Server Settings** then **Roles**, rename the new "Patreon" role to something like "Patreon Discord bot," and drag that bot role **above the member roles it should manage**. Admin or collaborator roles you do not want the bot to manage can sit **above** the bot.
+
+Official help says this placement "ensures that it can help assign roles to new paid members and remove roles from those who are no longer paying." Leaving the bot below roles linked to Patreon tiers "may prevent it from assigning roles." The same article later recommends "keeping the Patreon Discord bot above your other roles (but below your admin roles)." If a user role sits higher than the bot, the bot "won't be able to update that user's information." Do not fix that by making the bot an Admin or by changing its permissions: "Adding or removing permissions for the Patreon bot may break the integration!"
+
+![Discord roles list with admin and collaborator roles at the top, the Patreon Discord bot in the middle, and paid tier roles below it](/images/patreon-discord-integration-roles.png)
+
+*Official help says to keep the Patreon Discord bot above the member roles it should assign, with admin or collaborator roles above the bot. Generic illustration, not the real Discord interface.*
+
+## Assign Discord Roles To Paid Tiers
+
+Official help says you assign roles on the same Apps page, underneath Discord:
+
+1. Open your **Apps** settings page.
+2. Enable Discord for a listed tier and **select a role**. When you enable a tier, "you must select a role for the Patreon Discord bot to manage."
+3. A connected role appears in your benefits in the tier description on your Membership Tab.
+4. If the page shows a setup issue, follow the on-screen instructions, or disconnect and reconnect if you need to start over.
+
+Do not assign the bot's own role (named "Patreon," unless you renamed it) to a tier. Official help lists that as a common reason members do not get the right access.
+
+This guide walks through **one Patreon page** linked to **one Discord server**. Official help currently says two different things about more than one page. The role-setup section says, "For our Patreon Discord bot to work properly, only one Patreon campaign can be integrated into a server." The FAQ says you can link multiple Patreon pages to a Discord server if you assign **separate roles**, and that "a role cannot be used for multiple pages." Because those statements conflict, confirm what the Apps settings screen allows before you rely on a second page sharing the same server.
+
+![Generic Apps settings graphic with Discord connected and each paid tier toggled on with its own member role selected](/images/patreon-discord-integration-tiers.png)
+
+*Official help says you enable Discord on a paid tier in Apps settings and must select a role for the bot to manage. The integration is for paid members only. Generic illustration, not the real Patreon interface.*
+
+## Official Error States
+
+Patreon's setup article lists these Apps-page error states and the recommended fix:
+
+| Error state (official wording) | Official resolution |
+|---|---|
+| Please select at least one role. | Select a role for each enabled tier. That role should be exclusive to Patreon. |
+| Please visit the Roles tab on Discord and move the Patreon role to the top of the list. | Drag the Patreon bot above the roles included as membership benefits. |
+| You're already using these roles for another Patreon page. | Choose another role, or unlink it from the other page. Roles should be exclusive to one page. |
+| There isn't a Discord server associated with your Patreon page. | The previous server may have been deleted or can no longer be found. Create a new server and connect again. |
+| We couldn't find this role. | Move the role below the Patreon bot, or choose a different role. |
+| There isn't a Patreon role in your Discord. | Official help says the connection may have failed; disconnect and try again. |
+| Please ensure the Patreon role has permission to manage roles, instant invite, and kick members. | Check those permissions in Discord. The same article warns not to add or remove bot permissions unless an official error asks you to check them. |
+| There was an issue connecting your Patreon account with Discord. | Disconnect and try again. |
+
+## How Role Sync Works
+
+When a paid member links their Discord account, official help says Patreon will "automatically assign them the role(s) you assigned to their tier." Most of the time, "it will happen immediately." If many members are connected and you change the roles tied to their tier, "it may take as many as a few hours." Official help also notes delays on the 1st of the month: new members "may not instantly add to Discord," but the bot "will catch up quickly, so there's no action needed on your part." Members with a declined payment "will regain access as soon as they resolve the charge." The bot "will sync across billing models every day," and larger servers may take longer.
+
+The bot only modifies the roles you selected on your Patreon tiers. If you do not want the bot to touch certain people, create a separate role for them and keep that role **higher** than the bot. Official help says you can confirm connected members in Relationship manager by filtering for Discord, and that the bot "will not interfere with your custom bots."
+
+**When a membership ends:** if a member deletes their pledge, or their payment declines, official help says "we'll remove the role(s) from their Discord account for you." The bot "manages your roles and not the server," so "their Discord role will be removed, not their invite to the server." They can still use public channels, and you can remove former members from the server directly in Discord if you need to. If a member is in a tier that is no longer available, "their role will be unassigned and the Patreon Discord bot will no longer manage that role for you."
+
+If you disconnect the integration, official help says to "allow up to 24 hours for the process to complete," depending on server size. If you **manually remove or kick the Patreon Discord bot** from the server, it "won't be able to remove roles associated with your tiers from users." In that case, disconnect the app from Patreon Apps settings so the bot can manage those roles correctly again.
+
+## Why A Member Still Cannot Get In
+
+If a paying member linked Discord and still does not have the right role, official help points to this checklist, plus a separate member-facing "Getting Discord access" guide you can send them:
+
+1. You did not add the bot's own role to a tier.
+2. The Patreon Discord bot sits above the member roles it should manage.
+3. Ask the member whether they are already in **over 100 Discord servers**. Official help says Discord's free offering lets users join up to 100 servers; over that limit they can upgrade to Discord Nitro (limit of 200 servers, per official help; Discord's own Nitro help page also lists "Join up to 200 servers") or leave another server first.
+
+Also check the error table on the Apps page. **An offline bot is not, on its own, a broken integration.** Official help says the bot "will display as offline on your server but will still be able to invite your members and assign them the correct roles."
+
+If someone asks to "connect Discord for you," or to take over the Apps page, treat that as an account-access risk. Our [OnlyFans scams](/onlyfans-scams) guide covers fake managers and phishing around creator accounts. Keep the Patreon login and Discord server ownership with you.
+
+## A Paid Role Is Not Age Verification
+
+A Patreon-managed Discord role means the member is in a paid tier and has linked Discord. It does **not** prove they have completed an identity or age check. If you create adult or 18+ work on Patreon, official creator age verification is a separate process. Our [Patreon adult creator age verification](/patreon-adult-creator-age-verification) guide covers that ID and selfie check. Do not treat a paid Discord role, a private channel, or a self-reported age as a substitute for it.
+
+Discord has its own **Age-Restricted Channel** setting. Official Discord help (updated September 22, 2026) says you can designate a text channel (or more than one) as age-restricted. Setup is on desktop or browser: open **Edit Channel**, then in the **Overview** tab turn on **Age-Restricted Channel**. Anyone who opens that channel "will be greeted with a notification letting them know that the channel may contain adult content and they must be an adult to enter." That label is a channel warning, not Patreon identity verification, and it is not a green light for every kind of adult material. Official Discord help says "there's still some material that isn't appropriate anywhere in Discord," and points creators to Discord's Community Guidelines. Patreon's own content rules still apply to what you offer as a paid benefit. Do not use Discord to route material Patreon does not allow.
+
+## Frequently Asked Questions
+
+<div>
+
+<details className="faq-item">
+<summary>How Do I Connect Patreon to Discord?</summary>
+<p>Create member roles on Discord, connect Discord from Patreon Settings > Apps (keep Manage Roles and Create Instant Invite checked), move the Patreon Discord bot above the member roles it should manage, then enable Discord on each paid tier and select a role.</p>
+</details>
+
+<details className="faq-item">
+<summary>Why Aren't My Patreon Discord Roles Syncing?</summary>
+<p>Official help points to bot placement, the wrong role on a tier (including the bot's own role), Apps-page errors, and a member already in over 100 Discord servers. Most syncs are immediate, but large role changes "may take as many as a few hours," and official help notes 1st-of-the-month delays that should catch up on their own.</p>
+</details>
+
+<details className="faq-item">
+<summary>Does an Offline Patreon Bot Mean the Integration Is Broken?</summary>
+<p>No. Official help says the bot "will display as offline on your server but will still be able to invite your members and assign them the correct roles." If you kick the bot off the server, disconnect the app from Patreon Apps settings so it can manage tier roles again.</p>
+</details>
+
+<details className="faq-item">
+<summary>What Happens When a Member Cancels or a Payment Declines?</summary>
+<p>Official help says the role tied to their tier is removed. The server invite is not automatically revoked, and they can still use public channels. Access returns after a declined payment is resolved.</p>
+</details>
+
+<details className="faq-item">
+<summary>Is a Paid Discord Role the Same As Age Verification?</summary>
+<p>No. A paid role only reflects an active, linked paid membership. Discord's age-restricted channels are a separate warning toggle, and Patreon's adult creator identity check is a different process.</p>
+</details>
+
+<details className="faq-item">
+<summary>Can Free Members Use the Patreon Discord Integration?</summary>
+<p>Official help says it "is available exclusively for paid members who are in a tier." For non-members or free members, create a separate role the integration does not manage.</p>
+</details>
+
+</div>
+
+## Final Thoughts
+
+The official setup is three steps: create member-only roles, connect the bot and place it above the roles it should manage, then map those roles to paid tiers in Apps settings. Most access problems official help documents come down to hierarchy, a role used in the wrong place, a member over Discord's free server limit, or a documented sync delay. Do not treat a Discord role or an age-restricted channel as identity verification.
+
+*Last checked: November 20, 2026. This guide is for adults aged 18 and over and is based on Patreon's official help article "Setting up Discord for your members" (updated March 3, 2026) and Discord's official help article "Age-Restricted Channels and Content" (updated September 22, 2026), not hands-on testing. Not legal advice.*
+
+---
+
+**Alma Martin** - Editor, Daily Crave Hive. Alma reviews creator and adult platforms, covering fees, payouts, safety and more, so readers get honest guides before they sign up.
