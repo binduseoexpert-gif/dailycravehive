@@ -17,12 +17,11 @@ const GONE_PATHS = new Set([
   "/surfer-seo-review",
   "/category/ai-image-tools",
   "/category/ai-writing-tools",
+  "/top-money-making-ideas-start-earning-from-home",
 ]);
 
 // Single-hop 301s. Slash and non-slash forms both land on the canonical URL.
 const LEGACY_REDIRECTS: Record<string, string> = {
-  "/top-money-making-ideas-start-earning-from-home":
-    "/how-to-sell-feet-pics-and-make-money",
   // Old lifestyle category. One 301 to /category/guides, which is 200.
   "/category/lifestyle": "/category/guides",
   // Company URL canonicals (also listed in next.config redirects)
